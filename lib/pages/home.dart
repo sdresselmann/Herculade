@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
           primary: Colors.blue,
         ),
         onPressed: () {},
-        child: const Text('TextButton'),
+        child: const Text('Statistik'),
       ),
     );
   }
