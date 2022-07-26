@@ -8,7 +8,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: const Text("First Screen"),
+      body: TextButton(
+        style: TextButton.styleFrom(
+          primary: Colors.blue,
+        ),
+        onPressed: () {},
+        child: const Text('TextButton'),
+      ),
     );
   }
 }
