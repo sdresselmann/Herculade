@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/pages/statistics.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -8,12 +9,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: TextButton(
-        style: TextButton.styleFrom(
-          primary: Colors.blue,
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const StatisticsPage("Statistik"),
+              ),
+            );
+          },
+          child: const Text("Statistik"),
         ),
-        onPressed: () {},
-        child: const Text('Statistik'),
       ),
     );
   }
