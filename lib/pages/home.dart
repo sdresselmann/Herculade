@@ -11,18 +11,20 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const StatisticsPage(statisticsText),
-              ),
-            );
-          },
-          child: const Text(statisticsText),
-        ),
+      body: Row(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const StatisticsPage(statisticsText),
+                ),
+              );
+            },
+            child: const Text(statisticsText),
+          ),
+        ],
       ),
     );
   }
