@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CalendarPage extends StatelessWidget {
-  final String title;
-  const CalendarPage(this.title);
+const String _title = "Kalender";
 
+class CalendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: const Text(_title)),
       body: const Text("Kalender Page"),
     );
   }

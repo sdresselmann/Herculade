@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TrainingPlanListPage extends StatelessWidget {
-  final String title;
-  const TrainingPlanListPage(this.title);
+const String _title = "Trainingspläne";
 
+class TrainingPlanListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: const Text(_title)),
       body: const Text("Trainingspläne Screen"),
     );
   }

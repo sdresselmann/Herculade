@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-class StatisticsPage extends StatelessWidget {
-  final String title;
-  const StatisticsPage(this.title);
+const String _title = "Statistik";
 
+class StatisticsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: const Text(_title)),
       body: const Text("Statistik Screen"),
     );
   }
