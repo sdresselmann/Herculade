@@ -25,16 +25,21 @@ class HomePage extends StatelessWidget {
 /// Build a button that when clicked navigates the user towards the statistics page.
 ElevatedButton _buildStatisticsRouteButton(BuildContext context) {
   final ElevatedButton statisticsButton = ElevatedButton(
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const StatisticsPage(_statisticsText),
-        ),
-      );
-    },
+    onPressed: () => _nagivateToStatisticsPage(context),
     child: const Text(_statisticsText),
   );
 
   return statisticsButton;
+}
+
+/// Navigates towards the statistics page.
+///
+/// Uses the current [context] and then displays the statistic page widget with it.
+void _nagivateToStatisticsPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const StatisticsPage(_statisticsText),
+    ),
+  );
 }
