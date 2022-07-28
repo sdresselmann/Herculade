@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/components/navigation_button.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 
 /// The text used for the button label and the title of the statistics page.
@@ -16,20 +17,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(_title)),
       body: Row(
-        children: [_buildStatisticsRouteButton(context)],
+        children: [
+          getNavigationButton(
+            context,
+            _nagivateToStatisticsPage,
+            _statisticsText,
+          )
+        ],
       ),
     );
   }
-}
-
-/// Build a button that when clicked navigates the user towards the statistics page.
-ElevatedButton _buildStatisticsRouteButton(BuildContext context) {
-  final ElevatedButton statisticsButton = ElevatedButton(
-    onPressed: () => _nagivateToStatisticsPage(context),
-    child: const Text(_statisticsText),
-  );
-
-  return statisticsButton;
 }
 
 /// Navigates towards the statistics page.
