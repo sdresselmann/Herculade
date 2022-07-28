@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/components/navigation_button.dart';
+import 'package:lifting_progress_tracker/pages/calendar.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
+import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 
 /// The text used for the button label and the title of the statistics page.
 const String _statisticsText = "Statistik";
+const String _calendarText = "Kalender";
+const String _trainingPlanListText = "Trainingspläne";
 
 /// The page used as main entry point for this app.
 class HomePage extends StatelessWidget {
@@ -22,7 +26,10 @@ class HomePage extends StatelessWidget {
             context,
             _nagivateToStatisticsPage,
             _statisticsText,
-          )
+          ),
+          getNavigationButton(context, _navigateToCalendarPage, _calendarText),
+          getNavigationButton(
+              context, _navigateToTrainingPlanListPage, _trainingPlanListText)
         ],
       ),
     );
@@ -37,6 +44,30 @@ void _nagivateToStatisticsPage(BuildContext context) {
     context,
     MaterialPageRoute(
       builder: (context) => const StatisticsPage(_statisticsText),
+    ),
+  );
+}
+
+/// Navigates towards the calendar page.
+///
+/// Uses the current [context] and then displays the calendar page widget with it.
+void _navigateToCalendarPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const CalendarPage(_calendarText),
+    ),
+  );
+}
+
+/// Navigates towards the training plan list page.
+///
+/// Uses the current [context] and then displays the training plan list page widget with it.
+void _navigateToTrainingPlanListPage(BuildContext context) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const TrainingPlanListPage(_trainingPlanListText),
     ),
   );
 }

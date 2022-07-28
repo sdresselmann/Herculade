@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class TrainingplansPage extends StatelessWidget {
+class TrainingPlanListPage extends StatelessWidget {
   final String title;
-  const TrainingplansPage(this.title);
+  const TrainingPlanListPage(this.title);
 
   @override
   Widget build(BuildContext context) {
