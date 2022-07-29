@@ -37,11 +37,11 @@ import 'package:flutter/material.dart';
 /// ```
 ElevatedButton getNavigationButton(
   BuildContext context,
-  Function(BuildContext context) navigationFunction,
+  Function(BuildContext context, String routeName) navigationFunction,
   String buttonText,
 ) {
   final ElevatedButton elevatedButton = ElevatedButton(
-    onPressed: () => navigationFunction(context),
+    onPressed: () => navigationFunction(context, buttonText),
     child: Text(buttonText),
   );
   return elevatedButton;

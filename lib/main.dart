@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/constants/routes.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
 import 'package:lifting_progress_tracker/pages/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
@@ -28,12 +29,12 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: homeRoute,
       routes: {
-        '/': (context) => HomePage(),
-        '/statistics': (context) => StatisticsPage(),
-        '/calendar': (context) => CalendarPage(),
-        '/trainingplans': (context) => TrainingPlanListPage()
+        homeRoute: (context) => HomePage(),
+        statisticsRoute: (context) => StatisticsPage(),
+        calendarRoute: (context) => CalendarPage(),
+        trainingplanListRoute: (context) => TrainingPlanListPage()
       },
     );
   }
