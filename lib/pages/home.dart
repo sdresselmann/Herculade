@@ -15,29 +15,18 @@ class HomePage extends StatelessWidget {
         children: [
           getNavigationButton(
             context,
-            _navigateToRoute,
             statisticsRoute,
           ),
           getNavigationButton(
             context,
-            _navigateToRoute,
             calendarRoute,
           ),
           getNavigationButton(
             context,
-            _navigateToRoute,
             trainingplanListRoute,
           ),
         ],
       ),
     );
   }
-}
-
-/// Change the currently shown app page.
-///
-/// Uses the current [context] and navigates the app towards the page declared
-/// by the [routeName].
-void _navigateToRoute(BuildContext context, String routeName) {
-  Navigator.pushNamed(context, routeName);
 }

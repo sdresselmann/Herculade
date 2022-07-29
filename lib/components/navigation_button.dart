@@ -31,12 +31,19 @@ import 'package:flutter/material.dart';
 /// ```
 ElevatedButton getNavigationButton(
   BuildContext context,
-  Function(BuildContext context, String routeName) navigationFunction,
-  String buttonText,
+  String routeName,
 ) {
   final ElevatedButton elevatedButton = ElevatedButton(
-    onPressed: () => navigationFunction(context, buttonText),
-    child: Text(buttonText),
+    onPressed: () => _navigateToRoute(context, routeName),
+    child: Text(routeName),
   );
   return elevatedButton;
+}
+
+/// Change the currently shown app page.
+///
+/// Uses the current [context] and navigates the app towards the page declared
+/// by the [routeName].
+void _navigateToRoute(BuildContext context, String routeName) {
+  Navigator.pushNamed(context, routeName);
 }
