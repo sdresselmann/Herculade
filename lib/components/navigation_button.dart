@@ -12,12 +12,12 @@ import 'package:flutter/material.dart';
 ///   Navigator.pushNamed(context, routeName);
 /// }
 ///
-///const String targetPage = "Seite 2";
+///const String targetPage = 'Seite 2';
 ///
 ///@override
 /// Widget build(BuildContext context) {
 ///   return Scaffold(
-///     appBar: AppBar(title: Seite 1),
+///     appBar: AppBar(title: 'Seite 1'),
 ///     body:
 ///         buildNavigationButton(
 ///           context,
