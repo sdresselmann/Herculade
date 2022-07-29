@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const String _title = "Übung";
 
-class TrainingPlanListPage extends StatelessWidget {
+class ExercisePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

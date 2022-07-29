@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const String _title = "Trainings-Zeitraum";
 
-class StatisticsPage extends StatelessWidget {
+class TrainingPeriodPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

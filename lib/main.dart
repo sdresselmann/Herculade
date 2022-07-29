@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         homeRoute: (context) => HomePage(),
         statisticsRoute: (context) => StatisticsPage(),
         calendarRoute: (context) => CalendarPage(),
-        trainingplanListRoute: (context) => TrainingPlanListPage()
+        trainingplanListRoute: (context) => TrainingPlanListPage(),
       },
     );
   }

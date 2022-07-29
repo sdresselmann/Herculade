@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const String _title = "Trainingstag";
 
-class StatisticsPage extends StatelessWidget {
+class TrainingDayPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
