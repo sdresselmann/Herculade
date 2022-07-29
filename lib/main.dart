@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/pages/calendar.dart';
 import 'package:lifting_progress_tracker/pages/home.dart';
+import 'package:lifting_progress_tracker/pages/statistics.dart';
+import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Lifting Progress Tracker',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -25,7 +28,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/statistics': (context) => StatisticsPage(),
+        '/calendar': (context) => CalendarPage(),
+        '/trainingplans': (context) => TrainingPlanListPage()
+      },
     );
   }
 }
