@@ -34,6 +34,10 @@ class HomePage extends StatelessWidget {
   }
 }
 
+/// Change the currently shown app page.
+///
+/// Uses the current [context] and navigates the app towards the page declared
+/// by the [routeName].
 void _navigateToRoute(BuildContext context, String routeName) {
   Navigator.pushNamed(context, routeName);
 }

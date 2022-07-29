@@ -3,32 +3,26 @@ import 'package:flutter/material.dart';
 /// Build a a simple button that navigates towards a new page.
 ///
 /// The Button uses the current [context] and when clicked executes the [navigationFunction].
-/// The label shown on the button is given via [buttonText].
+/// The label shown on the button is given via [buttonText] which is also used as name for the route that is used for navigation.
 /// This way a simple button can be created by simply calling this function, making the code more readable.
 ///
 /// Example:
 /// ```dart
-///void navigateToX(BuildContext context)
-///{
-///   Navigator.push(
-///    context,
-///    MaterialPageRoute(
-///      builder: (context) => const StatisticsPage(_statisticsText),
-///    ),
-///  );
-///}
+/// void _navigateToRoute(BuildContext context, String routeName) {
+///   Navigator.pushNamed(context, routeName);
+/// }
 ///
-///const String text = "Text";
+///const String targetPage = "Seite 2";
 ///
 ///@override
 /// Widget build(BuildContext context) {
 ///   return Scaffold(
-///     appBar: AppBar(title: text),
+///     appBar: AppBar(title: Seite 1),
 ///     body:
 ///         buildNavigationButton(
 ///           context,
-///           navigateToX
-///           text,
+///           _navigateToRoute
+///           targetPage,
 ///         )
 ///     ),
 ///   );
