@@ -26,7 +26,7 @@ jobs:
         flutter-version: '3.0.5'
     - run: flutter pub get
     - run: flutter test
-    - run: flutter test integration_test -d ubuntu
+    - run: flutter test integration_test -d linux
     - run: flutter analyze
     - run: flutter format lib
     - run: flutter build apk
