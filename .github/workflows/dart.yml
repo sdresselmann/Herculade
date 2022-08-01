@@ -34,7 +34,6 @@ jobs:
 
     - run: flutter pub get
     - run: flutter test
-    - run: flutter test integration_test -d linux
     - name: run integration tests under Xfvb
       run: |
         export DISPLAY=:99
