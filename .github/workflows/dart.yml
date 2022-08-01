@@ -35,6 +35,11 @@ jobs:
     - run: flutter pub get
     - run: flutter test
     - run: flutter test integration_test -d linux
+    - name: run integration tests under Xfvb
+      run: |
+        export DISPLAY=:99
+        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+        flutter test -d linux integration_test
     - run: flutter analyze
     - run: flutter format lib
     - run: flutter build apk
