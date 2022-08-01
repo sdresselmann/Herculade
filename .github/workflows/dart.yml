@@ -31,17 +31,6 @@ jobs:
     - run: flutter format lib
     - run: flutter build apk
     - run: flutter build appbundle
-       
-      uses: ashutoshvarma/setup-ninja@master
-      with:
-        # ninja version to download. Default: 1.10.0
-        version: 1.10.0
 
-      uses: ashutoshvarma/action-cmake-build@master
-      with:
-        build-dir: ${{ runner.workspace }}/build
-        cc: ${{ matrix.config.cc }}
-        cxx: ${{ matrix.config.cxx }}
-        configure-options: -G Ninja
-        build-type: Release
+
         
