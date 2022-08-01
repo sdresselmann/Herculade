@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:lifting_progress_tracker/constants/routes.dart';
 
 import 'package:lifting_progress_tracker/main.dart' as app;
 import 'package:lifting_progress_tracker/pages/calendar.dart';
@@ -28,7 +27,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, statisticsRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Statistik"));
       await tester.pumpAndSettle();
       expect(find.byType(StatisticsPage), findsOneWidget);
     });
@@ -38,7 +37,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Kalender"));
       await tester.pumpAndSettle();
       expect(find.byType(CalendarPage), findsOneWidget);
     });
@@ -48,9 +47,9 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Kalender"));
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, trainingDayRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Trainingstag"));
       await tester.pumpAndSettle();
       expect(find.byType(TrainingDayPage), findsOneWidget);
     });
@@ -60,10 +59,9 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Kalender"));
       await tester.pumpAndSettle();
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingPeriodRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Zeitraum"));
       await tester.pumpAndSettle();
       expect(find.byType(TrainingPeriodPage), findsOneWidget);
     });
@@ -73,8 +71,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Trainingspläne"));
       await tester.pumpAndSettle();
       expect(find.byType(TrainingPlanListPage), findsOneWidget);
     });
@@ -84,10 +81,9 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Trainingspläne"));
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, trainingPlanRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Trainingsplan"));
       await tester.pumpAndSettle();
       expect(find.byType(TrainingPlanPage), findsOneWidget);
     });
@@ -97,12 +93,11 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Trainingspläne"));
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, trainingPlanRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Trainingsplan"));
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, exerciseRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "Übung"));
       await tester.pumpAndSettle();
       expect(find.byType(ExercisePage), findsOneWidget);
     });
