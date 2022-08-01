@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Dart
+name: flutter-tests
 
 on:
   push:
@@ -39,10 +39,6 @@ jobs:
         export DISPLAY=:99
         sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
         flutter test -d linux integration_test
-    - run: flutter analyze
-    - run: flutter format lib
-    - run: flutter build apk
-    - run: flutter build appbundle
 
 
         
