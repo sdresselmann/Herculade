@@ -102,7 +102,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.widgetWithText(ElevatedButton, trainingPlanRoute));
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, exerciseRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, "exerciseRoute"));
       await tester.pumpAndSettle();
       expect(find.byType(ExercisePage), findsOneWidget);
     });
