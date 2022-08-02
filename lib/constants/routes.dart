@@ -1,3 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/pages/calendar.dart';
+import 'package:lifting_progress_tracker/pages/exercise.dart';
+import 'package:lifting_progress_tracker/pages/home.dart';
+import 'package:lifting_progress_tracker/pages/statistics.dart';
+import 'package:lifting_progress_tracker/pages/training_day.dart';
+import 'package:lifting_progress_tracker/pages/training_period.dart';
+import 'package:lifting_progress_tracker/pages/training_plan.dart';
+import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
+
 /// Named string for the home page route.
 const String homeRoute = '/';
 
@@ -21,3 +31,15 @@ const String trainingPeriodRoute = "Zeitraum";
 
 /// Named string for the training plan page route.
 const String trainingPlanRoute = "Trainingsplan";
+
+/// Routing table for all named routes.
+Map<String, Widget Function(BuildContext)> routesObject = {
+  homeRoute: (context) => HomePage(),
+  statisticsRoute: (context) => StatisticsPage(),
+  calendarRoute: (context) => CalendarPage(),
+  trainingplanListRoute: (context) => TrainingPlanListPage(),
+  trainingDayRoute: (context) => TrainingDayPage(),
+  exerciseRoute: (context) => ExercisePage(),
+  trainingPeriodRoute: (context) => TrainingPeriodPage(),
+  trainingPlanRoute: (context) => TrainingPlanPage(),
+};
