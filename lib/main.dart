@@ -18,8 +18,11 @@ const projectId = 'lifting-progress-tracker';
 
 void main() {
   // During tests firestore gets initialized multiple times throwing an exception
-  Firestore.initialize(projectId);
-
+  try {
+    Firestore.initialize(projectId);
+  } catch (e) {
+    debugPrint(e.toString());
+  }
   runApp(const MyApp());
 }
 
