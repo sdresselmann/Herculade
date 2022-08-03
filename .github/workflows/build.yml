@@ -41,7 +41,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: apk
-          path: build/app/outputs/apk/release/app-release.apk
+          path: ./
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -57,7 +57,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/Lifting-Progress-Tracker/Lifting-Progress-Tracker/build/app/outputs/apk/release/app-release.apk
+          asset_path: app-release.apk
           asset_name: ${{ github.event.repository.name }}.apk
           asset_content_type: application/zip
         
