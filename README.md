@@ -1,3 +1,7 @@
+[![build-app-release](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/build.yml/badge.svg)](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/build.yml)
+[![code-analysis](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/code_analysis.yml/badge.svg)](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/code_analysis.yml)
+[![flutter-tests](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/flutter_tests.yml/badge.svg)](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/flutter_tests.yml)
+
 [![style: lint](https://img.shields.io/badge/style-lint-4BC0F5.svg)](https://pub.dev/packages/lint)
 # Lifting Progress Tracker
 
