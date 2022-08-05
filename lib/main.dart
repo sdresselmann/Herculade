@@ -9,11 +9,11 @@ const apiKey = 'AIzaSyAAvQNgL2DNb7dT-7UjsJoeV8u8LJWcVhc';
 const projectId = 'lifting-progress-tracker';
 
 void main() {
-  // During tests firestore gets initialized multiple times throwing an exception
+  // During integration testing firestore gets initialized multiple times throwing an exception
   try {
     Firestore.initialize(projectId);
-  } catch (e) {
-    debugPrint(e.toString());
+  } catch (firestoreException) {
+    debugPrint(firestoreException.toString());
   }
   runApp(const MyApp());
 }
