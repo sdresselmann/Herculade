@@ -13,23 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Kalender',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Trainingspläne',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Statistik',
       style: optionStyle,
     ),
   ];
@@ -52,21 +41,22 @@ class _HomePageState extends State<HomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: 'Kalender',
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.wordpress),
-            label: "Trainingspläne",
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.wordpress),
-            label: 'Statistik',
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blueAccent[800],
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
