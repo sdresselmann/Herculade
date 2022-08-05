@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lifting_progress_tracker/components/navigation_button.dart';
-import 'package:lifting_progress_tracker/constants/routes.dart';
 
 /// Title of the page as shown in the appbar.
 const String _title = "Home";
@@ -23,11 +21,15 @@ class _HomePageState extends State<HomePage> {
       style: optionStyle,
     ),
     Text(
-      'Index 1: Calendar',
+      'Index 1: Kalender',
       style: optionStyle,
     ),
     Text(
-      'Index 2: Statistic',
+      'Index 3: Trainingspläne',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Statistik',
       style: optionStyle,
     ),
   ];
@@ -45,14 +47,25 @@ class _HomePageState extends State<HomePage> {
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month), label: 'Kalender'),
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.wordpress), label: 'Statistik'),
+            icon: Icon(Icons.calendar_month),
+            label: 'Kalender',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.wordpress),
+            label: "Trainingspläne",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.wordpress),
+            label: 'Statistik',
+          ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.blueAccent[800],
         onTap: _onItemTapped,
       ),
     );
