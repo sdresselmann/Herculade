@@ -6,7 +6,14 @@ import 'package:lifting_progress_tracker/constants/routes.dart';
 const String _title = "Home";
 
 /// The page used as main entry point for this app.
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
