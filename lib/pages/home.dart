@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/pages/calendar.dart';
+import 'package:lifting_progress_tracker/pages/statistics.dart';
+import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 
 /// Title of the page as shown in the appbar.
 const String _title = "Home";
@@ -17,23 +20,14 @@ class _HomePageState extends State<HomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
+  static final List<Widget> _widgetOptions = <Widget>[
+    const Text(
       'Index 0: Home',
       style: optionStyle,
     ),
-    Text(
-      'Index 1: Kalender',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: Trainingspläne',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Statistik',
-      style: optionStyle,
-    ),
+    CalendarPage(),
+    TrainingPlanListPage(),
+    StatisticsPage(),
   ];
 
   void _onItemTapped(int index) {
