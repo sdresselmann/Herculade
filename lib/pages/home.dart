@@ -22,6 +22,18 @@ class _HomePageState extends State<HomePage> {
       'Index 0: Home',
       style: optionStyle,
     ),
+    Text(
+      'Index 1: Kalender',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Trainingspläne',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Statistik',
+      style: optionStyle,
+    ),
   ];
 
   void _onItemTapped(int index) {
