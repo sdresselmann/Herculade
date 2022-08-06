@@ -28,8 +28,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester.tap(
-          find.widgetWithText(BottomNavigationBarItem, statisticsRouteLabel));
+      await tester.tap(find.text(statisticsRouteLabel));
       await tester.pumpAndSettle();
       expect(find.byType(StatisticsPage), findsOneWidget);
     });
@@ -39,7 +38,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRouteLabel));
+      await tester.tap(find.text(calendarRouteLabel));
       await tester.pumpAndSettle();
       expect(find.byType(CalendarPage), findsOneWidget);
     });
@@ -49,7 +48,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRouteLabel));
+      await tester.tap(find.text(calendarRouteLabel));
       await tester.pumpAndSettle();
       await tester
           .tap(find.widgetWithText(ElevatedButton, trainingDayRouteLabel));
@@ -62,7 +61,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRouteLabel));
+      await tester.tap(find.text(calendarRouteLabel));
       await tester.pumpAndSettle();
       await tester
           .tap(find.widgetWithText(ElevatedButton, trainingPeriodRouteLabel));
@@ -75,8 +74,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRouteLabel));
+      await tester.tap(find.text(trainingplanListRouteLabel));
       await tester.pumpAndSettle();
       expect(find.byType(TrainingPlanListPage), findsOneWidget);
     });
@@ -86,8 +84,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRouteLabel));
+      await tester.tap(find.text(trainingplanListRouteLabel));
       await tester.pumpAndSettle();
       await tester
           .tap(find.widgetWithText(ElevatedButton, trainingPlanRouteLabel));
@@ -100,8 +97,7 @@ void main() {
         (tester) async {
       app.main();
       await tester.pumpAndSettle();
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRouteLabel));
+      await tester.tap(find.text(trainingplanListRouteLabel));
       await tester.pumpAndSettle();
       await tester
           .tap(find.widgetWithText(ElevatedButton, trainingPlanRouteLabel));
