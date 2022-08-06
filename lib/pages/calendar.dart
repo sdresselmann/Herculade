@@ -8,8 +8,8 @@ class CalendarPage extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          getNavigationButton(context, trainingDayRoute),
-          getNavigationButton(context, trainingPeriodRoute),
+          getNavigationButton(context, trainingDayRouteLabel),
+          getNavigationButton(context, trainingPeriodRouteLabel),
         ],
       ),
     );

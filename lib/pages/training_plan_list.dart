@@ -6,7 +6,7 @@ class TrainingPlanListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: getNavigationButton(context, trainingPlanRoute),
+      body: getNavigationButton(context, trainingPlanRouteLabel),
     );
   }
 }
