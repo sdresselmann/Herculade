@@ -16,41 +16,55 @@ import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
+  Future<void> startApp(WidgetTester tester) async {
+    app.main();
+    await tester.pumpAndSettle();
+  }
+
+  Future<void> navigateToStatistics(WidgetTester tester) async {
+    await tester.tap(find.text(statisticsRouteLabel));
+    await tester.pumpAndSettle();
+  }
+
+  Future<void> navigateToCalendar(WidgetTester tester) async {
+    await tester.tap(find.text(calendarRouteLabel));
+    await tester.pumpAndSettle();
+  }
+
+  Future<void> navigateToTrainingPlanList(WidgetTester tester) async {
+    await tester.tap(find.text(trainingplanListRouteLabel));
+    await tester.pumpAndSettle();
+  }
+
   group('navigation smoke tests', () {
     testWidgets('start application without any errors', (tester) async {
-      app.main();
-      await tester.pumpAndSettle();
+      await startApp(tester);
       expect(find.byType(HomePage), findsOneWidget);
     });
 
     testWidgets(
         'navigate from home to statistics page without occurring any errors',
         (tester) async {
-      app.main();
-      await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, statisticsRoute));
-      await tester.pumpAndSettle();
+      await startApp(tester);
+      await navigateToStatistics(tester);
       expect(find.byType(StatisticsPage), findsOneWidget);
     });
 
     testWidgets(
         'navigate from home to the calendar page without occurring any errors',
         (tester) async {
-      app.main();
-      await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRoute));
-      await tester.pumpAndSettle();
+      await startApp(tester);
+      await navigateToCalendar(tester);
       expect(find.byType(CalendarPage), findsOneWidget);
     });
 
     testWidgets(
         'navigate from home to the training day page without occurring any errors',
         (tester) async {
-      app.main();
-      await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRoute));
-      await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, trainingDayRoute));
+      await startApp(tester);
+      await navigateToCalendar(tester);
+      await tester
+          .tap(find.widgetWithText(ElevatedButton, trainingDayRouteLabel));
       await tester.pumpAndSettle();
       expect(find.byType(TrainingDayPage), findsOneWidget);
     });
@@ -58,12 +72,10 @@ void main() {
     testWidgets(
         'navigate from home to the training period page without occurring any errors',
         (tester) async {
-      app.main();
-      await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, calendarRoute));
-      await tester.pumpAndSettle();
+      await startApp(tester);
+      await navigateToCalendar(tester);
       await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingPeriodRoute));
+          .tap(find.widgetWithText(ElevatedButton, trainingPeriodRouteLabel));
       await tester.pumpAndSettle();
       expect(find.byType(TrainingPeriodPage), findsOneWidget);
     });
@@ -71,23 +83,18 @@ void main() {
     testWidgets(
         'navigate from home to the training plan list page without occurring any errors',
         (tester) async {
-      app.main();
-      await tester.pumpAndSettle();
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRoute));
-      await tester.pumpAndSettle();
+      await startApp(tester);
+      await navigateToTrainingPlanList(tester);
       expect(find.byType(TrainingPlanListPage), findsOneWidget);
     });
 
     testWidgets(
         'navigate from home to the training plan page without occurring any errors',
         (tester) async {
-      app.main();
-      await tester.pumpAndSettle();
+      await startApp(tester);
+      await navigateToTrainingPlanList(tester);
       await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRoute));
-      await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, trainingPlanRoute));
+          .tap(find.widgetWithText(ElevatedButton, trainingPlanRouteLabel));
       await tester.pumpAndSettle();
       expect(find.byType(TrainingPlanPage), findsOneWidget);
     });
@@ -95,14 +102,12 @@ void main() {
     testWidgets(
         'navigate from home to the exercise page without occurring any errors',
         (tester) async {
-      app.main();
-      await tester.pumpAndSettle();
+      await startApp(tester);
+      await navigateToTrainingPlanList(tester);
       await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingplanListRoute));
+          .tap(find.widgetWithText(ElevatedButton, trainingPlanRouteLabel));
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, trainingPlanRoute));
-      await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, exerciseRoute));
+      await tester.tap(find.widgetWithText(ElevatedButton, exerciseRouteLabel));
       await tester.pumpAndSettle();
       expect(find.byType(ExercisePage), findsOneWidget);
     });
