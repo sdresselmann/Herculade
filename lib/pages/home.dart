@@ -15,15 +15,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  /// Index of selected items, used for picking the page from [_navigationItems].
   int _selectedIndex = 0;
 
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  static final List<Widget> _widgetOptions = <Widget>[
+  /// List of pages that are navigated by clicking on the bottom app bar.
+  static final List<Widget> _navigationItems = <Widget>[
     const Text(
       'Index 0: Home',
-      style: optionStyle,
     ),
     CalendarPage(),
     TrainingPlanListPage(),
@@ -40,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(_title)),
-      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
+      body: Center(child: _navigationItems.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
