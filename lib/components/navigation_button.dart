@@ -25,16 +25,6 @@ import 'package:flutter/material.dart';
 /// }
 ///
 /// ```
-ElevatedButton getNavigationButton(
-  BuildContext context,
-  String routeName,
-) {
-  final ElevatedButton elevatedButton = ElevatedButton(
-    onPressed: () => _navigateToRoute(context, routeName),
-    child: Text(routeName),
-  );
-  return elevatedButton;
-}
 
 /// Change the currently shown app page.
 ///
@@ -42,4 +32,18 @@ ElevatedButton getNavigationButton(
 /// by the [routeName].
 void _navigateToRoute(BuildContext context, String routeName) {
   Navigator.pushNamed(context, routeName);
+}
+
+class NavigationButton extends StatelessWidget {
+  final String routeName;
+
+  const NavigationButton(this.routeName);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () => _navigateToRoute(context, routeName),
+      child: Text(routeName),
+    );
+  }
 }
