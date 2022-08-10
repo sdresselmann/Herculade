@@ -5,8 +5,8 @@ import 'package:lifting_progress_tracker/constants/routes.dart';
 class TrainingPlanListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: getNavigationButton(context, trainingPlanRouteLabel),
+    return const Scaffold(
+      body: NavigationButton(trainingPlanRouteLabel),
     );
   }
 }

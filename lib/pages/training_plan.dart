@@ -9,7 +9,7 @@ class TrainingPlanPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(_title)),
-      body: getNavigationButton(context, exerciseRouteLabel),
+      body: const NavigationButton(exerciseRouteLabel),
     );
   }
 }

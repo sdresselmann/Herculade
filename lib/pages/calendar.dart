@@ -7,9 +7,9 @@ class CalendarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
-        children: [
-          getNavigationButton(context, trainingDayRouteLabel),
-          getNavigationButton(context, trainingPeriodRouteLabel),
+        children: const [
+          NavigationButton(trainingDayRouteLabel),
+          NavigationButton(trainingPeriodRouteLabel),
         ],
       ),
     );
