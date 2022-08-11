@@ -9,7 +9,29 @@ class TrainingPlanPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(_title)),
-      body: const NavigationButton(exerciseRouteLabel),
+      body: Column(
+        children: [
+          const NavigationButton(exerciseRouteLabel),
+          Table(
+            border: TableBorder.all(),
+            children: const <TableRow>[
+              TableRow(
+                children: <TableCell>[
+                  TableCell(
+                    child: Text('Übung'),
+                  ),
+                  TableCell(
+                    child: Text('Gewicht'),
+                  ),
+                  TableCell(
+                    child: Text('Wiederholungen'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
