@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/components/navigation_button.dart';
 import 'package:lifting_progress_tracker/constants/routes.dart';
 
-const String _title = "Trainingsplan";
+const String _title = "Training Schedule";
 
 class TrainingPlanPage extends StatelessWidget {
   @override
@@ -18,13 +18,13 @@ class TrainingPlanPage extends StatelessWidget {
               TableRow(
                 children: <TableCell>[
                   TableCell(
-                    child: Text('Übung'),
+                    child: Text('Exercise'),
                   ),
                   TableCell(
-                    child: Text('Gewicht'),
+                    child: Text('Weight'),
                   ),
                   TableCell(
-                    child: Text('Wiederholungen'),
+                    child: Text('Repeats'),
                   ),
                 ],
               ),

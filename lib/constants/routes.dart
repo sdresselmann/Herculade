@@ -9,25 +9,25 @@ import 'package:lifting_progress_tracker/pages/training_plan.dart';
 const String homeRouteLabel = '/';
 
 /// Named string for the statistics page route.
-const String statisticsRouteLabel = 'Statistik';
+const String statisticsRouteLabel = 'Statistic';
 
 /// Named string for the calendar page route.
-const String calendarRouteLabel = "Kalender";
+const String calendarRouteLabel = "Calendar";
 
 /// Named string for the trainings plan list page route.
-const String trainingplanListRouteLabel = "Trainingspläne";
+const String trainingplanListRouteLabel = "Training Schedules";
 
 /// Named string for the exercise page route.
-const String exerciseRouteLabel = "Übung";
+const String exerciseRouteLabel = "Exercise";
 
 /// Named string for the training day page route.
-const String trainingDayRouteLabel = "Trainingstag";
+const String trainingDayRouteLabel = "Training Day";
 
 /// Named string for the training period page route.
-const String trainingPeriodRouteLabel = "Zeitraum";
+const String trainingPeriodRouteLabel = "Training Period";
 
 /// Named string for the training plan page route.
-const String trainingPlanRouteLabel = "Trainingsplan";
+const String trainingPlanRouteLabel = "Training Schedule";
 
 /// Routing table for all named routes.
 Map<String, Widget Function(BuildContext)> routesObject = {
