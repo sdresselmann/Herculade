@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:lifting_progress_tracker/constants/routes.dart';
+import 'package:lifting_progress_tracker/constants/localization.dart';
 
 import 'package:lifting_progress_tracker/main.dart' as app;
 import 'package:lifting_progress_tracker/pages/calendar.dart';

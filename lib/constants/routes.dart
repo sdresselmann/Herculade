@@ -1,33 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/pages/exercise.dart';
 import 'package:lifting_progress_tracker/pages/home.dart';
 import 'package:lifting_progress_tracker/pages/training_day.dart';
 import 'package:lifting_progress_tracker/pages/training_period.dart';
 import 'package:lifting_progress_tracker/pages/training_plan.dart';
-
-/// Named string for the home page route.
-const String homeRouteLabel = '/';
-
-/// Named string for the statistics page route.
-const String statisticsRouteLabel = 'Statistic';
-
-/// Named string for the calendar page route.
-const String calendarRouteLabel = "Calendar";
-
-/// Named string for the trainings plan list page route.
-const String trainingplanListRouteLabel = "Training Schedules";
-
-/// Named string for the exercise page route.
-const String exerciseRouteLabel = "Exercise";
-
-/// Named string for the training day page route.
-const String trainingDayRouteLabel = "Training Day";
-
-/// Named string for the training period page route.
-const String trainingPeriodRouteLabel = "Training Period";
-
-/// Named string for the training plan page route.
-const String trainingPlanRouteLabel = "Training Schedule";
 
 /// Routing table for all named routes.
 Map<String, Widget Function(BuildContext)> routesObject = {
