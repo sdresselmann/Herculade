@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/constants/localization.dart';
 
-const String _title = "Training Day";
+const String _title = trainingDayRouteLabel;
 
 class TrainingDayPage extends StatelessWidget {
   @override
