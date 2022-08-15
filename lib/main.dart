@@ -1,5 +1,6 @@
 import 'package:firedart/firedart.dart';
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/constants/routes.dart';
 
 /// Firebase API Key

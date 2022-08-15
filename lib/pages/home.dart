@@ -43,15 +43,15 @@ class _HomePageState extends State<HomePage> {
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.calendar_month),
-      label: 'Kalender',
+      label: 'Calendar',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.fitness_center),
-      label: 'Trainingspläne',
+      label: 'Training Schedules',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.analytics),
-      label: 'Statistik',
+      label: 'Statistic',
     ),
   ];
 
