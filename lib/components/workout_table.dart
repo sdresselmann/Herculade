@@ -34,21 +34,15 @@ Table workoutTable = Table(
   border: TableBorder.all(),
   children: <TableRow>[
     _tableHeader,
-    TableRow(
+    const TableRow(
       children: <TableCell>[
         TableCell(
-          child: EditableText(
-            controller: TextEditingController(),
-            cursorColor: Colors.white,
-            focusNode: FocusNode(),
-            style: const TextStyle(color: Colors.black),
-            backgroundCursorColor: Colors.grey,
-          ),
+          child: Text('Deadlift'),
         ),
-        const TableCell(
+        TableCell(
           child: Text('20 kg'),
         ),
-        const TableCell(
+        TableCell(
           child: Text('5x15'),
         ),
       ],
