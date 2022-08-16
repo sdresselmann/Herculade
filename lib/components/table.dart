@@ -13,23 +13,25 @@ class _WorkoutTableState extends State<WorkoutTable> {
   }
 }
 
+TableRow _tableHeader = const TableRow(
+  children: <TableCell>[
+    TableCell(
+      child: Text('Exercise'),
+    ),
+    TableCell(
+      child: Text('Weight'),
+    ),
+    TableCell(
+      child: Text('Repeats'),
+    ),
+  ],
+);
+
 /// Table containing plan entries for every workout.
 Table workoutTable = Table(
   border: TableBorder.all(),
   children: <TableRow>[
-    const TableRow(
-      children: <TableCell>[
-        TableCell(
-          child: Text('Exercise'),
-        ),
-        TableCell(
-          child: Text('Weight'),
-        ),
-        TableCell(
-          child: Text('Repeats'),
-        ),
-      ],
-    ),
+    _tableHeader,
     TableRow(
       children: <TableCell>[
         TableCell(
