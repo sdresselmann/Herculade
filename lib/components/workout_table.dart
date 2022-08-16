@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/constants/localization.dart';
 
 class WorkoutTable extends StatefulWidget {
   @override
@@ -14,16 +15,16 @@ class _WorkoutTableState extends State<WorkoutTable> {
   }
 }
 
-TableRow _tableHeader = const TableRow(
+TableRow _tableHeader = TableRow(
   children: <TableCell>[
     TableCell(
-      child: Text('Exercise'),
+      child: Text(tableHeaderLabels.elementAt(0)),
     ),
     TableCell(
-      child: Text('Weight'),
+      child: Text(tableHeaderLabels.elementAt(1)),
     ),
     TableCell(
-      child: Text('Repeats'),
+      child: Text(tableHeaderLabels.elementAt(2)),
     ),
   ],
 );

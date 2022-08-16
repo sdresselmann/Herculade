@@ -21,3 +21,6 @@ const String trainingPeriodRouteLabel = "Training Period";
 
 /// Named string for the training plan page route.
 const String trainingPlanRouteLabel = "Training Schedule";
+
+// Containing labels for the workout table header.
+final List<String> tableHeaderLabels = ["Exercise", "Weight", "Repeats"];
