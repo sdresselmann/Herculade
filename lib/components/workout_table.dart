@@ -8,8 +8,9 @@ class WorkoutTable extends StatefulWidget {
 class _WorkoutTableState extends State<WorkoutTable> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Container(
+      child: workoutTable,
+    );
   }
 }
 
