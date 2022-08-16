@@ -1,51 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
+import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
-class WorkoutTable extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _WorkoutTableState();
-}
+class WorkoutTable extends StatelessWidget {
+  final List<PlanEntry> tableEntries;
+  const WorkoutTable({required this.tableEntries});
 
-class _WorkoutTableState extends State<WorkoutTable> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: workoutTable,
+    return Table(
+      border: TableBorder.all(),
+      children: <TableRow>[
+        _tableHeader,
+        for (var item in tableEntries)
+          TableRow(
+            children: <TableCell>[
+              TableCell(
+                child: Text(item.exerciseName),
+              ),
+              TableCell(child: Text(item.weight)),
+              TableCell(child: Text(item.repeats)),
+            ],
+          )
+      ],
     );
   }
+
+  static final TableRow _tableHeader = TableRow(
+    children: <TableCell>[
+      TableCell(
+        child: Text(
+          tableHeaderLabels.elementAt(0),
+          style: _headerStyle,
+        ),
+      ),
+      TableCell(
+        child: Text(
+          tableHeaderLabels.elementAt(1),
+          style: _headerStyle,
+        ),
+      ),
+      TableCell(
+        child: Text(
+          tableHeaderLabels.elementAt(2),
+          style: _headerStyle,
+        ),
+      ),
+    ],
+  );
 }
 
-TableRow _tableHeader = TableRow(
-  children: <TableCell>[
-    TableCell(
-      child: Text(tableHeaderLabels.elementAt(0)),
-    ),
-    TableCell(
-      child: Text(tableHeaderLabels.elementAt(1)),
-    ),
-    TableCell(
-      child: Text(tableHeaderLabels.elementAt(2)),
-    ),
-  ],
-);
-
-/// Table containing plan entries for every workout.
-Table workoutTable = Table(
-  border: TableBorder.all(),
-  children: <TableRow>[
-    _tableHeader,
-    const TableRow(
-      children: <TableCell>[
-        TableCell(
-          child: Text('Deadlift'),
-        ),
-        TableCell(
-          child: Text('20 kg'),
-        ),
-        TableCell(
-          child: Text('5x15'),
-        ),
-      ],
-    )
-  ],
-);
+const _headerStyle = TextStyle(fontWeight: FontWeight.bold);
