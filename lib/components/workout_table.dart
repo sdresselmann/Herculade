@@ -20,6 +20,12 @@ class WorkoutTable extends StatelessWidget {
               ),
               TableCell(child: Text(item.weight)),
               TableCell(child: Text(item.repeats)),
+              TableCell(
+                child: ElevatedButton(
+                  child: const Text("-"),
+                  onPressed: () => {tableEntries.remove(item)},
+                ),
+              )
             ],
           )
       ],
@@ -46,6 +52,8 @@ class WorkoutTable extends StatelessWidget {
           style: _headerStyle,
         ),
       ),
+      //Column for removal buttons.
+      const TableCell(child: Text(" "))
     ],
   );
 }
