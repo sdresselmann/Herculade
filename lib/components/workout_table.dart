@@ -40,30 +40,48 @@ class WorkoutTable extends StatefulWidget {
 class _WorkoutTableState extends State<WorkoutTable> {
   @override
   Widget build(BuildContext context) {
-    return Table(
-      border: TableBorder.all(),
-      children: <TableRow>[
-        _tableHeader,
-        for (var item in widget.tableEntries)
-          TableRow(
-            children: <TableCell>[
-              TableCell(
-                child: Text(item.exerciseName),
-              ),
-              TableCell(child: Text(item.weight)),
-              TableCell(child: Text(item.repeats)),
-              TableCell(
-                child: ElevatedButton(
-                  child: const Text("-"),
-                  onPressed: () => {
-                    setState(() {
-                      widget.tableEntries.remove(item);
-                    })
-                  },
-                ),
+    return Column(
+      children: [
+        Table(
+          border: TableBorder.all(),
+          children: <TableRow>[
+            _tableHeader,
+            for (var item in widget.tableEntries)
+              TableRow(
+                children: <TableCell>[
+                  TableCell(
+                    child: Text(item.exerciseName),
+                  ),
+                  TableCell(child: Text(item.weight)),
+                  TableCell(child: Text(item.repeats)),
+                  TableCell(
+                    child: ElevatedButton(
+                      child: const Text("-"),
+                      onPressed: () => {
+                        setState(() {
+                          widget.tableEntries.remove(item);
+                        })
+                      },
+                    ),
+                  )
+                ],
               )
-            ],
-          )
+          ],
+        ),
+        ElevatedButton(
+          onPressed: () => {
+            setState(() {
+              widget.tableEntries.add(
+                PlanEntry(
+                  exerciseName: "exerciseName",
+                  weight: "weight",
+                  repeats: "repeats",
+                ),
+              );
+            })
+          },
+          child: const Text(" + "),
+        )
       ],
     );
   }
