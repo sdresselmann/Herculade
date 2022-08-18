@@ -1,12 +1,12 @@
-/// Class for entries used inside of the [WorkoutTable] component.
 class PlanEntry {
   String exerciseName;
   String weight;
   String repeats;
 
+  /// Table entries used inside of the [WorkoutTable] widget.
   PlanEntry({
-    required this.exerciseName,
-    required this.weight,
-    required this.repeats,
+    this.exerciseName = "exerciseName",
+    this.weight = "weight",
+    this.repeats = "repeats",
   });
 }
