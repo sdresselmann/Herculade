@@ -4,6 +4,7 @@ import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 const _headerStyle = TextStyle(fontWeight: FontWeight.bold);
 
+/// First row of the table containing all column titles.
 final TableRow _tableHeader = TableRow(
   children: <TableCell>[
     TableCell(
@@ -34,6 +35,7 @@ final TableRow _tableHeader = TableRow(
 /// The table data is filled up with [tableEntries] that can be manipulated later by
 /// the user.
 class WorkoutTable extends StatefulWidget {
+  /// Entries inside the table.
   final List<PlanEntry> tableEntries;
   const WorkoutTable({required this.tableEntries});
 
@@ -50,7 +52,7 @@ class _WorkoutTableState extends State<WorkoutTable> {
           border: TableBorder.all(),
           children: <TableRow>[
             _tableHeader,
-            for (final entry in widget.tableEntries)
+            for (final PlanEntry entry in widget.tableEntries)
               TableRow(
                 children: <TableCell>[
                   TableCell(
