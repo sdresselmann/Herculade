@@ -29,6 +29,10 @@ final TableRow _tableHeader = TableRow(
   ],
 );
 
+/// Table widget used to displaying the training plan/workout plan data.
+///
+/// The table data is filled up with [tableEntries] that can be manipulated later by
+/// the user.
 class WorkoutTable extends StatefulWidget {
   final List<PlanEntry> tableEntries;
   const WorkoutTable({required this.tableEntries});
@@ -46,43 +50,51 @@ class _WorkoutTableState extends State<WorkoutTable> {
           border: TableBorder.all(),
           children: <TableRow>[
             _tableHeader,
-            for (var item in widget.tableEntries)
+            for (final entry in widget.tableEntries)
               TableRow(
                 children: <TableCell>[
                   TableCell(
-                    child: Text(item.exerciseName),
+                    child: Text(entry.exerciseName),
                   ),
-                  TableCell(child: Text(item.weight)),
-                  TableCell(child: Text(item.repeats)),
+                  TableCell(child: Text(entry.weight)),
+                  TableCell(child: Text(entry.repeats)),
                   TableCell(
-                    child: ElevatedButton(
-                      child: const Text("-"),
-                      onPressed: () => {
-                        setState(() {
-                          widget.tableEntries.remove(item);
-                        })
-                      },
-                    ),
+                    child: _buildEntryRemovalButton(entry),
                   )
                 ],
               )
           ],
         ),
-        ElevatedButton(
-          onPressed: () => {
-            setState(() {
-              widget.tableEntries.add(
-                PlanEntry(
-                  exerciseName: "exerciseName",
-                  weight: "weight",
-                  repeats: "repeats",
-                ),
-              );
-            })
-          },
-          child: const Text(" + "),
-        )
+        _addEntryButton
       ],
     );
   }
+
+  /// Creates a Button that when clicked removes its corresponding [tableEntry].
+  ElevatedButton _buildEntryRemovalButton(PlanEntry tableEntry) {
+    return ElevatedButton(
+      child: const Text("-"),
+      onPressed: () => {
+        setState(() {
+          widget.tableEntries.remove(tableEntry);
+        })
+      },
+    );
+  }
+
+  /// Button for adding entries to the table.
+  late final ElevatedButton _addEntryButton = ElevatedButton(
+    onPressed: () => {
+      setState(() {
+        widget.tableEntries.add(
+          PlanEntry(
+            exerciseName: "exerciseName",
+            weight: "weight",
+            repeats: "repeats",
+          ),
+        );
+      })
+    },
+    child: const Text(" + "),
+  );
 }
