@@ -89,11 +89,7 @@ class _WorkoutTableState extends State<WorkoutTable> {
     onPressed: () => {
       setState(() {
         widget.tableEntries.add(
-          PlanEntry(
-            exerciseName: "exerciseName",
-            weight: "weight",
-            repeats: "repeats",
-          ),
+          PlanEntry(),
         );
       })
     },
