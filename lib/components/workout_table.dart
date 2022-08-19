@@ -61,16 +61,11 @@ class _WorkoutTableState extends State<WorkoutTable> {
                   TableCell(child: Text(entry.weight)),
                   TableCell(child: Text(entry.repeats)),
                   TableCell(
-                    child: ElevatedButton(
-                      child: const Text(" - "),
-                      onPressed: () => {
-                        setState(
-                          () {
-                            widget.tableEntries.remove(entry);
-                          },
-                        )
-                      },
-                    ),
+                    child: EntryRemovalButton(() {
+                      setState(() {
+                        widget.tableEntries.remove(entry);
+                      });
+                    }),
                   )
                 ],
               )
@@ -92,4 +87,15 @@ class _WorkoutTableState extends State<WorkoutTable> {
     },
     child: const Text(" + "),
   );
+}
+
+class EntryRemovalButton extends StatelessWidget {
+  final void Function()? onPressed;
+
+  const EntryRemovalButton(this.onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(onPressed: onPressed, child: const Text(" - "));
+  }
 }
