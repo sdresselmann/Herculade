@@ -61,7 +61,7 @@ class _WorkoutTableState extends State<WorkoutTable> {
                   TableCell(child: Text(entry.weight)),
                   TableCell(child: Text(entry.repeats)),
                   TableCell(
-                    child: EntryRemovalButton(() {
+                    child: _EntryRemovalButton(() {
                       setState(() {
                         widget.tableEntries.remove(entry);
                       });
@@ -89,10 +89,11 @@ class _WorkoutTableState extends State<WorkoutTable> {
   );
 }
 
-class EntryRemovalButton extends StatelessWidget {
+/// Creates a Button that when clicked removes its corresponding [tableEntry].
+class _EntryRemovalButton extends StatelessWidget {
   final void Function()? onPressed;
 
-  const EntryRemovalButton(this.onPressed);
+  const _EntryRemovalButton(this.onPressed);
 
   @override
   Widget build(BuildContext context) {
