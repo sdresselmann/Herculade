@@ -61,7 +61,16 @@ class _WorkoutTableState extends State<WorkoutTable> {
                   TableCell(child: Text(entry.weight)),
                   TableCell(child: Text(entry.repeats)),
                   TableCell(
-                    child: _buildEntryRemovalButton(entry),
+                    child: ElevatedButton(
+                      child: const Text(" - "),
+                      onPressed: () => {
+                        setState(
+                          () {
+                            widget.tableEntries.remove(entry);
+                          },
+                        )
+                      },
+                    ),
                   )
                 ],
               )
@@ -69,18 +78,6 @@ class _WorkoutTableState extends State<WorkoutTable> {
         ),
         _addEntryButton
       ],
-    );
-  }
-
-  /// Creates a Button that when clicked removes its corresponding [tableEntry].
-  ElevatedButton _buildEntryRemovalButton(PlanEntry tableEntry) {
-    return ElevatedButton(
-      child: const Text("-"),
-      onPressed: () => {
-        setState(() {
-          widget.tableEntries.remove(tableEntry);
-        })
-      },
     );
   }
 
