@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/components/table_text_field.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
@@ -56,7 +57,7 @@ class _WorkoutTableState extends State<WorkoutTable> {
               TableRow(
                 children: <TableCell>[
                   TableCell(
-                    child: Text(entry.exerciseName),
+                    child: TableTextField(entry.exerciseName),
                   ),
                   TableCell(child: Text(entry.weight)),
                   TableCell(child: Text(entry.repeats)),
