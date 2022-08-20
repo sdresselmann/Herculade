@@ -58,16 +58,34 @@ class _WorkoutTableState extends State<WorkoutTable> {
                 children: <TableCell>[
                   TableCell(
                     child: TableTextField(
-                      entry.exerciseName,
-                      (String newValue) => {
+                      textFieldValue: entry.exerciseName,
+                      onEditingComplete: (String newValue) => {
                         setState(() {
                           entry.exerciseName = newValue;
                         })
                       },
                     ),
                   ),
-                  TableCell(child: Text(entry.weight)),
-                  TableCell(child: Text(entry.repeats)),
+                  TableCell(
+                    child: TableTextField(
+                      textFieldValue: entry.weight,
+                      onEditingComplete: (String newValue) => {
+                        setState(() {
+                          entry.weight = newValue;
+                        })
+                      },
+                    ),
+                  ),
+                  TableCell(
+                    child: TableTextField(
+                      textFieldValue: entry.repeats,
+                      onEditingComplete: (String newValue) => {
+                        setState(() {
+                          entry.repeats = newValue;
+                        })
+                      },
+                    ),
+                  ),
                   TableCell(
                     child: _EntryRemovalButton(() {
                       setState(() {
