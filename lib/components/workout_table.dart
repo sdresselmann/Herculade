@@ -57,7 +57,14 @@ class _WorkoutTableState extends State<WorkoutTable> {
               TableRow(
                 children: <TableCell>[
                   TableCell(
-                    child: TableTextField(entry.exerciseName),
+                    child: TableTextField(
+                      entry.exerciseName,
+                      (String newValue) => {
+                        setState(() {
+                          entry.exerciseName = newValue;
+                        })
+                      },
+                    ),
                   ),
                   TableCell(child: Text(entry.weight)),
                   TableCell(child: Text(entry.repeats)),

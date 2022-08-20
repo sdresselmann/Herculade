@@ -6,14 +6,15 @@ import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 const String _title = trainingplanListRouteLabel;
 
+final List<PlanEntry> entries = [
+  PlanEntry(exerciseName: "Deadlift", weight: "20 kg", repeats: "6x5"),
+  PlanEntry(exerciseName: "Benchpress", weight: "20 kg", repeats: "6x5"),
+  PlanEntry(exerciseName: "Squat", weight: "20 kg", repeats: "6x5"),
+];
+
 class TrainingPlanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final List<PlanEntry> entries = [
-      PlanEntry(exerciseName: "Deadlift", weight: "20 kg", repeats: "6x5"),
-      PlanEntry(exerciseName: "Benchpress", weight: "20 kg", repeats: "6x5"),
-      PlanEntry(exerciseName: "Squat", weight: "20 kg", repeats: "6x5"),
-    ];
     return Scaffold(
       appBar: AppBar(title: const Text(_title)),
       body: Column(
