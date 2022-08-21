@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/components/table_text_field.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
@@ -37,7 +38,8 @@ final TableRow _tableHeader = TableRow(
 class WorkoutTable extends StatefulWidget {
   /// Entries inside the table.
   final List<PlanEntry> tableEntries;
-  const WorkoutTable({required this.tableEntries});
+  const WorkoutTable({required this.tableEntries, required Key key})
+      : super(key: key);
 
   @override
   State<WorkoutTable> createState() => _WorkoutTableState();
@@ -56,12 +58,44 @@ class _WorkoutTableState extends State<WorkoutTable> {
               TableRow(
                 children: <TableCell>[
                   TableCell(
-                    child: Text(entry.exerciseName),
+                    child: TableTextField(
+                      key: UniqueKey(),
+                      textFieldValue: entry.exerciseName,
+                      onEditingComplete: (String newValue) => {
+                        setState(() {
+                          entry.exerciseName = newValue;
+                        })
+                      },
+                    ),
                   ),
-                  TableCell(child: Text(entry.weight)),
-                  TableCell(child: Text(entry.repeats)),
                   TableCell(
-                    child: _buildEntryRemovalButton(entry),
+                    child: TableTextField(
+                      key: UniqueKey(),
+                      textFieldValue: entry.weight,
+                      onEditingComplete: (String newValue) => {
+                        setState(() {
+                          entry.weight = newValue;
+                        })
+                      },
+                    ),
+                  ),
+                  TableCell(
+                    child: TableTextField(
+                      key: UniqueKey(),
+                      textFieldValue: entry.repeats,
+                      onEditingComplete: (String newValue) => {
+                        setState(() {
+                          entry.repeats = newValue;
+                        })
+                      },
+                    ),
+                  ),
+                  TableCell(
+                    child: _EntryRemovalButton(() {
+                      setState(() {
+                        widget.tableEntries.remove(entry);
+                      });
+                    }),
                   )
                 ],
               )
@@ -69,18 +103,6 @@ class _WorkoutTableState extends State<WorkoutTable> {
         ),
         _addEntryButton
       ],
-    );
-  }
-
-  /// Creates a Button that when clicked removes its corresponding [tableEntry].
-  ElevatedButton _buildEntryRemovalButton(PlanEntry tableEntry) {
-    return ElevatedButton(
-      child: const Text("-"),
-      onPressed: () => {
-        setState(() {
-          widget.tableEntries.remove(tableEntry);
-        })
-      },
     );
   }
 
@@ -95,4 +117,16 @@ class _WorkoutTableState extends State<WorkoutTable> {
     },
     child: const Text(" + "),
   );
+}
+
+/// Creates a Button that when clicked removes its corresponding [tableEntry].
+class _EntryRemovalButton extends StatelessWidget {
+  final void Function()? onPressed;
+
+  const _EntryRemovalButton(this.onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(onPressed: onPressed, child: const Text(" - "));
+  }
 }
