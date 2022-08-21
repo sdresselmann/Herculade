@@ -8,8 +8,11 @@ class TableTextField extends StatefulWidget {
   /// has been confirmed by pressing enter.
   final Function(String) onEditingComplete;
 
-  const TableTextField(
-      {required this.textFieldValue, required this.onEditingComplete});
+  const TableTextField({
+    required this.textFieldValue,
+    required this.onEditingComplete,
+    required Key key,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _TableTextFieldState();

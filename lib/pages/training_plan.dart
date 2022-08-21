@@ -22,6 +22,7 @@ class TrainingPlanPage extends StatelessWidget {
           const NavigationButton(exerciseRouteLabel),
           WorkoutTable(
             tableEntries: entries,
+            key: Key(entries.length.toString()),
           ),
         ],
       ),

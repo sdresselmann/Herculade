@@ -38,7 +38,8 @@ final TableRow _tableHeader = TableRow(
 class WorkoutTable extends StatefulWidget {
   /// Entries inside the table.
   final List<PlanEntry> tableEntries;
-  const WorkoutTable({required this.tableEntries});
+  const WorkoutTable({required this.tableEntries, required Key key})
+      : super(key: key);
 
   @override
   State<WorkoutTable> createState() => _WorkoutTableState();
@@ -58,6 +59,7 @@ class _WorkoutTableState extends State<WorkoutTable> {
                 children: <TableCell>[
                   TableCell(
                     child: TableTextField(
+                      key: UniqueKey(),
                       textFieldValue: entry.exerciseName,
                       onEditingComplete: (String newValue) => {
                         setState(() {
@@ -68,6 +70,7 @@ class _WorkoutTableState extends State<WorkoutTable> {
                   ),
                   TableCell(
                     child: TableTextField(
+                      key: UniqueKey(),
                       textFieldValue: entry.weight,
                       onEditingComplete: (String newValue) => {
                         setState(() {
@@ -78,6 +81,7 @@ class _WorkoutTableState extends State<WorkoutTable> {
                   ),
                   TableCell(
                     child: TableTextField(
+                      key: UniqueKey(),
                       textFieldValue: entry.repeats,
                       onEditingComplete: (String newValue) => {
                         setState(() {
