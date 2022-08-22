@@ -6,13 +6,24 @@ import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 const String _title = trainingplanListRouteLabel;
 
-final List<PlanEntry> entries = [
-  PlanEntry(exerciseName: "Deadlift", weight: "20 kg", repeats: "6x5"),
-  PlanEntry(exerciseName: "Benchpress", weight: "20 kg", repeats: "6x5"),
-  PlanEntry(exerciseName: "Squat", weight: "20 kg", repeats: "6x5"),
-];
+class TrainingPlanPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _TrainingPlanPageState();
+}
 
-class TrainingPlanPage extends StatelessWidget {
+class _TrainingPlanPageState extends State<TrainingPlanPage> {
+  late final List<PlanEntry> entries;
+
+  @override
+  void initState() {
+    super.initState();
+    entries = [
+      PlanEntry(exerciseName: "Deadlift", weight: "20 kg", repeats: "6x5"),
+      PlanEntry(exerciseName: "Benchpress", weight: "20 kg", repeats: "6x5"),
+      PlanEntry(exerciseName: "Squat", weight: "20 kg", repeats: "6x5"),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +33,7 @@ class TrainingPlanPage extends StatelessWidget {
           const NavigationButton(exerciseRouteLabel),
           WorkoutTable(
             tableEntries: entries,
+            // Forces flutter to rebuild element when updating table entries.
             key: Key(entries.length.toString()),
           ),
         ],
