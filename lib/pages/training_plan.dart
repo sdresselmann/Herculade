@@ -1,3 +1,4 @@
+import 'package:firedart/firedart.dart';
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/components/navigation_button.dart';
 import 'package:lifting_progress_tracker/components/workout_table.dart';
@@ -17,11 +18,43 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
   @override
   void initState() {
     super.initState();
+
+    //Mock data
     entries = [
       PlanEntry(exerciseName: "Deadlift", weight: "20 kg", repeats: "6x5"),
       PlanEntry(exerciseName: "Benchpress", weight: "20 kg", repeats: "6x5"),
       PlanEntry(exerciseName: "Squat", weight: "20 kg", repeats: "6x5"),
     ];
+
+    // Only for testing purposes!
+    //uploadMockData();
+  }
+
+  /// Test function to upload mock data to firebase. Only needed to reset data.
+  Future<void> uploadMockData() async {
+    final Map<String, List<Map<String, String>>> entriesMap = {
+      'trainingplan1': [
+        {
+          'exerciseName': "Deadlift",
+          'weight': '20 kg',
+          'repeats': '6x5',
+        },
+        {
+          'exerciseName': "Benchpress",
+          'weight': '20 kg',
+          'repeats': '6x5',
+        },
+        {
+          'exerciseName': "Squats",
+          'weight': '20 kg',
+          'repeats': '6x5',
+        },
+      ],
+    };
+    await Firestore.instance
+        .collection("plan-entries")
+        .document("v6g6JVrNR3w5e8TklK4X")
+        .update(entriesMap);
   }
 
   @override
