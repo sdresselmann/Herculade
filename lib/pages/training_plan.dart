@@ -23,7 +23,12 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
     planEntryCollection = Firestore.instance.collection('plan-entries');
     // Only for testing purposes!
     //uploadMockData();
-    fetchTrainingPlanData().then((value) => setState(() {}));
+
+    fetchTrainingPlanData().then((value) {
+      if (mounted) {
+        setState(() {});
+      }
+    });
   }
 
   /// Fetch [entries] for the current training plan from firebase.
