@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:firedart/firedart.dart';
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/components/navigation_button.dart';
@@ -24,8 +22,8 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
     entries = [];
     planEntryCollection = Firestore.instance.collection('plan-entries');
     // Only for testing purposes!
-    uploadMockData();
-    fetchTrainingPlanData();
+    //uploadMockData();
+    fetchTrainingPlanData().then((value) => setState(() {}));
   }
 
   /// Fetch [entries] for the current training plan from firebase.
@@ -41,8 +39,6 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
     currentPlanEntries.forEach((key, value) {
       entries.add(PlanEntry.fromMap(value as Map<String, dynamic>));
     });
-
-    setState(() {});
   }
 
   /// Test function to upload mock data to firebase. Only needed to reset data.
