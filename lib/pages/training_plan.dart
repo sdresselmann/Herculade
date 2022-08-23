@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firedart/firedart.dart';
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/components/navigation_button.dart';
@@ -14,47 +16,61 @@ class TrainingPlanPage extends StatefulWidget {
 
 class _TrainingPlanPageState extends State<TrainingPlanPage> {
   late final List<PlanEntry> entries;
+  late CollectionReference planEntryCollection;
 
   @override
   void initState() {
     super.initState();
-
-    //Mock data
-    entries = [
-      PlanEntry(exerciseName: "Deadlift", weight: "20 kg", repeats: "6x5"),
-      PlanEntry(exerciseName: "Benchpress", weight: "20 kg", repeats: "6x5"),
-      PlanEntry(exerciseName: "Squat", weight: "20 kg", repeats: "6x5"),
-    ];
-
+    entries = [];
+    planEntryCollection = Firestore.instance.collection('plan-entries');
     // Only for testing purposes!
-    //uploadMockData();
+    uploadMockData();
+    fetchTrainingPlanData();
+  }
+
+  /// Fetch [entries] for the current training plan from firebase.
+  Future<void> fetchTrainingPlanData() async {
+    final Map<String, dynamic> planEntries = await planEntryCollection
+        .document("v6g6JVrNR3w5e8TklK4X")
+        .get()
+        .then((value) => value.map);
+
+    final Map<String, dynamic> currentPlanEntries =
+        planEntries['trainingplan1'] as Map<String, dynamic>;
+
+    currentPlanEntries.forEach((key, value) {
+      entries.add(PlanEntry.fromMap(value as Map<String, dynamic>));
+    });
+
+    setState(() {});
   }
 
   /// Test function to upload mock data to firebase. Only needed to reset data.
   Future<void> uploadMockData() async {
-    final Map<String, List<Map<String, String>>> entriesMap = {
-      'trainingplan1': [
-        {
-          'exerciseName': "Deadlift",
-          'weight': '20 kg',
-          'repeats': '6x5',
+    final Map<String, dynamic> mockupData = {
+      'trainingplan1': {
+        '0': {
+          'exerciseName': 'Deadlift',
+          'weight': '20kg',
+          'repeats': '5x6',
         },
-        {
-          'exerciseName': "Benchpress",
-          'weight': '20 kg',
-          'repeats': '6x5',
+        '1': {
+          'exerciseName': 'Benchpress',
+          'weight': '12.5kg',
+          'repeats': '5x10',
         },
-        {
-          'exerciseName': "Squats",
-          'weight': '20 kg',
-          'repeats': '6x5',
-        },
-      ],
+        '2': {
+          'exerciseName': 'Squats',
+          'weight': '10kg',
+          'repeats': '3x15',
+        }
+      },
     };
+
     await Firestore.instance
         .collection("plan-entries")
         .document("v6g6JVrNR3w5e8TklK4X")
-        .update(entriesMap);
+        .update(mockupData);
   }
 
   @override
