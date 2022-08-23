@@ -9,4 +9,9 @@ class PlanEntry {
     this.weight = "weight",
     this.repeats = "repeats",
   });
+
+  PlanEntry.fromMap(Map<String, dynamic> mapData)
+      : exerciseName = mapData['exerciseName'].toString(),
+        weight = mapData['weight'].toString(),
+        repeats = mapData['repeats'].toString();
 }
