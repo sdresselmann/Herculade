@@ -1,7 +1,7 @@
-import 'package:firedart/firedart.dart';
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/constants/routes.dart';
+import 'package:lifting_progress_tracker/data/database.dart';
 
 /// Firebase API Key
 const apiKey = 'AIzaSyAAvQNgL2DNb7dT-7UjsJoeV8u8LJWcVhc';
@@ -10,12 +10,7 @@ const apiKey = 'AIzaSyAAvQNgL2DNb7dT-7UjsJoeV8u8LJWcVhc';
 const projectId = 'lifting-progress-tracker';
 
 void main() {
-  // During integration testing firestore gets initialized multiple times throwing an exception
-  try {
-    Firestore.initialize(projectId);
-  } catch (firestoreException) {
-    debugPrint(firestoreException.toString());
-  }
+  Database.initialize();
   runApp(const MyApp());
 }
 
