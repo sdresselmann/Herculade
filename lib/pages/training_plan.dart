@@ -4,6 +4,8 @@ import 'package:lifting_progress_tracker/components/navigation_button.dart';
 import 'package:lifting_progress_tracker/components/workout_table.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
+import 'package:lifting_progress_tracker/providers/table_provider.dart';
+import 'package:provider/provider.dart';
 
 const String _title = trainingplanListRouteLabel;
 
@@ -81,10 +83,14 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
       body: Column(
         children: [
           const NavigationButton(exerciseRouteLabel),
-          WorkoutTable(
-            tableEntries: entries,
-            // Forces flutter to rebuild element when updating table entries.
-            key: Key(entries.length.toString()),
+          MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (_) => TableProvider(entries))
+            ],
+            child: WorkoutTable(
+              // Forces flutter to rebuild element when updating table entries.
+              key: Key(entries.length.toString()),
+            ),
           ),
         ],
       ),

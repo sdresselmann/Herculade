@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/components/table_text_field.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
+import 'package:lifting_progress_tracker/providers/table_provider.dart';
+import 'package:provider/provider.dart';
 
 const _headerStyle = TextStyle(fontWeight: FontWeight.bold);
 
@@ -36,10 +38,7 @@ final TableRow _tableHeader = TableRow(
 /// The table data is filled up with [tableEntries] that can be manipulated later by
 /// the user.
 class WorkoutTable extends StatefulWidget {
-  /// Entries inside the table.
-  final List<PlanEntry> tableEntries;
-  const WorkoutTable({required this.tableEntries, required Key key})
-      : super(key: key);
+  const WorkoutTable({required Key key}) : super(key: key);
 
   @override
   State<WorkoutTable> createState() => _WorkoutTableState();
@@ -54,7 +53,8 @@ class _WorkoutTableState extends State<WorkoutTable> {
           border: TableBorder.all(),
           children: <TableRow>[
             _tableHeader,
-            for (final PlanEntry entry in widget.tableEntries)
+            for (final PlanEntry entry
+                in context.read<TableProvider>().tableEntries)
               TableRow(
                 children: <TableCell>[
                   TableCell(
@@ -93,7 +93,10 @@ class _WorkoutTableState extends State<WorkoutTable> {
                   TableCell(
                     child: _EntryRemovalButton(() {
                       setState(() {
-                        widget.tableEntries.remove(entry);
+                        context
+                            .read<TableProvider>()
+                            .tableEntries
+                            .remove(entry);
                       });
                     }),
                   )
@@ -110,10 +113,8 @@ class _WorkoutTableState extends State<WorkoutTable> {
   late final ElevatedButton _addEntryButton = ElevatedButton(
     onPressed: () => {
       setState(() {
-        widget.tableEntries.add(
-          PlanEntry(),
-        );
-      })
+        context.read<TableProvider>().addEntry(PlanEntry());
+      }),
     },
     child: const Text(" + "),
   );
