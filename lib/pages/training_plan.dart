@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/components/navigation_button.dart';
 import 'package:lifting_progress_tracker/components/workout_table.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
-import 'package:lifting_progress_tracker/models/plan_entry.dart';
 import 'package:lifting_progress_tracker/providers/table_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,37 +14,12 @@ class TrainingPlanPage extends StatefulWidget {
 }
 
 class _TrainingPlanPageState extends State<TrainingPlanPage> {
-  late final List<PlanEntry> entries;
-  late CollectionReference planEntryCollection;
-
   @override
   void initState() {
     super.initState();
-    entries = [];
-    planEntryCollection = Firestore.instance.collection('plan-entries');
+
     // Only for testing purposes!
     //uploadMockData();
-
-    fetchTrainingPlanData().then((value) {
-      if (mounted) {
-        setState(() {});
-      }
-    });
-  }
-
-  /// Fetch [entries] for the current training plan from firebase.
-  Future<void> fetchTrainingPlanData() async {
-    final Map<String, dynamic> planEntries = await planEntryCollection
-        .document("v6g6JVrNR3w5e8TklK4X")
-        .get()
-        .then((value) => value.map);
-
-    final Map<String, dynamic> currentPlanEntries =
-        planEntries['trainingplan1'] as Map<String, dynamic>;
-
-    currentPlanEntries.forEach((key, value) {
-      entries.add(PlanEntry.fromMap(value as Map<String, dynamic>));
-    });
   }
 
   /// Test function to upload mock data to firebase. Only needed to reset data.
@@ -84,13 +58,8 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
         children: [
           const NavigationButton(exerciseRouteLabel),
           MultiProvider(
-            providers: [
-              ChangeNotifierProvider(create: (_) => TableProvider(entries))
-            ],
-            child: WorkoutTable(
-              // Forces flutter to rebuild element when updating table entries.
-              key: Key(entries.length.toString()),
-            ),
+            providers: [ChangeNotifierProvider(create: (_) => TableProvider())],
+            child: WorkoutTable(),
           ),
         ],
       ),
