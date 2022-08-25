@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/components/table_text_field.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
+import 'package:lifting_progress_tracker/providers/table_provider.dart';
+import 'package:provider/provider.dart';
 
 const _headerStyle = TextStyle(fontWeight: FontWeight.bold);
 
@@ -35,17 +37,7 @@ final TableRow _tableHeader = TableRow(
 ///
 /// The table data is filled up with [tableEntries] that can be manipulated later by
 /// the user.
-class WorkoutTable extends StatefulWidget {
-  /// Entries inside the table.
-  final List<PlanEntry> tableEntries;
-  const WorkoutTable({required this.tableEntries, required Key key})
-      : super(key: key);
-
-  @override
-  State<WorkoutTable> createState() => _WorkoutTableState();
-}
-
-class _WorkoutTableState extends State<WorkoutTable> {
+class WorkoutTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -54,69 +46,49 @@ class _WorkoutTableState extends State<WorkoutTable> {
           border: TableBorder.all(),
           children: <TableRow>[
             _tableHeader,
-            for (final PlanEntry entry in widget.tableEntries)
+            for (final PlanEntry entry
+                in context.watch<TableProvider>().tableEntries)
               TableRow(
                 children: <TableCell>[
                   TableCell(
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.exerciseName,
-                      onEditingComplete: (String newValue) => {
-                        setState(() {
-                          entry.exerciseName = newValue;
-                        })
-                      },
+                      onEditingComplete: (String newValue) =>
+                          {entry.exerciseName = newValue},
                     ),
                   ),
                   TableCell(
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.weight,
-                      onEditingComplete: (String newValue) => {
-                        setState(() {
-                          entry.weight = newValue;
-                        })
-                      },
+                      onEditingComplete: (String newValue) =>
+                          {entry.weight = newValue},
                     ),
                   ),
                   TableCell(
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.repeats,
-                      onEditingComplete: (String newValue) => {
-                        setState(() {
-                          entry.repeats = newValue;
-                        })
-                      },
+                      onEditingComplete: (String newValue) =>
+                          {entry.repeats = newValue},
                     ),
                   ),
                   TableCell(
                     child: _EntryRemovalButton(() {
-                      setState(() {
-                        widget.tableEntries.remove(entry);
-                      });
+                      context.read<TableProvider>().removeEntry(entry);
                     }),
                   )
                 ],
               )
           ],
         ),
-        _addEntryButton
+        _AddEntryButton(
+          () => {context.read<TableProvider>().addEntry(PlanEntry())},
+        ),
       ],
     );
   }
-
-  /// Button for adding entries to the table.
-  late final ElevatedButton _addEntryButton = ElevatedButton(
-    onPressed: () => {
-      setState(() {
-        widget.tableEntries.add(
-          PlanEntry(),
-        );
-      })
-    },
-    child: const Text(" + "),
-  );
 }
 
 /// Creates a Button that when clicked removes its corresponding [tableEntry].
@@ -128,5 +100,17 @@ class _EntryRemovalButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(onPressed: onPressed, child: const Text(" - "));
+  }
+}
+
+/// Creates a Button that when clicked adds a [tableEntry] to the table.
+class _AddEntryButton extends StatelessWidget {
+  final void Function()? onPressed;
+
+  const _AddEntryButton(this.onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(onPressed: onPressed, child: const Text(" + "));
   }
 }
