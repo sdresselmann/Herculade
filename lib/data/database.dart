@@ -42,16 +42,12 @@ class Database {
           'repeats': '3x15',
         }
       },
+      'trainingplan2': {},
     };
-
-    await Firestore.instance
-        .collection("plan-entries")
-        .document("v6g6JVrNR3w5e8TklK4X")
-        .update(mockupData);
+    updateTrainingPlanData(mockupData);
   }
 
-  /// Fetch [entries] for the current training plan from firebase.
-  Future<List<PlanEntry>> fetchTrainingPlanData() async {
+  Future<Map<String, dynamic>> fetchAllTrainingPlans() async {
     final CollectionReference planEntryCollection =
         Firestore.instance.collection('plan-entries');
 
@@ -60,15 +56,25 @@ class Database {
         .get()
         .then((value) => value.map);
 
-    final Map<String, dynamic> currentPlanEntries =
-        planEntries['trainingplan1'] as Map<String, dynamic>;
+    return planEntries;
+  }
 
-    final List<PlanEntry> entries = [];
-    currentPlanEntries.forEach((key, value) {
-      entries.add(PlanEntry.fromMap(value as Map<String, dynamic>));
-    });
+  /// Fetch [entries] for the current training plan identified by its [trainingPlanId] from firebase.
+  Future<List<PlanEntry>> fetchTrainingPlanData([
+    String trainingPlanId = 'trainingplan1',
+  ]) async {
+    return fetchAllTrainingPlans().then(
+      (fetchedEntries) {
+        final Map<String, dynamic> currentPlanEntries =
+            fetchedEntries[trainingPlanId] as Map<String, dynamic>;
 
-    return entries;
+        final List<PlanEntry> entries = [];
+        currentPlanEntries.forEach((key, value) {
+          entries.add(PlanEntry.fromMap(value as Map<String, dynamic>));
+        });
+        return entries;
+      },
+    );
   }
 
   /// Update the training plan entries with newly added [planEntries].

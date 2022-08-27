@@ -26,10 +26,9 @@ class PlanEntry {
   static Map<String, dynamic> getEntriesAsMap(List<PlanEntry> entries) {
     final Map<String, dynamic> entryMap = {};
 
-    for (int i = 0; i <= entries.length; i++) {
+    for (int i = 0; i < entries.length; i++) {
       entryMap[i.toString()] = entries[i].toMap();
     }
-    print(entryMap);
     return entryMap;
   }
 }

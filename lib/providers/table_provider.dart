@@ -22,7 +22,7 @@ class TableProvider extends ChangeNotifier {
 
   void addEntry(PlanEntry tableEntry) {
     _tableEntries.add(tableEntry);
-
+    updateTableEntriesData(tableEntries);
     notifyListeners();
   }
 
@@ -34,5 +34,7 @@ class TableProvider extends ChangeNotifier {
 
 /// Store the updated table entries inside the database when the data state changes.
 void updateTableEntriesData(List<PlanEntry> tableEntries) {
-  PlanEntry.getEntriesAsMap(tableEntries);
+  final Map<String, dynamic> tableEntriesMap =
+      PlanEntry.getEntriesAsMap(tableEntries);
+  Database().updateTrainingPlanData(tableEntriesMap);
 }
