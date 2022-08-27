@@ -1,15 +1,15 @@
 class PlanEntry {
-  /// Name of the Exercise entry.
+  /// The name of the Exercise entry.
   String exerciseName;
 
-  /// Weight value plus the unit for the exercise entry:
+  /// The weight value plus the unit for the exercise entry:
   /// ```dart
   /// PlanEntry planEntry = PlanEntry();
   /// planEntry.weight = '20 kg';
   /// ```
   String weight;
 
-  /// Number of repeats for the exercise entry exercise.
+  /// The number of repeats for the exercise entry exercise.
   ///
   /// The exact form of the repeats doesn't matter since its not really
   /// manipulated, but its recommended to use this format:
@@ -27,7 +27,7 @@ class PlanEntry {
     this.repeats = "repeats",
   ]);
 
-  /// Transforms a JSON valid data object [mapData] into [PlanEntry].
+  /// Transforms a JSON valid data object  into a [PlanEntry].
   ///
   /// This comes in especially handy when reading data from firebase or other JSON tree data structures.
   ///
@@ -46,7 +46,7 @@ class PlanEntry {
   ///
   /// This comes in especially handy when storing data to firebase or other JSON tree data structures.
   /// This Function is best to be called by [getEntriesAsMap] to reduce repetitive code.
-  Map<String, dynamic> _toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'exerciseName': exerciseName,
       'weight': weight,
@@ -56,12 +56,12 @@ class PlanEntry {
 
   /// Turns the given [entries] into a Map that contains JSON valid data objects for serialization or data storage.
   ///
-  /// This function makes use of [_toMap] to transform each object seperately.
+  /// This function makes use of [toMap] to transform each object seperately.
   static Map<String, dynamic> getEntriesAsMap(final List<PlanEntry> entries) {
     final Map<String, dynamic> entryMap = {};
 
     for (int i = 0; i < entries.length; i++) {
-      entryMap[i.toString()] = entries[i]._toMap();
+      entryMap[i.toString()] = entries[i].toMap();
     }
     return entryMap;
   }

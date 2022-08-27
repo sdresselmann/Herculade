@@ -63,7 +63,7 @@ class Database {
     return planEntries;
   }
 
-  /// Fetch [entries] for the current training plan identified by its [trainingPlanId] from firebase.
+  /// Fetch a training plan with its entries identified by its [trainingPlanId] from firebase.
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) async {
     return fetchAllTrainingPlans().then(
       (fetchedEntries) {

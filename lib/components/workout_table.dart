@@ -35,7 +35,7 @@ final TableRow _tableHeader = TableRow(
 
 /// Table widget used to displaying the training plan/workout plan data.
 ///
-/// The table data is filled up with [tableEntries] that can be manipulated later by
+/// The table data is filled up with [TableProvider._tableEntries] that can be manipulated later by
 /// the user.
 class WorkoutTable extends StatelessWidget {
   @override
