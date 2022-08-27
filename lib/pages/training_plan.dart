@@ -17,9 +17,6 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
   @override
   void initState() {
     super.initState();
-
-    // Only for testing purposes!
-    Database().uploadMockData();
   }
 
   @override

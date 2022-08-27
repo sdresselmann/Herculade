@@ -29,13 +29,14 @@ class TableProvider extends ChangeNotifier {
 
   void removeEntry(PlanEntry tableEntry) {
     _tableEntries.remove(tableEntry);
+    updateTableEntriesData(tableEntries);
     notifyListeners();
   }
-}
 
-/// Store the updated table entries inside the database when the data state changes.
-void updateTableEntriesData(List<PlanEntry> tableEntries) {
-  final Map<String, dynamic> tableEntriesMap =
-      PlanEntry.getEntriesAsMap(tableEntries);
-  Database().updateTrainingPlanData(tableEntriesMap);
+  /// Store the updated [tableEntries] inside the database when the data state changes.
+  void updateTableEntriesData(List<PlanEntry> tableEntries) {
+    final Map<String, dynamic> tableEntriesMap =
+        PlanEntry.getEntriesAsMap(tableEntries);
+    Database().updateTrainingPlanData(tableEntriesMap, trainingPlanId);
+  }
 }

@@ -20,6 +20,8 @@ class Database {
     } catch (firestoreException) {
       debugPrint(firestoreException.toString());
     }
+    // Only for testing purposes!
+    Database().uploadMockData();
   }
 
   /// Test function to upload mock data to firebase. Only needed to reset data.
@@ -44,7 +46,9 @@ class Database {
       },
       'trainingplan2': {},
     };
-    updateTrainingPlanData(mockupData);
+    final CollectionReference planEntryCollection =
+        Firestore.instance.collection('plan-entries');
+    planEntryCollection.document("v6g6JVrNR3w5e8TklK4X").update(mockupData);
   }
 
   Future<Map<String, dynamic>> fetchAllTrainingPlans() async {
@@ -76,9 +80,16 @@ class Database {
   }
 
   /// Update the training plan entries with newly added [planEntries].
-  Future<void> updateTrainingPlanData(Map<String, dynamic> planEntries) async {
+  Future<void> updateTrainingPlanData(
+    Map<String, dynamic> planEntries,
+    String trainingPlanId,
+  ) async {
+    final Map<String, dynamic> trainingPlans = await fetchAllTrainingPlans();
+
+    trainingPlans[trainingPlanId] = planEntries;
+
     final CollectionReference planEntryCollection =
         Firestore.instance.collection('plan-entries');
-    planEntryCollection.document("v6g6JVrNR3w5e8TklK4X").update(planEntries);
+    planEntryCollection.document("v6g6JVrNR3w5e8TklK4X").update(trainingPlans);
   }
 }
