@@ -4,9 +4,10 @@ import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 class TableProvider extends ChangeNotifier {
   final List<PlanEntry> _tableEntries = [];
+  final String trainingPlanId;
 
-  TableProvider() {
-    Database().fetchTrainingPlanData().then(
+  TableProvider({required this.trainingPlanId}) {
+    Database().fetchTrainingPlanData(trainingPlanId).then(
           (fetchedEntries) => {
             for (final fetchedEntry in fetchedEntries)
               {

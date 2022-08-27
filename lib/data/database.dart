@@ -60,9 +60,7 @@ class Database {
   }
 
   /// Fetch [entries] for the current training plan identified by its [trainingPlanId] from firebase.
-  Future<List<PlanEntry>> fetchTrainingPlanData([
-    String trainingPlanId = 'trainingplan1',
-  ]) async {
+  Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) async {
     return fetchAllTrainingPlans().then(
       (fetchedEntries) {
         final Map<String, dynamic> currentPlanEntries =

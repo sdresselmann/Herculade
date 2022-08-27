@@ -30,7 +30,13 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
         children: [
           const NavigationButton(exerciseRouteLabel),
           MultiProvider(
-            providers: [ChangeNotifierProvider(create: (_) => TableProvider())],
+            providers: [
+              ChangeNotifierProvider(
+                create: (_) => TableProvider(
+                  trainingPlanId: "trainingplan1",
+                ),
+              )
+            ],
             child: WorkoutTable(),
           ),
         ],
