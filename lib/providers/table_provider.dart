@@ -8,7 +8,11 @@ class TableProvider extends ChangeNotifier {
   TableProvider() {
     Database().fetchTrainingPlanData().then(
           (fetchedEntries) => {
-            for (final fetchedEntry in fetchedEntries) addEntry(fetchedEntry)
+            for (final fetchedEntry in fetchedEntries)
+              {
+                _tableEntries.add(fetchedEntry),
+              },
+            notifyListeners(),
           },
         );
   }
@@ -18,6 +22,7 @@ class TableProvider extends ChangeNotifier {
 
   void addEntry(PlanEntry tableEntry) {
     _tableEntries.add(tableEntry);
+
     notifyListeners();
   }
 
@@ -25,4 +30,9 @@ class TableProvider extends ChangeNotifier {
     _tableEntries.remove(tableEntry);
     notifyListeners();
   }
+}
+
+/// Store the updated table entries inside the database when the data state changes.
+void updateTableEntriesData(List<PlanEntry> tableEntries) {
+  PlanEntry.getEntriesAsMap(tableEntries);
 }

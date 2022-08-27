@@ -103,7 +103,7 @@ class _EntryRemovalButton extends StatelessWidget {
   }
 }
 
-/// Creates a Button that when clicked adds a [tableEntry] to the table.
+/// Creates a Button that when clicked adds a empty [tableEntry] to the table.
 class _AddEntryButton extends StatelessWidget {
   final void Function()? onPressed;
 

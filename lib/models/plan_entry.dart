@@ -14,4 +14,22 @@ class PlanEntry {
       : exerciseName = mapData['exerciseName'].toString(),
         weight = mapData['weight'].toString(),
         repeats = mapData['repeats'].toString();
+
+  Map<String, dynamic> toMap() {
+    return {
+      'exerciseName': exerciseName,
+      'weight': weight,
+      'repeats': repeats,
+    };
+  }
+
+  static Map<String, dynamic> getEntriesAsMap(List<PlanEntry> entries) {
+    final Map<String, dynamic> entryMap = {};
+
+    for (int i = 0; i <= entries.length; i++) {
+      entryMap[i.toString()] = entries[i].toMap();
+    }
+    print(entryMap);
+    return entryMap;
+  }
 }
