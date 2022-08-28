@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+/// A Textfield that is used inside the [WorkoutTable].
+///
+/// Starting with a preset [textFieldValue] and a function that is run [onEditingComplete] once the
+/// user has changed the value inside.
 class TableTextField extends StatefulWidget {
-  /// Text value inside of the edit text widget.
+  /// The text value inside of the edit text widget.
   final String textFieldValue;
 
-  /// Function callback that is executed once text has been entered and the input
-  /// has been confirmed by pressing enter.
+  /// The function callback that is executed once text has been entered and the input
+  /// is confirmed by pressing enter.
   final Function(String) onEditingComplete;
 
   const TableTextField({
