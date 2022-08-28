@@ -8,7 +8,7 @@ void _navigateToRoute(BuildContext context, String routeName) {
   Navigator.pushNamed(context, routeName);
 }
 
-/// Build a a simple button that navigates towards a new page.
+/// A simple button that navigates towards a new page.
 ///
 /// The Button uses the current [context] and when clicked executes [_navigateToRoute] with the given [routeName].
 /// The label shown on the button is also used as name for the route that is used for navigation.
@@ -33,6 +33,7 @@ void _navigateToRoute(BuildContext context, String routeName) {
 ///
 /// ```
 class NavigationButton extends StatelessWidget {
+  /// The route name that the button (when clicked) is navigating to.
   final String routeName;
 
   const NavigationButton(this.routeName);
