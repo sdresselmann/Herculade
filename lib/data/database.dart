@@ -4,16 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 class Database {
-  /// Firebase project ID
+  /// The Firebase project Id.
   static const _projectId = 'lifting-progress-tracker';
 
+  /// The database instance for the singleton object.
   static final Database _instance = Database._();
 
+  /// The factory method that returns the already created instance of the database.
   factory Database() {
     return _instance;
   }
+
+  /// The unnamed constructor creating the singleton object when first called.
   Database._();
 
+  /// Initialize the firestore connection to fetch and update data from Firebase.
+  ///
+  /// See for more information: https://pub.dev/packages/firedart
   static void initialize() {
     try {
       Firestore.initialize(_projectId);
@@ -24,7 +31,7 @@ class Database {
     Database().uploadMockData();
   }
 
-  /// Test function to upload mock data to firebase. Only needed to reset data.
+  /// A Test function to upload mock data to Firebase. Only needed to reset data.
   Future<void> uploadMockData() async {
     final Map<String, dynamic> mockupData = {
       'trainingplan1': {
@@ -51,6 +58,10 @@ class Database {
     planEntryCollection.document("v6g6JVrNR3w5e8TklK4X").update(mockupData);
   }
 
+  /// Fetch all available training plan entries from Firebase.
+  ///
+  /// Dont call this function as a standalone except when all entries are
+  /// needed, since further sorting/filtering is usually required.
   Future<Map<String, dynamic>> fetchAllTrainingPlans() async {
     final CollectionReference planEntryCollection =
         Firestore.instance.collection('plan-entries');
@@ -64,6 +75,8 @@ class Database {
   }
 
   /// Fetch a training plan with its entries identified by its [trainingPlanId] from firebase.
+  ///
+  /// This makes use of the [fetchAllTrainingPlans] function and filters out unwanted entries.
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) async {
     return fetchAllTrainingPlans().then(
       (fetchedEntries) {
@@ -79,7 +92,7 @@ class Database {
     );
   }
 
-  /// Update the training plan entries with newly added [planEntries].
+  /// Update the training plan entries with the newly added [planEntries].
   Future<void> updateTrainingPlanData(
     Map<String, dynamic> planEntries,
     String trainingPlanId,
