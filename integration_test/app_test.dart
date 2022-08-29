@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
-
-import 'package:lifting_progress_tracker/main.dart' as app;
 import 'package:lifting_progress_tracker/pages/calendar.dart';
 import 'package:lifting_progress_tracker/pages/exercise.dart';
 import 'package:lifting_progress_tracker/pages/home.dart';
@@ -12,29 +10,10 @@ import 'package:lifting_progress_tracker/pages/training_day.dart';
 import 'package:lifting_progress_tracker/pages/training_period.dart';
 import 'package:lifting_progress_tracker/pages/training_plan.dart';
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
+import 'package:lifting_progress_tracker/test/navigate.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-
-  Future<void> startApp(WidgetTester tester) async {
-    app.main();
-    await tester.pumpAndSettle();
-  }
-
-  Future<void> navigateToStatistics(WidgetTester tester) async {
-    await tester.tap(find.text(statisticsRouteLabel));
-    await tester.pumpAndSettle();
-  }
-
-  Future<void> navigateToCalendar(WidgetTester tester) async {
-    await tester.tap(find.text(calendarRouteLabel));
-    await tester.pumpAndSettle();
-  }
-
-  Future<void> navigateToTrainingPlanList(WidgetTester tester) async {
-    await tester.tap(find.text(trainingplanListRouteLabel));
-    await tester.pumpAndSettle();
-  }
 
   group('navigation smoke tests', () {
     testWidgets('start application without any errors', (tester) async {
