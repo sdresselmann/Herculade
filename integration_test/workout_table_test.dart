@@ -6,10 +6,16 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('workout table smoke tests', () {
-    testWidgets('description', (tester) async {
+    testWidgets('workout table smoketest', (tester) async {
       await startApp(tester);
       await navigateToTrainingPlanList(tester);
+      // check component
     });
     testWidgets('description', (tester) async {});
+    // check buttons (-) 1 each entry
+
+    //check button (+)
+
+    //check text fields (3 each entry)
   });
 }

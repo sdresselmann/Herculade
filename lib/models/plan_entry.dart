@@ -21,11 +21,11 @@ class PlanEntry {
   String repeats;
 
   /// A table entry as used inside of the [WorkoutTable] widget.
-  PlanEntry([
+  PlanEntry({
     this.exerciseName = "exerciseName",
     this.weight = "weight",
     this.repeats = "repeats",
-  ]);
+  });
 
   /// Transforms a JSON valid data object  into a [PlanEntry].
   ///
