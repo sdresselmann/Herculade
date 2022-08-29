@@ -54,24 +54,30 @@ class WorkoutTable extends StatelessWidget {
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.exerciseName,
-                      onEditingComplete: (String newValue) =>
-                          {entry.exerciseName = newValue},
+                      onEditingComplete: (String newValue) => {
+                        entry.exerciseName = newValue,
+                        context.read<TableProvider>().updateEntry(),
+                      },
                     ),
                   ),
                   TableCell(
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.weight,
-                      onEditingComplete: (String newValue) =>
-                          {entry.weight = newValue},
+                      onEditingComplete: (String newValue) => {
+                        entry.weight = newValue,
+                        context.read<TableProvider>().updateEntry(),
+                      },
                     ),
                   ),
                   TableCell(
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.repeats,
-                      onEditingComplete: (String newValue) =>
-                          {entry.repeats = newValue},
+                      onEditingComplete: (String newValue) => {
+                        entry.repeats = newValue,
+                        context.read<TableProvider>().updateEntry(),
+                      },
                     ),
                   ),
                   TableCell(

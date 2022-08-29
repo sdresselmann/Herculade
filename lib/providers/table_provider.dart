@@ -52,6 +52,11 @@ class TableProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateEntry() {
+    updateTableEntriesData(_tableEntries);
+    notifyListeners();
+  }
+
   /// Store the updated [tableEntries] inside the database when the data state changes.
   void updateTableEntriesData(List<PlanEntry> tableEntries) {
     final Map<String, dynamic> tableEntriesMap =
