@@ -3,12 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
-import 'package:lifting_progress_tracker/pages/exercise.dart';
+
 import 'package:lifting_progress_tracker/pages/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 import 'package:lifting_progress_tracker/pages/training_day.dart';
 import 'package:lifting_progress_tracker/pages/training_period.dart';
-import 'package:lifting_progress_tracker/pages/training_plan.dart';
+
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 import 'package:lifting_progress_tracker/test/navigate.dart';
 
@@ -70,25 +70,13 @@ void main() {
     testWidgets(
         'navigate from home to the training plan page without occurring any errors',
         (tester) async {
-      await startApp(tester);
-      await navigateToTrainingPlanList(tester);
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingPlanRouteLabel));
-      await tester.pumpAndSettle();
-      expect(find.byType(TrainingPlanPage), findsOneWidget);
+      await navigateToTrainingPlan(tester);
     });
 
     testWidgets(
         'navigate from home to the exercise page without occurring any errors',
         (tester) async {
-      await startApp(tester);
-      await navigateToTrainingPlanList(tester);
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingPlanRouteLabel));
-      await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(ElevatedButton, exerciseRouteLabel));
-      await tester.pumpAndSettle();
-      expect(find.byType(ExercisePage), findsOneWidget);
+      await navigateToExercise(tester);
     });
   });
 }

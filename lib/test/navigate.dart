@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/main.dart' as app;
+import 'package:lifting_progress_tracker/pages/exercise.dart';
+import 'package:lifting_progress_tracker/pages/training_plan.dart';
 
 Future<void> startApp(WidgetTester tester) async {
   app.main();
@@ -21,4 +24,19 @@ Future<void> navigateToCalendar(WidgetTester tester) async {
 Future<void> navigateToTrainingPlanList(WidgetTester tester) async {
   await tester.tap(find.text(trainingplanListRouteLabel));
   await tester.pumpAndSettle();
+}
+
+Future<void> navigateToTrainingPlan(WidgetTester tester) async {
+  await startApp(tester);
+  await navigateToTrainingPlanList(tester);
+  await tester.tap(find.widgetWithText(ElevatedButton, trainingPlanRouteLabel));
+  await tester.pumpAndSettle();
+  expect(find.byType(TrainingPlanPage), findsOneWidget);
+}
+
+Future<void> navigateToExercise(WidgetTester tester) async {
+  await navigateToTrainingPlan(tester);
+  await tester.tap(find.widgetWithText(ElevatedButton, exerciseRouteLabel));
+  await tester.pumpAndSettle();
+  expect(find.byType(ExercisePage), findsOneWidget);
 }

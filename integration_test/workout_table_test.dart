@@ -8,6 +8,7 @@ void main() {
   group('workout table smoke tests', () {
     testWidgets('description', (tester) async {
       await startApp(tester);
+      await navigateToTrainingPlanList(tester);
     });
     testWidgets('description', (tester) async {});
   });
