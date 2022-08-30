@@ -4,7 +4,6 @@ import 'package:lifting_progress_tracker/test/navigate.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-
   group('workout table smoke tests', () {
     testWidgets('workout table smoketest', (tester) async {
       await startApp(tester);
