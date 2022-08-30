@@ -52,7 +52,16 @@ class TableProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateEntry() {
+  /// Update an already existing entry from the table.
+  ///
+  /// Replaces the [oldPlanEntry] with a [updatedPlanEntry] and updates the
+  /// database data accordingly.
+  void updateEntry({
+    required final PlanEntry oldPlanEntry,
+    required final PlanEntry updatedPlanEntry,
+  }) {
+    final int index = _tableEntries.indexOf(oldPlanEntry);
+    _tableEntries[index] = updatedPlanEntry;
     updateTableEntriesData(_tableEntries);
     notifyListeners();
   }

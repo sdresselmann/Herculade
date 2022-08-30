@@ -54,9 +54,15 @@ class WorkoutTable extends StatelessWidget {
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.exerciseName,
-                      onEditingComplete: (String newValue) => {
-                        entry.exerciseName = newValue,
-                        context.read<TableProvider>().updateEntry(),
+                      onEditingComplete: (String updatedName) => {
+                        context.read<TableProvider>().updateEntry(
+                              oldPlanEntry: entry,
+                              updatedPlanEntry: PlanEntry(
+                                exerciseName: updatedName,
+                                weight: entry.weight,
+                                repeats: entry.repeats,
+                              ),
+                            ),
                       },
                     ),
                   ),
@@ -64,9 +70,15 @@ class WorkoutTable extends StatelessWidget {
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.weight,
-                      onEditingComplete: (String newValue) => {
-                        entry.weight = newValue,
-                        context.read<TableProvider>().updateEntry(),
+                      onEditingComplete: (String updatedWeight) => {
+                        context.read<TableProvider>().updateEntry(
+                              oldPlanEntry: entry,
+                              updatedPlanEntry: PlanEntry(
+                                exerciseName: entry.exerciseName,
+                                weight: updatedWeight,
+                                repeats: entry.repeats,
+                              ),
+                            ),
                       },
                     ),
                   ),
@@ -74,9 +86,15 @@ class WorkoutTable extends StatelessWidget {
                     child: TableTextField(
                       key: UniqueKey(),
                       textFieldValue: entry.repeats,
-                      onEditingComplete: (String newValue) => {
-                        entry.repeats = newValue,
-                        context.read<TableProvider>().updateEntry(),
+                      onEditingComplete: (String updatedRepeats) => {
+                        context.read<TableProvider>().updateEntry(
+                              oldPlanEntry: entry,
+                              updatedPlanEntry: PlanEntry(
+                                exerciseName: entry.exerciseName,
+                                weight: entry.weight,
+                                repeats: updatedRepeats,
+                              ),
+                            ),
                       },
                     ),
                   ),
