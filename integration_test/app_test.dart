@@ -10,7 +10,7 @@ import 'package:lifting_progress_tracker/pages/training_day.dart';
 import 'package:lifting_progress_tracker/pages/training_period.dart';
 
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
-import 'package:lifting_progress_tracker/test/navigate.dart';
+import 'navigate.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
