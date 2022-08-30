@@ -5,7 +5,7 @@ import 'workout_table_test.dart' as tabletest;
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  group('run app smoke tests', () {
+  group('', () {
     apptest.main();
     tabletest.main();
   });

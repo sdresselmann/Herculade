@@ -15,14 +15,14 @@ import 'modules/navigate.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  group('navigation smoke tests', () {
+  group('navigation smoke tests:', () {
     testWidgets('start application without any errors', (tester) async {
       await startApp(tester);
       expect(find.byType(HomePage), findsOneWidget);
     });
 
     testWidgets(
-        'navigate from home to statistics page without occurring any errors',
+        '1. navigate from home to statistics page without occurring any errors',
         (tester) async {
       await startApp(tester);
       await navigateToStatistics(tester);
@@ -30,7 +30,7 @@ void main() {
     });
 
     testWidgets(
-        'navigate from home to the calendar page without occurring any errors',
+        '2. navigate from home to the calendar page without occurring any errors',
         (tester) async {
       await startApp(tester);
       await navigateToCalendar(tester);
@@ -38,7 +38,7 @@ void main() {
     });
 
     testWidgets(
-        'navigate from home to the training day page without occurring any errors',
+        '3. navigate from home to the training day page without occurring any errors',
         (tester) async {
       await startApp(tester);
       await navigateToCalendar(tester);
@@ -49,7 +49,7 @@ void main() {
     });
 
     testWidgets(
-        'navigate from home to the training period page without occurring any errors',
+        '4. navigate from home to the training period page without occurring any errors',
         (tester) async {
       await startApp(tester);
       await navigateToCalendar(tester);
@@ -60,7 +60,7 @@ void main() {
     });
 
     testWidgets(
-        'navigate from home to the training plan list page without occurring any errors',
+        '5. navigate from home to the training plan list page without occurring any errors',
         (tester) async {
       await startApp(tester);
       await navigateToTrainingPlanList(tester);
@@ -68,13 +68,13 @@ void main() {
     });
 
     testWidgets(
-        'navigate from home to the training plan page without occurring any errors',
+        '6. navigate from home to the training plan page without occurring any errors',
         (tester) async {
       await navigateToTrainingPlan(tester);
     });
 
     testWidgets(
-        'navigate from home to the exercise page without occurring any errors',
+        '7. navigate from home to the exercise page without occurring any errors',
         (tester) async {
       await navigateToExercise(tester);
     });
