@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/constants/routes.dart';
-import 'package:lifting_progress_tracker/data/database.dart';
 
 void main() {
-  Database.initialize();
   runApp(const MyApp());
 }
 

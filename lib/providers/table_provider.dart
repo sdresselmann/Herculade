@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifting_progress_tracker/data/database.dart';
+import 'package:lifting_progress_tracker/data/repository.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 /// A provider used for updating/reading [WorkoutTable] state.
@@ -21,7 +21,7 @@ class TableProvider extends ChangeNotifier {
   /// It uses the [trainingPlanId] to fetch available data from the database
   /// while also keeping them in synch with the local data displayed.
   TableProvider({required this.trainingPlanId}) {
-    Database().fetchTrainingPlanData(trainingPlanId).then(
+    TrainingPlanRepository().fetchTrainingPlanData(trainingPlanId).then(
           (fetchedEntries) => {
             for (final fetchedEntry in fetchedEntries)
               {
@@ -70,6 +70,7 @@ class TableProvider extends ChangeNotifier {
   void updateTableEntriesData(List<PlanEntry> tableEntries) {
     final Map<String, dynamic> tableEntriesMap =
         PlanEntry.getEntriesAsMap(tableEntries);
-    Database().updateTrainingPlanData(tableEntriesMap, trainingPlanId);
+    TrainingPlanRepository()
+        .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
   }
 }
