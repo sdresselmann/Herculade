@@ -15,7 +15,7 @@ class TrainingPlanRepository {
   /// The unnamed constructor creating the singleton object when first called.
   TrainingPlanRepository._();
 
-  /// Fetch a training plan with its entries identified by its [trainingPlanId] from firebase.
+  /// Fetch a training plan with its entries identified by its [trainingPlanId] from Firebase.
   ///
   /// This makes use of the [getRawTrainingPlanData] function and filters out unwanted entries.
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) {

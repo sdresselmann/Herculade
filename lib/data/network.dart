@@ -1,13 +1,16 @@
 import 'package:firedart/firedart.dart';
 import 'package:flutter/material.dart';
 
+/// The Firestore cloud document reference name.
 const String documentReference = 'v6g6JVrNR3w5e8TklK4X';
+
+/// The Firestore cloud collection name for the stored training plans.
 const String trainingPlanCollectionName = 'plan-entries';
 
 /// The Firebase project Id.
 const _projectId = 'lifting-progress-tracker';
 
-/// Initialize the firestore connection to fetch and update data from Firebase.
+/// Initialize the Firestore connection to fetch and update data from Firebase.
 ///
 /// See for more information: https://pub.dev/packages/firedart
 void initialize() {
@@ -20,7 +23,7 @@ void initialize() {
   uploadMockData();
 }
 
-/// Fetch all available training plan entries from Firebase and return the raw Data.
+/// Fetch all available training plan entries from Firebase and return the raw data.
 ///
 /// Dont call this function as a standalone except when all entries are
 /// needed, since further filtering/ is usually required.

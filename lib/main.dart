@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/constants/routes.dart';
-import 'package:lifting_progress_tracker/data/repository.dart';
 
 void main() {
   runApp(const MyApp());
