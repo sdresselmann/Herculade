@@ -1,6 +1,9 @@
 import 'package:firedart/firedart.dart';
 import 'package:flutter/material.dart';
 
+/// Raw Firestore data type as required by documentation.
+typedef RawFirestoreData = Map<String, dynamic>;
+
 /// The Firestore cloud document reference name.
 const String documentReference = 'v6g6JVrNR3w5e8TklK4X';
 
@@ -27,11 +30,11 @@ void initialize() {
 ///
 /// Dont call this function as a standalone except when all entries are
 /// needed, since further filtering/ is usually required.
-Future<Map<String, dynamic>> getRawTrainingPlanData() async {
+Future<RawFirestoreData> getRawTrainingPlanData() async {
   final CollectionReference planEntryCollection =
       Firestore.instance.collection(trainingPlanCollectionName);
 
-  final Map<String, dynamic> planEntries = await planEntryCollection
+  final RawFirestoreData planEntries = await planEntryCollection
       .document(documentReference)
       .get()
       .then((value) => value.map);
@@ -41,7 +44,7 @@ Future<Map<String, dynamic>> getRawTrainingPlanData() async {
 
 /// A Test function to upload mock data to Firebase. Only needed to reset data.
 Future<void> uploadMockData() async {
-  final Map<String, dynamic> mockupData = {
+  final RawFirestoreData mockupData = {
     'trainingplan1': {
       '0': {
         'exerciseName': 'Deadlift',
