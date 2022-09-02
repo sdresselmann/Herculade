@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:lifting_progress_tracker/components/workout_table.dart';
 import 'modules/navigate.dart';
 
 void main() {
@@ -7,10 +8,15 @@ void main() {
   group('workout table smoke tests:', () {
     testWidgets('1. workout table smoketest', (tester) async {
       await startApp(tester);
-      await navigateToTrainingPlanList(tester);
-      // check component
+      await navigateToTrainingPlan(tester);
+      expect(find.byType(WorkoutTable), findsOneWidget);
     });
-    testWidgets('2. description', (tester) async {});
+    testWidgets('2. add entry button smoketest', (tester) async {
+      await startApp(tester);
+      await navigateToTrainingPlan(tester);
+      expect(find.byType(AddEntryButton), findsOneWidget);
+    });
+
     // check buttons (-) 1 each entry
 
     //check button (+)

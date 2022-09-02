@@ -99,7 +99,7 @@ class WorkoutTable extends StatelessWidget {
                     ),
                   ),
                   TableCell(
-                    child: _EntryRemovalButton(() {
+                    child: EntryRemovalButton(() {
                       context.read<TableProvider>().removeEntry(entry);
                     }),
                   )
@@ -107,7 +107,7 @@ class WorkoutTable extends StatelessWidget {
               )
           ],
         ),
-        _AddEntryButton(
+        AddEntryButton(
           () => {context.read<TableProvider>().addEntry(PlanEntry())},
         ),
       ],
@@ -116,10 +116,10 @@ class WorkoutTable extends StatelessWidget {
 }
 
 /// Creates a Button that when clicked removes its corresponding [tableEntry].
-class _EntryRemovalButton extends StatelessWidget {
+class EntryRemovalButton extends StatelessWidget {
   final void Function()? onPressed;
 
-  const _EntryRemovalButton(this.onPressed);
+  const EntryRemovalButton(this.onPressed);
 
   @override
   Widget build(BuildContext context) {
@@ -128,10 +128,10 @@ class _EntryRemovalButton extends StatelessWidget {
 }
 
 /// Creates a Button that when clicked adds a empty [tableEntry] to the table.
-class _AddEntryButton extends StatelessWidget {
+class AddEntryButton extends StatelessWidget {
   final void Function()? onPressed;
 
-  const _AddEntryButton(this.onPressed);
+  const AddEntryButton(this.onPressed);
 
   @override
   Widget build(BuildContext context) {
