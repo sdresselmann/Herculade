@@ -16,11 +16,5 @@ void main() {
       await navigateToTrainingPlan(tester);
       expect(find.byType(AddEntryButton), findsOneWidget);
     });
-
-    // check buttons (-) 1 each entry
-
-    //check button (+)
-
-    //check text fields (3 each entry)
   });
 }

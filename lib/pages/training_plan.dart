@@ -28,7 +28,7 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
           MultiProvider(
             providers: [
               ChangeNotifierProvider(
-                create: (_) => TableProvider(
+                create: (context) => TableProvider(
                   trainingPlanId: "trainingplan1",
                 ),
               )
