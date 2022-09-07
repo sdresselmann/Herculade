@@ -9,6 +9,7 @@ import 'package:lifting_progress_tracker/models/plan_entry.dart';
 class TableProvider extends ChangeNotifier {
   /// The entries inside of the [WorkoutTable].
   late List<PlanEntry> tableEntries = [];
+  bool _disposed = false;
 
   /// The current training plan id, which has it's entries displayed
   /// inside the [WorkoutTable].
@@ -69,5 +70,19 @@ class TableProvider extends ChangeNotifier {
         PlanEntry.getEntriesAsMap(tableEntries);
     TrainingPlanRepository()
         .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
+  }
+
+  // Avoids the provider being called by asynchronous functions after it has been disposed.
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
+  }
+
+  @override
+  void notifyListeners() {
+    if (!_disposed) {
+      super.notifyListeners();
+    }
   }
 }
