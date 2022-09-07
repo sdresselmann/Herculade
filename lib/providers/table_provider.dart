@@ -8,7 +8,8 @@ import 'package:lifting_progress_tracker/models/plan_entry.dart';
 /// table and notifies relevant components.
 class TableProvider extends ChangeNotifier {
   /// The entries inside of the [WorkoutTable].
-  final List<PlanEntry> _tableEntries = [];
+  late List<PlanEntry> tableEntries = [];
+  bool _disposed = false;
 
   /// The current training plan id, which has it's entries displayed
   /// inside the [WorkoutTable].
@@ -25,7 +26,7 @@ class TableProvider extends ChangeNotifier {
           (fetchedEntries) => {
             for (final fetchedEntry in fetchedEntries)
               {
-                _tableEntries.add(fetchedEntry),
+                tableEntries.add(fetchedEntry),
               },
             notifyListeners(),
           },
@@ -33,21 +34,18 @@ class TableProvider extends ChangeNotifier {
   }
 
   /// The number of entries inside the table.
-  int get count => _tableEntries.length;
-
-  /// The list of entries inside the table.
-  List<PlanEntry> get tableEntries => _tableEntries;
+  int get count => tableEntries.length;
 
   /// Add an entry to the table.
   void addEntry(PlanEntry tableEntry) {
-    _tableEntries.add(tableEntry);
+    tableEntries.add(tableEntry);
     updateTableEntriesData(tableEntries);
     notifyListeners();
   }
 
   /// Remove an entry from the table.
   void removeEntry(PlanEntry tableEntry) {
-    _tableEntries.remove(tableEntry);
+    tableEntries.remove(tableEntry);
     updateTableEntriesData(tableEntries);
     notifyListeners();
   }
@@ -60,9 +58,9 @@ class TableProvider extends ChangeNotifier {
     required final PlanEntry oldPlanEntry,
     required final PlanEntry updatedPlanEntry,
   }) {
-    final int index = _tableEntries.indexOf(oldPlanEntry);
-    _tableEntries[index] = updatedPlanEntry;
-    updateTableEntriesData(_tableEntries);
+    final int index = tableEntries.indexOf(oldPlanEntry);
+    tableEntries[index] = updatedPlanEntry;
+    updateTableEntriesData(tableEntries);
     notifyListeners();
   }
 
@@ -72,5 +70,19 @@ class TableProvider extends ChangeNotifier {
         PlanEntry.getEntriesAsMap(tableEntries);
     TrainingPlanRepository()
         .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
+  }
+
+  // Avoids the provider being called by asynchronous functions after it has been disposed.
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
+  }
+
+  @override
+  void notifyListeners() {
+    if (!_disposed) {
+      super.notifyListeners();
+    }
   }
 }

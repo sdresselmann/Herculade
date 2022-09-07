@@ -35,7 +35,7 @@ class TrainingPlanRepository {
 
   /// Update the training plan entries with the newly added [planEntries].
   Future<void> updateTrainingPlanData(
-    Map<String, dynamic> planEntries,
+    final Map<String, dynamic> planEntries,
     String trainingPlanId,
   ) async {
     final Map<String, dynamic> trainingPlans = await getRawTrainingPlanData();
