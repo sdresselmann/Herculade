@@ -13,8 +13,26 @@ Widget createWidgetForTesting({required Widget child}) {
   );
 }
 
+/// Init the table provider with its workout table.
+Future<void> initTableProvider(WidgetTester tester) async {
+  await tester.pumpWidget(
+    createWidgetForTesting(
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) =>
+                TableProvider(trainingPlanId: "trainingPlanId"),
+          )
+        ],
+        child: WorkoutTable(),
+      ),
+    ),
+  );
+  await tester.pumpAndSettle();
+}
+
 /// Test data for table provider.
-final List<PlanEntry> testData2 = [PlanEntry(), PlanEntry()];
+final List<PlanEntry> testData = [PlanEntry(), PlanEntry()];
 
 void main() {
   testWidgets(
@@ -27,23 +45,10 @@ void main() {
 
   testWidgets("2. When table provider entries are changed the count is updated",
       (WidgetTester tester) async {
-    await tester.pumpWidget(
-      createWidgetForTesting(
-        child: MultiProvider(
-          providers: [
-            ChangeNotifierProvider(
-              create: (context) =>
-                  TableProvider(trainingPlanId: "trainingPlanId"),
-            )
-          ],
-          child: WorkoutTable(),
-        ),
-      ),
-    );
-    await tester.pumpAndSettle();
+    await initTableProvider(tester);
     final context = tester.element(find.byType(WorkoutTable));
     // required to call listen:false outside of widget tree.
-    Provider.of<TableProvider>(context, listen: false).tableEntries = testData2;
+    Provider.of<TableProvider>(context, listen: false).tableEntries = testData;
     expect(Provider.of<TableProvider>(context, listen: false).count == 2, true);
   });
 }
