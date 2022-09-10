@@ -28,14 +28,10 @@ void main() {
       await setTableProviderData(tester);
 
       int currentLength = await getTableEntryCount(tester);
-      print(currentLength);
       final int expectedLength = currentLength + 1;
-
       await tester.tap(find.byType(AddEntryButton));
       await tester.pumpAndSettle();
       currentLength = await getTableEntryCount(tester);
-      print(currentLength);
-      print(expectedLength);
       expect(currentLength == expectedLength, true);
     });
   });
