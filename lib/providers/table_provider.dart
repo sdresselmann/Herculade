@@ -9,6 +9,8 @@ import 'package:lifting_progress_tracker/models/plan_entry.dart';
 class TableProvider extends ChangeNotifier {
   /// The entries inside of the [WorkoutTable].
   late List<PlanEntry> tableEntries = [];
+
+  /// The disposed status off the provider.
   bool _disposed = false;
 
   /// The current training plan id, which has it's entries displayed
