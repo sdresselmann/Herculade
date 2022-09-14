@@ -61,4 +61,66 @@ void main() {
     final context = tester.element(find.byType(WorkoutTable));
     expect(Provider.of<TableProvider>(context, listen: false).count == 0, true);
   });
+
+  testWidgets("4. when the add enty button is tapped a new entry is added",
+      (WidgetTester tester) async {
+    await initTableProvider(tester);
+    final context = tester.element(find.byType(WorkoutTable));
+    await tester.tap(find.byType(AddEntryButton));
+    await tester.pumpAndSettle();
+    expect(Provider.of<TableProvider>(context, listen: false).count == 1, true);
+  });
+
+  testWidgets("5. when the remove enty button is tapped one entry is removed",
+      (WidgetTester tester) async {
+    await initTableProvider(tester);
+    final context = tester.element(find.byType(WorkoutTable));
+    Provider.of<TableProvider>(context, listen: false).addEntry(testData[0]);
+    Provider.of<TableProvider>(context, listen: false).addEntry(testData[1]);
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(EntryRemovalButton).first);
+    await tester.pumpAndSettle();
+    expect(Provider.of<TableProvider>(context, listen: false).count == 1, true);
+    expect(find.byType(EntryRemovalButton), findsNWidgets(1));
+  });
+  testWidgets("6. the count and number of entry removal buttons are the same",
+      (WidgetTester tester) async {
+    await initTableProvider(tester);
+    final context = tester.element(find.byType(WorkoutTable));
+    Provider.of<TableProvider>(context, listen: false).addEntry(testData[0]);
+    Provider.of<TableProvider>(context, listen: false).addEntry(testData[1]);
+    Provider.of<TableProvider>(context, listen: false).addEntry(testData[1]);
+    await tester.pumpAndSettle();
+
+    final int count = Provider.of<TableProvider>(context, listen: false).count;
+    expect(find.byType(EntryRemovalButton), findsNWidgets(count));
+  });
+
+  testWidgets(
+      "7. the count and number of entry removal buttons are the same even after adding entries using the button",
+      (WidgetTester tester) async {
+    await initTableProvider(tester);
+    final context = tester.element(find.byType(WorkoutTable));
+    await tester.tap(find.byType(AddEntryButton));
+    await tester.pumpAndSettle();
+
+    final int count = Provider.of<TableProvider>(context, listen: false).count;
+    expect(find.byType(EntryRemovalButton), findsNWidgets(count));
+  });
+
+  testWidgets(
+      "8. the count and number of entry removal buttons are the same even after removing entries using the buttons",
+      (WidgetTester tester) async {
+    await initTableProvider(tester);
+    final context = tester.element(find.byType(WorkoutTable));
+    Provider.of<TableProvider>(context, listen: false).addEntry(testData[0]);
+    Provider.of<TableProvider>(context, listen: false).addEntry(testData[1]);
+    Provider.of<TableProvider>(context, listen: false).addEntry(testData[1]);
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byType(EntryRemovalButton).first);
+    await tester.pumpAndSettle();
+    final int count = Provider.of<TableProvider>(context, listen: false).count;
+    expect(find.byType(EntryRemovalButton), findsNWidgets(count));
+  });
 }
