@@ -20,8 +20,10 @@ Future<void> initTableProvider(WidgetTester tester) async {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (context) =>
-                TableProvider(trainingPlanId: "trainingPlanId"),
+            create: (context) => TableProvider(
+              trainingPlanId: "trainingPlanId",
+              fetchEntries: false,
+            ),
           )
         ],
         child: WorkoutTable(),

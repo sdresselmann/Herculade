@@ -30,6 +30,7 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
               ChangeNotifierProvider(
                 create: (context) => TableProvider(
                   trainingPlanId: "trainingplan1",
+                  fetchEntries: true,
                 ),
               )
             ],

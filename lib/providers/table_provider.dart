@@ -13,6 +13,11 @@ class TableProvider extends ChangeNotifier {
   /// The disposed status off the provider.
   bool _disposed = false;
 
+  /// The instruction wether to fetch data from backend or just create an empty table.
+  ///
+  /// This is helpful for widget testing and mocking data.
+  final bool fetchEntries;
+
   /// The current training plan id, which has it's entries displayed
   /// inside the [WorkoutTable].
   final String trainingPlanId;
@@ -23,7 +28,7 @@ class TableProvider extends ChangeNotifier {
   /// table and notifies relevant components.
   /// It uses the [trainingPlanId] to fetch available data from the database
   /// while also keeping them in synch with the local data displayed.
-  TableProvider({required this.trainingPlanId}) {
+  TableProvider({required this.trainingPlanId, required this.fetchEntries}) {
     TrainingPlanRepository().fetchTrainingPlanData(trainingPlanId).then(
           (fetchedEntries) => {
             for (final fetchedEntry in fetchedEntries)
