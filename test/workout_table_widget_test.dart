@@ -53,4 +53,12 @@ void main() {
     Provider.of<TableProvider>(context, listen: false).tableEntries = testData;
     expect(Provider.of<TableProvider>(context, listen: false).count == 2, true);
   });
+
+  testWidgets(
+      "3. When the table is initialized without fetching entries it should be empty",
+      (WidgetTester tester) async {
+    await initTableProvider(tester);
+    final context = tester.element(find.byType(WorkoutTable));
+    expect(Provider.of<TableProvider>(context, listen: false).count == 0, true);
+  });
 }
