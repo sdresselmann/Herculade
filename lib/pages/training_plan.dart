@@ -24,7 +24,6 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
       appBar: AppBar(title: const Text(_title)),
       body: Column(
         children: [
-          const NavigationButton(exerciseRouteLabel),
           MultiProvider(
             providers: [
               ChangeNotifierProvider(
