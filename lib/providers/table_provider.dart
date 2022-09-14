@@ -29,6 +29,13 @@ class TableProvider extends ChangeNotifier {
   /// It uses the [trainingPlanId] to fetch available data from the database
   /// while also keeping them in synch with the local data displayed.
   TableProvider({required this.trainingPlanId, required this.fetchEntries}) {
+    if (fetchEntries == true) {
+      fetchTableData();
+    }
+  }
+
+  /// Get table entries for the current training plan.
+  void fetchTableData() {
     TrainingPlanRepository().fetchTrainingPlanData(trainingPlanId).then(
           (fetchedEntries) => {
             for (final fetchedEntry in fetchedEntries)

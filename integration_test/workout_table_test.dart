@@ -6,12 +6,12 @@ import 'modules/navigate.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('workout table smoke tests:', () {
-    testWidgets('1. workout table smoketest', (tester) async {
+    testWidgets('1. workout table smoketest', (WidgetTester tester) async {
       await startApp(tester);
       await navigateToTrainingPlan(tester);
       expect(find.byType(WorkoutTable), findsOneWidget);
     });
-    testWidgets('2. add entry button smoketest', (tester) async {
+    testWidgets('2. add entry button smoketest', (WidgetTester tester) async {
       await startApp(tester);
       await navigateToTrainingPlan(tester);
       expect(find.byType(AddEntryButton), findsOneWidget);
