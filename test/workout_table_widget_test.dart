@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lifting_progress_tracker/components/workout_table.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 import 'package:lifting_progress_tracker/pages/training_plan.dart';
+import 'package:lifting_progress_tracker/providers/environment_provider.dart';
 import 'package:lifting_progress_tracker/providers/table_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -33,6 +34,16 @@ Future<void> initTableProvider(WidgetTester tester) async {
   await tester.pumpAndSettle();
 }
 
+Future<void> initEnvironmentProvider(WidgetTester tester) async {
+  await tester.pumpWidget(
+    Provider(
+      create: (context) => EnvironmentProvider(environment: "TEST"),
+      child: createWidgetForTesting(child: TrainingPlanPage()),
+    ),
+  );
+  await tester.pumpAndSettle();
+}
+
 /// Test data for table provider.
 final List<PlanEntry> testData = [PlanEntry(), PlanEntry()];
 
@@ -40,8 +51,7 @@ void main() {
   testWidgets(
       '1. When training plan page is build a workout table widget is shown',
       (WidgetTester tester) async {
-    await tester.pumpWidget(createWidgetForTesting(child: TrainingPlanPage()));
-    await tester.pumpAndSettle();
+    await initEnvironmentProvider(tester);
     expect(find.byType(WorkoutTable), findsOneWidget);
   });
 
