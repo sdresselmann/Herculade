@@ -1,5 +1,4 @@
 import 'package:firedart/firedart.dart';
-import 'package:flutter/material.dart';
 
 /// Raw Firestore data type as required by documentation.
 typedef RawFirestoreData = Map<String, dynamic>;
@@ -13,15 +12,15 @@ const String trainingPlanCollectionName = 'plan-entries';
 /// The Firebase project Id.
 const _projectId = 'lifting-progress-tracker';
 
+/// The current firestore instance.
+///
+/// Calls to the database should always be done via this attribute to avoid having multiple instances.
+Firestore firestoreInstance = Firestore.initialize(_projectId);
+
 /// Initialize the Firestore connection to fetch and update data from Firebase.
 ///
 /// See for more information: https://pub.dev/packages/firedart
 void initialize() {
-  try {
-    Firestore.initialize(_projectId);
-  } catch (firestoreException) {
-    debugPrint(firestoreException.toString());
-  }
   // Only for testing purposes!
   uploadMockData();
 }
@@ -32,7 +31,7 @@ void initialize() {
 /// needed, since further filtering/ is usually required.
 Future<RawFirestoreData> getRawTrainingPlanData() async {
   final CollectionReference planEntryCollection =
-      Firestore.instance.collection(trainingPlanCollectionName);
+      firestoreInstance.collection(trainingPlanCollectionName);
 
   final RawFirestoreData planEntries = await planEntryCollection
       .document(documentReference)
@@ -65,6 +64,6 @@ Future<void> uploadMockData() async {
     'trainingplan2': {},
   };
   final CollectionReference planEntryCollection =
-      Firestore.instance.collection(trainingPlanCollectionName);
+      firestoreInstance.collection(trainingPlanCollectionName);
   planEntryCollection.document(documentReference).update(mockupData);
 }

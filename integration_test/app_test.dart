@@ -72,11 +72,5 @@ void main() {
         (tester) async {
       await navigateToTrainingPlan(tester);
     });
-
-    testWidgets(
-        '7. navigate from home to the exercise page without occurring any errors',
-        (tester) async {
-      await navigateToExercise(tester);
-    });
   });
 }
