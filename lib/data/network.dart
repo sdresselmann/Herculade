@@ -1,5 +1,4 @@
 import 'package:firedart/firedart.dart';
-import 'package:flutter/material.dart';
 
 /// Raw Firestore data type as required by documentation.
 typedef RawFirestoreData = Map<String, dynamic>;
