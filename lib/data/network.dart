@@ -12,7 +12,9 @@ const String trainingPlanCollectionName = 'plan-entries';
 /// The Firebase project Id.
 const _projectId = 'lifting-progress-tracker';
 
+/// The current firestore instance.
 ///
+/// Calls to the database should always be done via this attribute to avoid having multiple instances.
 Firestore firestoreInstance = Firestore.initialize(_projectId);
 
 /// Initialize the Firestore connection to fetch and update data from Firebase.
