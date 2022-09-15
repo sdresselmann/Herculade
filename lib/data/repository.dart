@@ -1,4 +1,3 @@
-import 'package:firedart/firedart.dart';
 import 'package:lifting_progress_tracker/data/network.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
@@ -41,9 +40,6 @@ class TrainingPlanRepository {
     final Map<String, dynamic> trainingPlans = await getRawTrainingPlanData();
 
     trainingPlans[trainingPlanId] = planEntries;
-
-    final CollectionReference planEntryCollection =
-        Firestore.instance.collection('plan-entries');
-    planEntryCollection.document("v6g6JVrNR3w5e8TklK4X").update(trainingPlans);
+    uploadTrainingPlanData(trainingPlans);
   }
 }

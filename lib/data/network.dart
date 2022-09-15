@@ -67,3 +67,11 @@ Future<void> uploadMockData() async {
       firestoreInstance.collection(trainingPlanCollectionName);
   planEntryCollection.document(documentReference).update(mockupData);
 }
+
+/// Updates the already existing training plan data at Firebase.
+Future<void> uploadTrainingPlanData(RawFirestoreData trainingPlans) async {
+  firestoreInstance
+      .collection('plan-entries')
+      .document("v6g6JVrNR3w5e8TklK4X")
+      .update(trainingPlans);
+}
