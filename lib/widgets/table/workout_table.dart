@@ -3,6 +3,7 @@ import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 import 'package:lifting_progress_tracker/providers/table_provider.dart';
 import 'package:lifting_progress_tracker/widgets/table/add_entry_button.dart';
+import 'package:lifting_progress_tracker/widgets/table/entry_removal_button.dart';
 import 'package:lifting_progress_tracker/widgets/table_text_field.dart';
 import 'package:provider/provider.dart';
 
@@ -113,17 +114,5 @@ class WorkoutTable extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-/// Creates a Button that when clicked removes its corresponding [tableEntry].
-class EntryRemovalButton extends StatelessWidget {
-  final void Function()? onPressed;
-
-  const EntryRemovalButton(this.onPressed);
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: onPressed, child: const Text(" - "));
   }
 }

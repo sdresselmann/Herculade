@@ -5,6 +5,7 @@ import 'package:lifting_progress_tracker/pages/training_plan.dart';
 import 'package:lifting_progress_tracker/providers/environment_provider.dart';
 import 'package:lifting_progress_tracker/providers/table_provider.dart';
 import 'package:lifting_progress_tracker/widgets/table/add_entry_button.dart';
+import 'package:lifting_progress_tracker/widgets/table/entry_removal_button.dart';
 import 'package:lifting_progress_tracker/widgets/table/workout_table.dart';
 import 'package:provider/provider.dart';
 
