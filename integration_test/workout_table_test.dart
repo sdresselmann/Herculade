@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:lifting_progress_tracker/components/workout_table.dart';
+import 'package:lifting_progress_tracker/widgets/table/add_entry_button.dart';
+import 'package:lifting_progress_tracker/widgets/table/workout_table.dart';
 import 'modules/navigate.dart';
 
 void main() {

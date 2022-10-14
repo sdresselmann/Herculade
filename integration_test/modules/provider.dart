@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lifting_progress_tracker/components/workout_table.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 import 'package:lifting_progress_tracker/providers/table_provider.dart';
+import 'package:lifting_progress_tracker/widgets/table/workout_table.dart';
 import 'package:provider/provider.dart';
 
 /// Test data for table provider.
