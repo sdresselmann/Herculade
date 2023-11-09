@@ -25,4 +25,4 @@ jobs:
       with:
         flutter-version: '3.13.9'
     - run: flutter analyze
-    - run: flutter format lib
+    - run: dart format lib
