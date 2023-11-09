@@ -35,7 +35,7 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
                   trainingPlanId: "trainingplan1",
                   fetchEntries: environmentIsProd,
                 ),
-              )
+              ),
             ],
             child: WorkoutTable(),
           ),

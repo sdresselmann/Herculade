@@ -59,7 +59,7 @@ Future<void> uploadMockData() async {
         'exerciseName': 'Squats',
         'weight': '10kg',
         'repeats': '3x15',
-      }
+      },
     },
     'trainingplan2': {},
   };

@@ -27,7 +27,7 @@ Future<void> initTableProvider(WidgetTester tester) async {
               trainingPlanId: "trainingPlanId",
               fetchEntries: false,
             ),
-          )
+          ),
         ],
         child: WorkoutTable(),
       ),

@@ -31,7 +31,7 @@ final TableRow _tableHeader = TableRow(
       ),
     ),
     //Column for removal buttons.
-    const TableCell(child: Text(" "))
+    const TableCell(child: Text(" ")),
   ],
 );
 
@@ -104,13 +104,13 @@ class WorkoutTable extends StatelessWidget {
                     child: EntryRemovalButton(() {
                       context.read<TableProvider>().removeEntry(entry);
                     }),
-                  )
+                  ),
                 ],
-              )
+              ),
           ],
         ),
         AddEntryButton(
-          () => {context.read<TableProvider>().addEntry(PlanEntry())},
+          () => context.read<TableProvider>().addEntry(PlanEntry()),
         ),
       ],
     );

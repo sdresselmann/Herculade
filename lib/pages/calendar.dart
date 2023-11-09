@@ -5,9 +5,9 @@ import 'package:lifting_progress_tracker/widgets/navigation_button.dart';
 class CalendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Row(
-        children: const [
+        children: [
           NavigationButton(trainingDayRouteLabel),
           NavigationButton(trainingPeriodRouteLabel),
         ],
