@@ -11,6 +11,11 @@ include: package:lint/analysis_options.yaml
 
 # You might want to exclude auto-generated files from dart analysis
 analyzer:
+  strong-mode:
+      # implicit-casts: true
+  language:
+      strict-casts: true
+      strict-raw-types: true
   exclude:
     #- '**.freezed.dart'
 
