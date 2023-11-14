@@ -82,8 +82,8 @@ class TableProvider extends ChangeNotifier {
   void updateTableEntriesData(List<PlanEntry> tableEntries) {
     final Map<String, dynamic> tableEntriesMap =
         PlanEntry.getEntriesAsMap(tableEntries);
-    TrainingPlanRepository()
-        .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
+    // TrainingPlanRepository()
+    // .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
   }
 
   // Avoids the provider being called by asynchronous functions after it has been disposed.
