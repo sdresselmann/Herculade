@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 typedef RawFirestoreData = Map<String, dynamic>;
+
 const String documentReference = 'v6g6JVrNR3w5e8TklK4X';
-
 const String trainingPlanCollectionName = 'plan-entries';
-
-const _projectId = 'lifting-progress-tracker';
 
 FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -23,10 +21,8 @@ Future<RawFirestoreData> getRawTrainingPlanData() async {
   //     .get()
   //     .then((value) => value.map);
 
-  final QuerySnapshot<Map<String, dynamic>> querySnapshot = await firestore
-      .doc(documentReference)
-      .collection(trainingPlanCollectionName)
-      .get();
+  final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+      await firestore.collection(trainingPlanCollectionName).get();
 
   final RawFirestoreData planEntries = querySnapshot.docs.first.data();
 
