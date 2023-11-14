@@ -23,6 +23,10 @@ flutter run -d chrome
 ```
 flutter test
 ```
+## Integration Tests
+```
+flutter test -d linux integration_test/regression.dart
+```
 ## Code analyzing and linting
 ```
 flutter analyze
