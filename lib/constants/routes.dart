@@ -6,7 +6,6 @@ import 'package:lifting_progress_tracker/pages/training_day.dart';
 import 'package:lifting_progress_tracker/pages/training_period.dart';
 import 'package:lifting_progress_tracker/pages/training_plan.dart';
 
-/// Routing table for all named routes.
 Map<String, Widget Function(BuildContext)> routesObject = {
   homeRouteLabel: (context) => const HomePage(),
   trainingDayRouteLabel: (context) => TrainingDayPage(),

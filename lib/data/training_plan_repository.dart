@@ -2,16 +2,13 @@ import 'package:lifting_progress_tracker/data/network.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 class TrainingPlanRepository {
-  /// The database instance for the singleton object.
   static final TrainingPlanRepository _instance = TrainingPlanRepository._();
 
-  /// The factory method that returns the already created instance of the database.
   factory TrainingPlanRepository() {
     initialize();
     return _instance;
   }
 
-  // The unnamed constructor creating the singleton object when first called.
   TrainingPlanRepository._();
 
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) {

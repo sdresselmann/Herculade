@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lifting_progress_tracker/data/repository.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 /// A provider used for updating/reading [WorkoutTable] state.
@@ -13,11 +12,6 @@ class TableProvider extends ChangeNotifier {
   /// The disposed status off the provider.
   bool _disposed = false;
 
-  /// The instruction wether to fetch data from backend or just create an empty table.
-  ///
-  /// This is helpful for widget testing and mocking data.
-  final bool fetchEntries;
-
   /// The current training plan id, which has it's entries displayed
   /// inside the [WorkoutTable].
   final String trainingPlanId;
@@ -28,23 +22,19 @@ class TableProvider extends ChangeNotifier {
   /// table and notifies relevant components.
   /// It uses the [trainingPlanId] to fetch available data from the database
   /// while also keeping them in synch with the local data displayed.
-  TableProvider({required this.trainingPlanId, required this.fetchEntries}) {
-    if (fetchEntries == true) {
-      fetchTableData();
-    }
-  }
+  TableProvider({required this.trainingPlanId}) {}
 
   /// Get table entries for the current training plan.
   void fetchTableData() {
-    TrainingPlanRepository().fetchTrainingPlanData(trainingPlanId).then(
-          (fetchedEntries) => {
-            for (final fetchedEntry in fetchedEntries)
-              {
-                tableEntries.add(fetchedEntry),
-              },
-            notifyListeners(),
-          },
-        );
+    // TrainingPlanRepository().fetchTrainingPlanData(trainingPlanId).then(
+    //       (fetchedEntries) => {
+    //         for (final fetchedEntry in fetchedEntries)
+    //           {
+    //             // tableEntries.add(fetchedEntry),
+    //           },
+    //         notifyListeners(),
+    //       },
+    //     );
   }
 
   /// The number of entries inside the table.
@@ -82,8 +72,9 @@ class TableProvider extends ChangeNotifier {
   void updateTableEntriesData(List<PlanEntry> tableEntries) {
     final Map<String, dynamic> tableEntriesMap =
         PlanEntry.getEntriesAsMap(tableEntries);
+
     // TrainingPlanRepository()
-    // .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
+    //     .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
   }
 
   // Avoids the provider being called by asynchronous functions after it has been disposed.

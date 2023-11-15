@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
-import 'package:lifting_progress_tracker/pages/training_plan.dart';
-import 'package:lifting_progress_tracker/providers/environment_provider.dart';
 import 'package:lifting_progress_tracker/providers/table_provider.dart';
 import 'package:lifting_progress_tracker/widgets/table/add_entry_button.dart';
 import 'package:lifting_progress_tracker/widgets/table/entry_removal_button.dart';
@@ -25,22 +23,11 @@ Future<void> initTableProvider(WidgetTester tester) async {
           ChangeNotifierProvider(
             create: (context) => TableProvider(
               trainingPlanId: "trainingPlanId",
-              fetchEntries: false,
             ),
           ),
         ],
         child: WorkoutTable(),
       ),
-    ),
-  );
-  await tester.pumpAndSettle();
-}
-
-Future<void> initEnvironmentProvider(WidgetTester tester) async {
-  await tester.pumpWidget(
-    Provider(
-      create: (context) => EnvironmentProvider(environment: "TEST"),
-      child: createWidgetForTesting(child: TrainingPlanPage()),
     ),
   );
   await tester.pumpAndSettle();
@@ -53,7 +40,6 @@ void main() {
   testWidgets(
       '1. When training plan page is build a workout table widget is shown',
       (WidgetTester tester) async {
-    await initEnvironmentProvider(tester);
     expect(find.byType(WorkoutTable), findsOneWidget);
   });
 
