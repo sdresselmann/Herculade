@@ -1,18 +1,23 @@
+import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/data/network.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
+import 'package:lifting_progress_tracker/services/firestore_service.dart';
 
-class TrainingPlanRepository {
-  static final TrainingPlanRepository _instance = TrainingPlanRepository._();
+class TrainingPlanService {
+  static final TrainingPlanService _instance = TrainingPlanService._();
+  final String trainingPlanCollectionName = 'plan-entries';
 
-  factory TrainingPlanRepository() {
+  factory TrainingPlanService() {
     initialize();
     return _instance;
   }
 
-  TrainingPlanRepository._();
+  TrainingPlanService._();
 
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) {
-    return getRawTrainingPlanData().then(
+    return GetIt.I<FirestoreService>()
+        .getRawData(trainingPlanCollectionName)
+        .then(
       (fetchedEntries) {
         final Map<String, dynamic> currentPlanEntries =
             fetchedEntries[trainingPlanId] as Map<String, dynamic>;
@@ -31,7 +36,8 @@ class TrainingPlanRepository {
     final Map<String, dynamic> planEntries,
     String trainingPlanId,
   ) async {
-    final Map<String, dynamic> trainingPlans = await getRawTrainingPlanData();
+    final Map<String, dynamic> trainingPlans = await GetIt.I<FirestoreService>()
+        .getRawData(trainingPlanCollectionName);
 
     trainingPlans[trainingPlanId] = planEntries;
     uploadTrainingPlanData(trainingPlans);

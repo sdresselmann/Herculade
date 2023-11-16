@@ -8,15 +8,6 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 void initialize() {}
 
-Future<RawFirestoreData> getRawTrainingPlanData() async {
-  final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-      await firestore.collection(trainingPlanCollectionName).get();
-
-  final RawFirestoreData planEntries = querySnapshot.docs.first.data();
-
-  return planEntries;
-}
-
 /// Updates the already existing training plan data at Firebase.
 Future<void> uploadTrainingPlanData(RawFirestoreData trainingPlans) async {
   // firestoreInstance
