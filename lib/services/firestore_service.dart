@@ -16,4 +16,15 @@ class FirestoreService {
 
     return data;
   }
+
+  Future<void> uploadRawData(
+    String collectionName,
+    RawFirestoreData data,
+  ) async {
+    firestore
+        .collection(collectionName)
+        .add(data)
+        .then((value) => log.info("raw data uploaded"))
+        .catchError((error) => log.severe("Failed to add raw data: $error"));
+  }
 }
