@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
-import 'package:lifting_progress_tracker/services/firestore_service.dart';
+import 'package:lifting_progress_tracker/services/firebase/firestore_service.dart';
 
 class TrainingPlanService {
   static final TrainingPlanService _instance = TrainingPlanService._();

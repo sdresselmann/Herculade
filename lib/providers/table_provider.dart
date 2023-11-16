@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifting_progress_tracker/data/training_plan_service.dart';
+import 'package:lifting_progress_tracker/services/training_plan/training_plan_service.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
 
 /// A provider used for updating/reading [WorkoutTable] state.
