@@ -5,7 +5,7 @@ import 'package:lifting_progress_tracker/models/plan_entry.dart';
 import 'package:lifting_progress_tracker/providers/table_provider.dart';
 import 'package:lifting_progress_tracker/services/firebase/firestore_service.dart';
 import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_data.dart';
-import 'package:lifting_progress_tracker/services/firebase/mocks/mock_firestore_service.dart';
+import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_service.dart';
 import 'package:lifting_progress_tracker/types/types.dart';
 import 'package:lifting_progress_tracker/widgets/table/add_entry_button.dart';
 import 'package:lifting_progress_tracker/widgets/table/entry_removal_button.dart';
@@ -13,7 +13,7 @@ import 'package:lifting_progress_tracker/widgets/table/workout_table.dart';
 import 'package:provider/provider.dart';
 
 const String trainingPlanId = 'trainingplan1';
-final MockFirestoreService mockFirestoreService = MockFirestoreService();
+final FirestoreMockService firestoreMockService = FirestoreMockService();
 RawFirestoreData mockupData = {};
 
 Widget createWidgetForTesting({required Widget child}) {
@@ -41,10 +41,10 @@ Future<void> initTableProvider(WidgetTester tester) async {
 }
 
 Future<void> setupMocks() async {
-  GetIt.I.registerSingleton<FirestoreService>(mockFirestoreService);
+  GetIt.I.registerSingleton<FirestoreService>(firestoreMockService);
 
   final FirestoreMockData firestoreMockData =
-      mockFirestoreService.firestoreMockData;
+      firestoreMockService.firestoreMockData;
 
   firestoreMockData.setDefaultMockData();
   mockupData = firestoreMockData.data;
@@ -81,7 +81,7 @@ void main() {
   testWidgets(
       "3. When the table is initialized, while the database is empty, the table should be empty.",
       (WidgetTester tester) async {
-    mockFirestoreService.firestoreMockData.setEmptyMockData();
+    firestoreMockService.firestoreMockData.setEmptyMockData();
 
     await initTableProvider(tester);
     final context = tester.element(find.byType(WorkoutTable));
@@ -96,7 +96,7 @@ void main() {
 
   testWidgets("4. When the add entry button is tapped, a new entry is added.",
       (WidgetTester tester) async {
-    mockFirestoreService.firestoreMockData.setEmptyMockData();
+    firestoreMockService.firestoreMockData.setEmptyMockData();
     await initTableProvider(tester);
     final context = tester.element(find.byType(WorkoutTable));
 
@@ -117,7 +117,7 @@ void main() {
     await initTableProvider(tester);
     final context = tester.element(find.byType(WorkoutTable));
 
-    mockFirestoreService.firestoreMockData.setDefaultMockData();
+    firestoreMockService.firestoreMockData.setDefaultMockData();
     final countBefore =
         Provider.of<TableProvider>(context, listen: false).count;
 
@@ -133,7 +133,7 @@ void main() {
   testWidgets(
       "6. Check whether the count and number of entry removal buttons are the same.",
       (WidgetTester tester) async {
-    mockFirestoreService.firestoreMockData.setDefaultMockData();
+    firestoreMockService.firestoreMockData.setDefaultMockData();
 
     await initTableProvider(tester);
     final context = tester.element(find.byType(WorkoutTable));
@@ -145,7 +145,7 @@ void main() {
   testWidgets(
       "7. Check whether the count and number of entry removal buttons are the same, even after adding entries using the button to add entries. ",
       (WidgetTester tester) async {
-    mockFirestoreService.firestoreMockData.setDefaultMockData();
+    firestoreMockService.firestoreMockData.setDefaultMockData();
 
     await initTableProvider(tester);
     final context = tester.element(find.byType(WorkoutTable));
@@ -159,7 +159,7 @@ void main() {
   testWidgets(
       "8. Check whether the count and number of entry removal buttons are the same, even after removing entries using the buttons to delete entries.",
       (WidgetTester tester) async {
-    mockFirestoreService.firestoreMockData.setDefaultMockData();
+    firestoreMockService.firestoreMockData.setDefaultMockData();
 
     await initTableProvider(tester);
     final context = tester.element(find.byType(WorkoutTable));

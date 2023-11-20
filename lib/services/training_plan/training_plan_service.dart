@@ -18,7 +18,7 @@ class TrainingPlanService {
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) {
     return firestoreService.getRawData(trainingPlanCollectionName).then(
       (fetchedEntries) {
-        if (fetchedEntries.isEmpty || fetchedEntries == null) {
+        if (fetchedEntries.isEmpty) {
           return Future.value([]);
         }
 

@@ -5,6 +5,8 @@ import 'package:lifting_progress_tracker/constants/localization.dart';
 import 'package:lifting_progress_tracker/main.dart' as app;
 import 'package:lifting_progress_tracker/pages/exercise.dart';
 import 'package:lifting_progress_tracker/pages/training_plan.dart';
+import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_data.dart';
+import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_service.dart';
 
 Future<void> startApp(WidgetTester tester) async {
   app.main();
@@ -39,4 +41,9 @@ Future<void> navigateToExercise(WidgetTester tester) async {
   await tester.tap(find.widgetWithText(ElevatedButton, exerciseRouteLabel));
   await tester.pumpAndSettle();
   expect(find.byType(ExercisePage), findsOneWidget);
+}
+
+void connectToMockDatabase() {
+  final FirestoreMockData firestoreMockData = FirestoreMockData();
+  final FirestoreMockService firestoreMockService = FirestoreMockService();
 }

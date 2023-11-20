@@ -3,7 +3,7 @@ import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_
 import 'package:lifting_progress_tracker/types/types.dart';
 import 'package:mockito/mockito.dart';
 
-class MockFirestoreService extends Mock implements FirestoreService {
+class FirestoreMockService extends Mock implements FirestoreService {
   final FirestoreMockData firestoreMockData = FirestoreMockData();
 
   @override
