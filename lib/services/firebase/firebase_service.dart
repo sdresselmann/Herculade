@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/firebase_options.dart';
@@ -21,7 +20,7 @@ class FirebaseService {
 
   void setupFirestore() {
     GetIt.instance.registerSingleton<FirestoreService>(
-      FirestoreService(FirebaseFirestore.instance),
+      FirestoreService(),
     );
   }
 }

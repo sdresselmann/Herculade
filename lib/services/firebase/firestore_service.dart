@@ -4,9 +4,9 @@ import 'package:logging/logging.dart';
 
 class FirestoreService {
   final Logger log;
-  final FirebaseFirestore firestore;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  FirestoreService(this.firestore) : log = Logger('FirestoreService');
+  FirestoreService() : log = Logger('FirestoreService');
 
   Future<RawFirestoreData> getRawData(String collectionName) async {
     final QuerySnapshot<Map<String, dynamic>> querySnapshot =

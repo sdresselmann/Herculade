@@ -5,17 +5,23 @@ import 'package:lifting_progress_tracker/services/firebase/firestore_service.dar
 class TrainingPlanService {
   static final TrainingPlanService _instance = TrainingPlanService._();
   final String trainingPlanCollectionName = 'plan-entries';
-  final FirestoreService firestoreService = GetIt.instance<FirestoreService>();
+  late FirestoreService firestoreService;
 
   factory TrainingPlanService() {
     return _instance;
   }
 
-  TrainingPlanService._();
+  TrainingPlanService._() {
+    firestoreService = GetIt.instance<FirestoreService>();
+  }
 
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) {
     return firestoreService.getRawData(trainingPlanCollectionName).then(
       (fetchedEntries) {
+        if (fetchedEntries.isEmpty || fetchedEntries == null) {
+          return Future.value([]);
+        }
+
         final Map<String, dynamic> currentPlanEntries =
             fetchedEntries[trainingPlanId] as Map<String, dynamic>;
 
