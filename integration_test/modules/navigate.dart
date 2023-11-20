@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
+import 'package:lifting_progress_tracker/app.dart';
 import 'package:lifting_progress_tracker/constants/localization.dart';
-import 'package:lifting_progress_tracker/main.dart' as app;
 import 'package:lifting_progress_tracker/pages/exercise.dart';
 import 'package:lifting_progress_tracker/pages/training_plan.dart';
-import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_data.dart';
+import 'package:lifting_progress_tracker/services/firebase/firestore_service.dart';
 import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_service.dart';
 
 Future<void> startApp(WidgetTester tester) async {
-  app.main();
+  runApp(const MyApp());
   await tester.pumpAndSettle();
 }
 
@@ -44,6 +45,6 @@ Future<void> navigateToExercise(WidgetTester tester) async {
 }
 
 void connectToMockDatabase() {
-  final FirestoreMockData firestoreMockData = FirestoreMockData();
   final FirestoreMockService firestoreMockService = FirestoreMockService();
+  GetIt.I.registerSingleton<FirestoreService>(firestoreMockService);
 }
