@@ -15,6 +15,8 @@ import 'modules/navigate.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
+  setUpAll(() => connectToMockDatabase());
+
   group('navigation smoke tests:', () {
     testWidgets('start application without any errors', (tester) async {
       await startApp(tester);
@@ -44,6 +46,7 @@ void main() {
       await navigateToCalendar(tester);
       await tester
           .tap(find.widgetWithText(ElevatedButton, trainingDayRouteLabel));
+
       await tester.pumpAndSettle();
       expect(find.byType(TrainingDayPage), findsOneWidget);
     });

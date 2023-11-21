@@ -11,4 +11,4 @@
 
 ## Reporting a Vulnerability
 
-stephan.dresselmann@fh-bielefeld.de
+sdresselmann@ahmd.de

@@ -23,11 +23,6 @@ jobs:
         java-version: '11'
     - uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.0.5'
-
+        flutter-version: '3.13.9'
     - run: flutter analyze
-    - run: flutter format lib
-
-
-
-        
+    - run: dart format lib

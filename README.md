@@ -1,8 +1,8 @@
 [![build-app-release](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/build.yml/badge.svg)](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/build.yml)
 [![code-analysis](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/code_analysis.yml/badge.svg)](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/code_analysis.yml)
 [![flutter-tests](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/flutter_tests.yml/badge.svg)](https://github.com/sdresselmann/Lifting-Progress-Tracker/actions/workflows/flutter_tests.yml)
-
 [![style: lint](https://img.shields.io/badge/style-lint-4BC0F5.svg)](https://pub.dev/packages/lint)
+
 # Herculade
 
 This app is a fitness planner where users can add and configure their own training plans. These training plans can be selected and saved via a calendar for corresponding training days. It works on Windows, Mac and Linux.
@@ -16,13 +16,16 @@ This project extends already existing functionality and makes it usable for mult
 # Flutter
 
 ## Setup
-
 ```
-flutter start
+flutter run -d chrome
 ```
 ## Tests
 ```
 flutter test
+```
+## Integration Tests
+```
+flutter test -d linux integration_test/regression.dart
 ```
 ## Code analyzing and linting
 ```
@@ -30,7 +33,7 @@ flutter analyze
 ```
 ## Code formating
 ```
-flutter format lib
+dart format lib
 ```
 ## Build for release 
 

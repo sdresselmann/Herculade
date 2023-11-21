@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lifting_progress_tracker/data/repository.dart';
 import 'package:lifting_progress_tracker/models/plan_entry.dart';
+import 'package:lifting_progress_tracker/services/training_plan/training_plan_service.dart';
 
 /// A provider used for updating/reading [WorkoutTable] state.
 ///
@@ -13,11 +13,6 @@ class TableProvider extends ChangeNotifier {
   /// The disposed status off the provider.
   bool _disposed = false;
 
-  /// The instruction wether to fetch data from backend or just create an empty table.
-  ///
-  /// This is helpful for widget testing and mocking data.
-  final bool fetchEntries;
-
   /// The current training plan id, which has it's entries displayed
   /// inside the [WorkoutTable].
   final String trainingPlanId;
@@ -28,15 +23,13 @@ class TableProvider extends ChangeNotifier {
   /// table and notifies relevant components.
   /// It uses the [trainingPlanId] to fetch available data from the database
   /// while also keeping them in synch with the local data displayed.
-  TableProvider({required this.trainingPlanId, required this.fetchEntries}) {
-    if (fetchEntries == true) {
-      fetchTableData();
-    }
+  TableProvider({required this.trainingPlanId}) {
+    fetchTableData();
   }
 
   /// Get table entries for the current training plan.
   void fetchTableData() {
-    TrainingPlanRepository().fetchTrainingPlanData(trainingPlanId).then(
+    TrainingPlanService().fetchTrainingPlanData(trainingPlanId).then(
           (fetchedEntries) => {
             for (final fetchedEntry in fetchedEntries)
               {
@@ -82,7 +75,8 @@ class TableProvider extends ChangeNotifier {
   void updateTableEntriesData(List<PlanEntry> tableEntries) {
     final Map<String, dynamic> tableEntriesMap =
         PlanEntry.getEntriesAsMap(tableEntries);
-    TrainingPlanRepository()
+
+    TrainingPlanService()
         .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
   }
 
