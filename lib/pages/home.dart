@@ -65,10 +65,9 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blueAccent[800],
         onTap: _onItemTapped,
-        // When using more than 3 items inside of a bottom navigation bar the
-        // type is automatically changed to "shifting".
-        //This messes with styling/formating which is not desired and requires
-        //the type to be manually set.
+
+        // When using more than 3 items inside of a bottom navigation bar the type is automatically changed to "shifting".
+        // This messes with styling/formating which is not desired and requires the type to be manually set.
         type: BottomNavigationBarType.fixed,
       ),
     );

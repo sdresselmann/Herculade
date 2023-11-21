@@ -15,6 +15,7 @@ class AuthService {
           await auth.signInWithEmailAndPassword(
         // ignore: undefined_identifier
         email: AuthConfig.testUserEmail,
+
         // ignore: undefined_identifier
         password: AuthConfig.testUserPassword,
       );

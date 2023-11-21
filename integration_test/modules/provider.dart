@@ -4,7 +4,6 @@ import 'package:lifting_progress_tracker/providers/table_provider.dart';
 import 'package:lifting_progress_tracker/widgets/table/workout_table.dart';
 import 'package:provider/provider.dart';
 
-/// Test data for table provider.
 final List<PlanEntry> testData = [PlanEntry(), PlanEntry()];
 
 Future<void> setTableProviderData(WidgetTester tester) async {

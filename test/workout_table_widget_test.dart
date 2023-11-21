@@ -72,9 +72,7 @@ void main() {
     Provider.of<TableProvider>(context, listen: false).tableEntries = testData;
     expect(
       Provider.of<TableProvider>(context, listen: false).count,
-      equals(
-        testData.length,
-      ),
+      equals(testData.length),
     );
   });
 
@@ -88,10 +86,8 @@ void main() {
 
     final bool isEmpty =
         Provider.of<TableProvider>(context, listen: false).tableEntries.isEmpty;
-    expect(
-      isEmpty,
-      true,
-    );
+
+    expect(isEmpty, true);
   });
 
   testWidgets("4. When the add entry button is tapped, a new entry is added.",

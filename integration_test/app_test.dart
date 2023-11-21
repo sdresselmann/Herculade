@@ -46,6 +46,7 @@ void main() {
       await navigateToCalendar(tester);
       await tester
           .tap(find.widgetWithText(ElevatedButton, trainingDayRouteLabel));
+
       await tester.pumpAndSettle();
       expect(find.byType(TrainingDayPage), findsOneWidget);
     });
