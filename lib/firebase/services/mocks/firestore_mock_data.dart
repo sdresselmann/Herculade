@@ -1,4 +1,4 @@
-import 'package:lifting_progress_tracker/types/types.dart';
+import 'package:lifting_progress_tracker/firebase/types.dart';
 
 class FirestoreMockData {
   RawFirestoreData data = {};
