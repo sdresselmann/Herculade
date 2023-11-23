@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/app.dart';
-import 'package:lifting_progress_tracker/constants/localization.dart';
+import 'package:lifting_progress_tracker/core/constants/localization.dart';
+import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
+import 'package:lifting_progress_tracker/firebase/services/mocks/firestore_mock_service.dart';
 import 'package:lifting_progress_tracker/pages/exercise.dart';
 import 'package:lifting_progress_tracker/pages/training_plan.dart';
-import 'package:lifting_progress_tracker/services/firebase/firestore_service.dart';
-import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_service.dart';
 
 Future<void> startApp(WidgetTester tester) async {
   runApp(const MyApp());

@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lifting_progress_tracker/config/auth_config.dart';
 import 'package:logging/logging.dart';
 
-class AuthService {
+class FirebaseAuthService {
   final Logger log;
-  AuthService() : log = Logger('AuthService');
+  FirebaseAuthService() : log = Logger('FirebaseAuthService');
 
   Future<void> signInTestUser() async {
     final FirebaseAuth auth = FirebaseAuth.instance;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lifting_progress_tracker/constants/localization.dart';
-import 'package:lifting_progress_tracker/providers/table_provider.dart';
-import 'package:lifting_progress_tracker/widgets/table/workout_table.dart';
+import 'package:lifting_progress_tracker/core/constants/localization.dart';
+import 'package:lifting_progress_tracker/training_plan/provider/table_provider.dart';
+import 'package:lifting_progress_tracker/training_plan/widgets/table/workout_table.dart';
 import 'package:provider/provider.dart';
 
 const String _title = trainingplanListRouteLabel;

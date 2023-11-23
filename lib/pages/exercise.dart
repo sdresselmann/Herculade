@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifting_progress_tracker/constants/localization.dart';
+import 'package:lifting_progress_tracker/core/constants/localization.dart';
 
 const String _title = exerciseRouteLabel;
 

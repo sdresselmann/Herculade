@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
-import 'package:lifting_progress_tracker/models/plan_entry.dart';
-import 'package:lifting_progress_tracker/providers/table_provider.dart';
-import 'package:lifting_progress_tracker/services/firebase/firestore_service.dart';
-import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_data.dart';
-import 'package:lifting_progress_tracker/services/firebase/mocks/firestore_mock_service.dart';
-import 'package:lifting_progress_tracker/types/types.dart';
-import 'package:lifting_progress_tracker/widgets/table/add_entry_button.dart';
-import 'package:lifting_progress_tracker/widgets/table/entry_removal_button.dart';
-import 'package:lifting_progress_tracker/widgets/table/workout_table.dart';
+import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
+import 'package:lifting_progress_tracker/firebase/services/mocks/firestore_mock_data.dart';
+import 'package:lifting_progress_tracker/firebase/services/mocks/firestore_mock_service.dart';
+import 'package:lifting_progress_tracker/firebase/types.dart';
+import 'package:lifting_progress_tracker/training_plan/models/plan_entry.dart';
+import 'package:lifting_progress_tracker/training_plan/provider/table_provider.dart';
+import 'package:lifting_progress_tracker/training_plan/widgets/table/add_entry_button.dart';
+import 'package:lifting_progress_tracker/training_plan/widgets/table/entry_removal_button.dart';
+import 'package:lifting_progress_tracker/training_plan/widgets/table/workout_table.dart';
 import 'package:provider/provider.dart';
 
 const String trainingPlanId = 'trainingplan1';
