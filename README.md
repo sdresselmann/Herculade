@@ -15,10 +15,13 @@ This project extends already existing functionality and makes it usable for mult
 
 # Flutter
 
-## Setup
+## Start
 ```
 flutter run -d chrome
 ```
+
+This builds and runs the app in your webbrowser. For using the app on Android and iOS, refer to the [Build for Release Section](#build-for-release).
+
 ## Tests
 ```
 flutter test
@@ -45,7 +48,7 @@ flutter pub get
 ```
 flutter build apk
 ```
-### 3. Build Appbundle
+### 3. Build App Bundle
 ```
 flutter build appbundle
 ```

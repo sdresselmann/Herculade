@@ -1,26 +1,8 @@
 class PlanEntry {
-  /// The name of the Exercise entry.
   String exerciseName;
-
-  /// The weight value plus the unit for the exercise entry:
-  /// ```dart
-  /// PlanEntry planEntry = PlanEntry();
-  /// planEntry.weight = '20 kg';
-  /// ```
   String weight;
-
-  /// The number of repeats for the exercise entry exercise.
-  ///
-  /// The exact form of the repeats doesn't matter since its not really
-  /// manipulated, but its recommended to use this format:
-  /// ```dart
-  /// PlanEntry planEntry = PlanEntry();
-  /// planEntry.repeats = '3x15';
-  /// ```
-  /// Meaning 3 Sets of each 15 repeats.
   String repeats;
 
-  /// A table entry as used inside of the [WorkoutTable] widget.
   PlanEntry({
     this.exerciseName = "exerciseName",
     this.weight = "weight",
