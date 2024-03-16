@@ -17,10 +17,8 @@ class TableProvider extends ChangeNotifier {
   /// inside the [WorkoutTable].
   final String trainingPlanId;
 
-  /// A provider used for updating/reading [WorkoutTable] state.
+  /// Create an instance of [TableProvider].
   ///
-  /// This provider keeps track of any changes made to the entries inside the
-  /// table and notifies relevant components.
   /// It uses the [trainingPlanId] to fetch available data from the database
   /// while also keeping them in synch with the local data displayed.
   TableProvider({required this.trainingPlanId}) {
