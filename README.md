@@ -38,6 +38,12 @@ flutter analyze
 ```
 dart format lib
 ```
+
+## Generate Docs
+```
+dart doc
+```
+
 ## Build for release 
 
 ### 1. Download all dependencies
