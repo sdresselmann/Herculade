@@ -14,7 +14,9 @@ class AuthService {
           (User user) => {
             _user = user,
             _logger.log(
-                Level.INFO, '${user.email} successfully authenticated.',),
+              Level.INFO,
+              '${user.email} successfully authenticated.',
+            ),
           },
         );
   }

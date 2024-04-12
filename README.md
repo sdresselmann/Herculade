@@ -34,6 +34,9 @@ flutter test -d linux integration_test/regression.dart
 ```
 flutter analyze
 ```
+```
+dart analyze
+```
 ## Code formating
 ```
 dart format lib
