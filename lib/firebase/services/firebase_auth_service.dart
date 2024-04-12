@@ -12,8 +12,8 @@ class FirebaseAuthService {
     try {
       final UserCredential userCredential =
           await auth.signInWithEmailAndPassword(
-            email: AuthConfig.testUserEmail,
-            password: AuthConfig.testUserPassword,
+        email: AuthConfig.testUserEmail,
+        password: AuthConfig.testUserPassword,
       );
       log.info("Signed in: ${userCredential.user!.email}");
       return Future.value(userCredential.user);

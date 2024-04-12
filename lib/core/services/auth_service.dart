@@ -10,15 +10,16 @@ class AuthService {
 
   void authenticateUser() {
     final FirebaseAuthService authService = FirebaseAuthService();
-    authService.signInTestUser()
-        .then((User user) => {
-          _user = user,
-          _logger.log(Level.INFO, '${user.email} successfully authenticated.'),
-    },);
+    authService.signInTestUser().then(
+          (User user) => {
+            _user = user,
+            _logger.log(
+                Level.INFO, '${user.email} successfully authenticated.'),
+          },
+        );
   }
 
   User? getAuthenticatedUser() {
     return _user;
   }
-
 }

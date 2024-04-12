@@ -66,7 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1090356891582',
     projectId: 'lifting-progress-tracker',
     storageBucket: 'lifting-progress-tracker.appspot.com',
-    iosClientId: '1090356891582-itlmdg551rp2ph041iq6smcsheppu1m0.apps.googleusercontent.com',
+    iosClientId:
+        '1090356891582-itlmdg551rp2ph041iq6smcsheppu1m0.apps.googleusercontent.com',
     iosBundleId: 'com.example.liftingProgressTracker',
   );
 
@@ -76,7 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1090356891582',
     projectId: 'lifting-progress-tracker',
     storageBucket: 'lifting-progress-tracker.appspot.com',
-    iosClientId: '1090356891582-itlmdg551rp2ph041iq6smcsheppu1m0.apps.googleusercontent.com',
+    iosClientId:
+        '1090356891582-itlmdg551rp2ph041iq6smcsheppu1m0.apps.googleusercontent.com',
     iosBundleId: 'com.example.liftingProgressTracker',
   );
 }
