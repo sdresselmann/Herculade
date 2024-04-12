@@ -4,22 +4,30 @@ import 'package:logging/logging.dart';
 
 class FirebaseAuthService {
   final Logger log;
+
   FirebaseAuthService() : log = Logger('FirebaseAuthService');
 
   Future<User> signInTestUser() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-
     try {
-      final UserCredential userCredential =
-          await auth.signInWithEmailAndPassword(
-        email: AuthConfig.testUserEmail,
-        password: AuthConfig.testUserPassword,
+      final UserCredential userCredential = await _signIn(
+        AuthConfig.testUserEmail,
+        AuthConfig.testUserPassword,
       );
       log.info("Signed in: ${userCredential.user!.email}");
+
       return Future.value(userCredential.user);
     } catch (e) {
       log.severe("Error signing in: $e");
       throw Exception();
     }
+  }
+
+  Future<UserCredential> _signIn(String email, String password) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+
+    return auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
   }
 }
