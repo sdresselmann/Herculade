@@ -5,7 +5,8 @@
 
 # Herculade
 
-This app is a fitness planner where users can add and configure their own training plans. These training plans can be selected and saved via a calendar for corresponding training days. It works on Windows, Mac and Linux.
+This app is a fitness planner where users can add and configure their own training plans. These training plans can be
+selected and saved via a calendar for corresponding training days. It works on Windows, Mac and Linux.
 
 Remake of the "FitHub" project made for the mobile application module:
 
@@ -16,48 +17,91 @@ This project extends already existing functionality and makes it usable for mult
 # Flutter
 
 ## Start
+
 ```
 flutter run -d chrome
 ```
 
-This builds and runs the app in your webbrowser. For using the app on Android and iOS, refer to the [Build for Release Section](#build-for-release).
+This builds and runs the app in your webbrowser. For using the app on Android and iOS, refer to
+the [Build for Release Section](#build-for-release).
 
 ## Tests
+
 ```
 flutter test
 ```
+
 ## Integration Tests
+
 ```
 flutter test -d linux integration_test/regression.dart
 ```
+
 ## Code analyzing and linting
+
 ```
 flutter analyze
 ```
+
 ```
 dart analyze
 ```
+
 ## Code formating
+
 ```
 dart format lib
 ```
 
 ## Generate Docs
+
 ```
 dart doc
 ```
 
-## Build for release 
+## Build for release
 
 ### 1. Download all dependencies
+
 ```
 flutter pub get
 ```
+
 ### 2. Build APK
+
 ```
 flutter build apk
 ```
+
 ### 3. Build App Bundle
+
 ```
 flutter build appbundle
 ```
+
+# Commit Hooks
+
+For convenience this project uses Husky Pre-Commit hooks for
+analyzing and formatting the code.
+
+Add husky to your dev dependencies in pubspec.yaml
+
+```
+dart pub add --dev husky
+```
+
+Enable Git Hooks
+
+```
+dart run husky install
+```
+
+By default, this projects provides hooks for the following commands:
+
+```
+flutter analyze
+dart analyze
+flutter format lib
+```
+
+To create your own Hooks or in case this documentation is outdated check: https://pub.dev/packages/husky
