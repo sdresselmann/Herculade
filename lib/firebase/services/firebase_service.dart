@@ -1,7 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/firebase/firebase_options.dart';
-import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
 import 'package:logging/logging.dart';
 
 class FirebaseService {
@@ -13,14 +11,7 @@ class FirebaseService {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     ).then((value) {
-      setupFirestore();
       log.info("Firebase App initialized");
     });
-  }
-
-  void setupFirestore() {
-    GetIt.instance.registerSingleton<FirestoreService>(
-      FirestoreService(),
-    );
   }
 }

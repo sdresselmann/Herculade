@@ -1,16 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get_it/get_it.dart';
-import 'package:lifting_progress_tracker/core/interfaces/injectable.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_auth_service.dart';
 import 'package:logging/logging.dart';
 
-class AuthService implements Injectable {
+class AuthService {
   final Logger _logger;
   User? _user;
 
-  AuthService() : _logger = Logger('AuthService') {
-    _init();
-  }
+  AuthService() : _logger = Logger('AuthService');
 
   void authenticateUser() {
     final FirebaseAuthService authService = FirebaseAuthService();
@@ -35,14 +31,5 @@ class AuthService implements Injectable {
 
   String? getAuthenticatedUserUID() {
     return _user?.uid;
-  }
-
-  void _init() {
-    registerInjectable();
-  }
-
-  @override
-  void registerInjectable() {
-    GetIt.I.registerSingleton<AuthService>(this);
   }
 }

@@ -3,17 +3,9 @@ import 'package:lifting_progress_tracker/firebase/services/firestore_service.dar
 import 'package:lifting_progress_tracker/training_plan/models/plan_entry.dart';
 
 class TrainingPlanService {
-  static final TrainingPlanService _instance = TrainingPlanService._();
+  final FirestoreService firestoreService = GetIt.I.get<FirestoreService>();
+
   final String trainingPlanCollectionName = 'plan-entries';
-  late FirestoreService firestoreService;
-
-  factory TrainingPlanService() {
-    return _instance;
-  }
-
-  TrainingPlanService._() {
-    firestoreService = GetIt.instance<FirestoreService>();
-  }
 
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) {
     return firestoreService.getRawData(trainingPlanCollectionName).then(

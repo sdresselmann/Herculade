@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/training_plan/models/plan_entry.dart';
 import 'package:lifting_progress_tracker/training_plan/services/training_plan_service.dart';
 
@@ -7,6 +8,9 @@ import 'package:lifting_progress_tracker/training_plan/services/training_plan_se
 /// This provider keeps track of any changes made to the entries inside the
 /// table and notifies relevant components.
 class TableProvider extends ChangeNotifier {
+  final TrainingPlanService trainingPlanService =
+      GetIt.I.get<TrainingPlanService>();
+
   /// The entries inside of the [WorkoutTable].
   late List<PlanEntry> tableEntries = [];
 
@@ -20,14 +24,14 @@ class TableProvider extends ChangeNotifier {
   /// Create an instance of [TableProvider].
   ///
   /// It uses the [trainingPlanId] to fetch available data from the database
-  /// while also keeping them in synch with the local data displayed.
+  /// while also keeping them in sync with the local data displayed.
   TableProvider({required this.trainingPlanId}) {
     fetchTableData();
   }
 
   /// Get table entries for the current training plan.
   void fetchTableData() {
-    TrainingPlanService().fetchTrainingPlanData(trainingPlanId).then(
+    trainingPlanService.fetchTrainingPlanData(trainingPlanId).then(
           (fetchedEntries) => {
             for (final fetchedEntry in fetchedEntries)
               {
@@ -74,8 +78,7 @@ class TableProvider extends ChangeNotifier {
     final Map<String, dynamic> tableEntriesMap =
         PlanEntry.getEntriesAsMap(tableEntries);
 
-    TrainingPlanService()
-        .updateTrainingPlanData(tableEntriesMap, trainingPlanId);
+    trainingPlanService.updateTrainingPlanData(tableEntriesMap, trainingPlanId);
   }
 
   // Avoids the provider being called by asynchronous functions after it has been disposed.
