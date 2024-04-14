@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:lifting_progress_tracker/firebase/services/firebase_auth_service.dart';
+import 'package:get_it/get_it.dart';
+import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 import 'package:logging/logging.dart';
 
 class AuthService {
-  final FirebaseAuthService _firebaseAuthService = FirebaseAuthService();
+  final FirebaseService _firebaseService = GetIt.I.get<FirebaseService>();
 
   final Logger _logger;
   User? _user;
@@ -11,7 +12,7 @@ class AuthService {
   AuthService() : _logger = Logger('AuthService');
 
   void authenticateUser() {
-    _firebaseAuthService
+    _firebaseService
         .signInTestUser()
         .then(
           (User user) => {
@@ -27,23 +28,7 @@ class AuthService {
         );
   }
 
-  bool isAuthenticated() {
-    return _firebaseAuthService.isAuthenticated();
-  }
-
-  User? getAuthenticatedUser() {
-    return _user;
-  }
-
   String getAuthenticatedUserEmail() {
     return _user?.email ?? "user not authenticated";
-  }
-
-  String? getAuthenticatedUserUID() {
-    return _user?.uid;
-  }
-
-  Stream<User?> authStateChanges() {
-    return _firebaseAuthService.authStateChanges();
   }
 }
