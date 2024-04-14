@@ -10,15 +10,15 @@ void setupAppUtils() {
 
   setupLogging();
   setupFirebase();
-
-  initializeUserInformation();
 }
 
 void setupFirebase() {
   FirebaseService()
       .initializeFirebaseApp()
       // authenticate with test user for dev purposes!
-      .then((value) => authenticateUser());
+      .then(
+        (value) => {authenticateUser(), initializeUserInformation()},
+      );
 }
 
 void authenticateUser() {

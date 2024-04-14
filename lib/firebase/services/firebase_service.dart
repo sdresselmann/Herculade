@@ -5,15 +5,17 @@ import 'package:lifting_progress_tracker/firebase/firebase_options.dart';
 import 'package:logging/logging.dart';
 
 class FirebaseService {
-  final Logger log;
+  final Logger _logger;
 
-  FirebaseService() : log = Logger('FirebaseService');
+  FirebaseService() : _logger = Logger('FirebaseService');
 
   Future<void> initializeFirebaseApp() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     ).then((value) {
-      log.info("Firebase App initialized");
+      _logger.info("Firebase App initialized");
+    }).catchError((error) {
+      _logger.severe("Firebase initialization failed", error);
     });
   }
 }

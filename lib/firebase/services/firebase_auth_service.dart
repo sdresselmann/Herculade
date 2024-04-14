@@ -20,7 +20,7 @@ class FirebaseAuthService {
       return Future.value(userCredential.user);
     } catch (e) {
       log.severe("Error signing in: $e");
-      throw Exception();
+      throw Exception("User needs to be signed in!");
     }
   }
 

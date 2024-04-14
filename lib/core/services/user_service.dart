@@ -9,7 +9,6 @@ class UserService {
   UserService() : _logger = Logger("UserService");
 
   void initializeCurrentUser() {
-    // print(authService.isAuthenticated());
     _logger.log(Level.INFO, "");
   }
 

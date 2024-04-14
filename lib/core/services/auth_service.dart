@@ -11,7 +11,9 @@ class AuthService {
   AuthService() : _logger = Logger('AuthService');
 
   void authenticateUser() {
-    _firebaseAuthService.signInTestUser().then(
+    _firebaseAuthService
+        .signInTestUser()
+        .then(
           (User user) => {
             _user = user,
             _logger.log(
@@ -19,6 +21,9 @@ class AuthService {
               '${user.email} successfully authenticated.',
             ),
           },
+        )
+        .catchError(
+          (error) => {_logger.severe("Authentication failed", error)},
         );
   }
 
