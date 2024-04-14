@@ -31,8 +31,8 @@ class TrainingPlanService {
     final Map<String, dynamic> planEntries,
     String trainingPlanId,
   ) async {
-    final Map<String, dynamic> trainingPlans = await GetIt.I<FirestoreService>()
-        .getRawData(trainingPlanCollectionName);
+    final Map<String, dynamic> trainingPlans =
+        await firestoreService.getRawData(trainingPlanCollectionName);
 
     trainingPlans[trainingPlanId] = planEntries;
     firestoreService.uploadRawData(trainingPlanCollectionName, trainingPlans);

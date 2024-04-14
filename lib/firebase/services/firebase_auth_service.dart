@@ -3,6 +3,8 @@ import 'package:lifting_progress_tracker/config/auth_config.dart';
 import 'package:logging/logging.dart';
 
 class FirebaseAuthService {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
   final Logger log;
 
   FirebaseAuthService() : log = Logger('FirebaseAuthService');
@@ -23,11 +25,17 @@ class FirebaseAuthService {
   }
 
   Future<UserCredential> _signIn(String email, String password) {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-
     return auth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
+  }
+
+  bool isAuthenticated() {
+    return auth.currentUser != null;
+  }
+
+  Stream<User?> authStateChanges() {
+    return auth.authStateChanges();
   }
 }
