@@ -5,10 +5,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:lifting_progress_tracker/config/auth_config.dart';
 import 'package:lifting_progress_tracker/firebase/firebase_options.dart';
 import 'package:logging/logging.dart';
+import 'package:rxdart/rxdart.dart';
 
 class FirebaseService {
-  bool isInitialized = false;
-  final StreamController<bool> _controller = StreamController();
+  final BehaviorSubject<bool> _isInitializationComplete = BehaviorSubject();
 
   final Logger _logger;
   late final FirebaseAuth _auth;
@@ -20,7 +20,6 @@ class FirebaseService {
       options: DefaultFirebaseOptions.currentPlatform,
     ).then((value) {
       _auth = FirebaseAuth.instance;
-      isInitialized = true;
       _notifyListeners();
       _logger.info("Firebase App initialized");
     }).catchError((error) {
@@ -29,12 +28,12 @@ class FirebaseService {
   }
 
   void _notifyListeners() {
-    _controller.add(true);
-    _controller.close();
+    _isInitializationComplete.add(true);
+    _isInitializationComplete.close();
   }
 
   Stream<bool> isInitializationComplete() {
-    return _controller.stream;
+    return _isInitializationComplete.stream;
   }
 
   // Authenticate with test user for dev purposes!

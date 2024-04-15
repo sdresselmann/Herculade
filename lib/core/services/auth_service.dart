@@ -13,7 +13,7 @@ class AuthService {
 
   void authenticateUser() {
     _firebaseService.isInitializationComplete().listen((isInitialized) {
-      if (!_firebaseService.isInitialized) return;
+      if (!isInitialized) return;
 
       _firebaseService
           .signInTestUser()
