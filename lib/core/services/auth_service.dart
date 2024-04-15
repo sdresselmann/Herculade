@@ -12,23 +12,27 @@ class AuthService {
   AuthService() : _logger = Logger('AuthService');
 
   void authenticateUser() {
-    _firebaseService
-        .signInTestUser()
-        .then(
-          (User user) => {
-            _user = user,
-            _logger.log(
-              Level.INFO,
-              '${user.email} successfully authenticated.',
-            ),
-          },
-        )
-        .catchError(
-          (error) => {_logger.severe("Authentication failed", error)},
-        );
+    _firebaseService.isInitializationComplete().listen((isInitialized) {
+      if (!_firebaseService.isInitialized) return;
+
+      _firebaseService
+          .signInTestUser()
+          .then(
+            (User user) => {
+              _user = user,
+              _logger.log(
+                Level.INFO,
+                '${user.email} successfully authenticated.',
+              ),
+            },
+          )
+          .catchError(
+            (error) => {_logger.severe("Authentication failed:", error)},
+          );
+    });
   }
 
   String getAuthenticatedUserEmail() {
-    return _user?.email ?? "user not authenticated";
+    return _user?.email ?? "user not authenticated.";
   }
 }

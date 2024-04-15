@@ -1,15 +1,17 @@
-import 'package:get_it/get_it.dart';
-import 'package:lifting_progress_tracker/core/services/auth_service.dart';
 import 'package:logging/logging.dart';
 
 class UserService {
   final Logger _logger;
-  final AuthService authService = GetIt.I.get<AuthService>();
+
+  // final AuthService _authService = GetIt.I.get<AuthService>();
+  // final FirebaseService _firebaseService = GetIt.I.get<FirebaseService>();
 
   UserService() : _logger = Logger("UserService");
 
   void initializeCurrentUser() {
-    _logger.log(Level.INFO, "");
+    // if (!_firebaseService.isInitialized) return;
+
+    _logger.log(Level.INFO, "Getting User Info...");
   }
 
 /** if (is User authenticated)

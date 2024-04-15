@@ -8,6 +8,7 @@ import 'package:logging/logging.dart';
 
 class FirebaseService {
   bool isInitialized = false;
+  final StreamController<bool> _controller = StreamController();
 
   final Logger _logger;
   late final FirebaseAuth _auth;
@@ -20,10 +21,20 @@ class FirebaseService {
     ).then((value) {
       _auth = FirebaseAuth.instance;
       isInitialized = true;
+      _notifyListeners();
       _logger.info("Firebase App initialized");
     }).catchError((error) {
       _logger.severe("Firebase initialization failed", error);
     });
+  }
+
+  void _notifyListeners() {
+    _controller.add(true);
+    _controller.close();
+  }
+
+  Stream<bool> isInitializationComplete() {
+    return _controller.stream;
   }
 
   // Authenticate with test user for dev purposes!
