@@ -8,12 +8,10 @@ void setupAppUtils() {
   registerLazySingletons();
 
   setupLogging();
-  setupFirebase();
+  setup();
 }
 
-Future<void> setupFirebase() async {
+void setup() {
   GetIt.I.get<FirebaseService>().initializeFirebaseApp();
-
-  final UserService userService = GetIt.I.get<UserService>();
-  userService.initializeUser();
+  GetIt.I.get<UserService>().initializeUser();
 }
