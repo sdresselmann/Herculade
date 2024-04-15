@@ -7,6 +7,9 @@ class UserService {
   final Logger _logger;
 
   final FirebaseService _firebaseService = GetIt.I.get<FirebaseService>();
+
+  //final FirestoreService _firestoreService = GetIt.I.get<FirestoreService>();
+
   late final User user;
 
   UserService() : _logger = Logger("UserService");
