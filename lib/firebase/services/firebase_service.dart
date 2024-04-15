@@ -8,7 +8,7 @@ import 'package:logging/logging.dart';
 import 'package:rxdart/rxdart.dart';
 
 class FirebaseService {
-  final BehaviorSubject<bool> _isInitializationComplete = BehaviorSubject();
+  final BehaviorSubject<bool> _isInitializationComplete$ = BehaviorSubject();
 
   final Logger _logger;
   late final FirebaseAuth _auth;
@@ -28,12 +28,12 @@ class FirebaseService {
   }
 
   void _notifyListeners() {
-    _isInitializationComplete.add(true);
-    _isInitializationComplete.close();
+    _isInitializationComplete$.add(true);
+    _isInitializationComplete$.close();
   }
 
   Stream<bool> isInitializationComplete() {
-    return _isInitializationComplete.stream;
+    return _isInitializationComplete$.stream;
   }
 
   // Authenticate with test user for dev purposes!
