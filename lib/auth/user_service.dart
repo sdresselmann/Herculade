@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:lifting_progress_tracker/firebase/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
 import 'package:lifting_progress_tracker/training_plan/default_training_plan_data.dart';
@@ -34,8 +35,10 @@ class UserService {
   }
 
   Future<void> _createTrainingPlanForUser() async {
-    final bool hasUserPlanEntries =
-        await _firestoreService.documentExists("plan-entries", user.uid);
+    final bool hasUserPlanEntries = await _firestoreService.documentExists(
+      CollectionNames.planEntries,
+      user.uid,
+    );
 
     if (hasUserPlanEntries) return;
 
@@ -45,7 +48,7 @@ class UserService {
     );
 
     await _firestoreService.createDocument(
-      "plan-entries",
+      CollectionNames.planEntries,
       user.uid,
       defaultTrainingPlan,
     );

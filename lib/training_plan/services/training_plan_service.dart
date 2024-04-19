@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/auth/user_service.dart';
+import 'package:lifting_progress_tracker/firebase/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
 import 'package:lifting_progress_tracker/firebase/types.dart';
 import 'package:lifting_progress_tracker/training_plan/models/plan_entry.dart';
@@ -8,7 +9,7 @@ class TrainingPlanService {
   final FirestoreService _firestoreService = GetIt.I.get<FirestoreService>();
   final UserService _userService = GetIt.I.get<UserService>();
 
-  final String trainingPlanCollectionName = 'plan-entries';
+  final String trainingPlanCollectionName = CollectionNames.planEntries;
 
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) async {
     final trainingPlans = await _firestoreService.getRawData(
