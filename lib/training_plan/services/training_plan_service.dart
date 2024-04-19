@@ -20,9 +20,8 @@ class TrainingPlanService {
       return Future.value([]);
     }
 
-    const hardcodedPlanId = "trainingplan1";
     final Map<String, dynamic> currentPlanEntries =
-        trainingPlans[hardcodedPlanId] as Map<String, dynamic>;
+        trainingPlans[trainingPlanId] as Map<String, dynamic>;
 
     final List<PlanEntry> entries = [];
     currentPlanEntries.forEach((key, value) {
