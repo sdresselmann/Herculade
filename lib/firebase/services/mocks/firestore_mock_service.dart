@@ -7,7 +7,10 @@ class FirestoreMockService extends Mock implements FirestoreService {
   final FirestoreMockData firestoreMockData = FirestoreMockData();
 
   @override
-  Future<RawFirestoreData> getRawData(String documentReference) async {
+  Future<RawFirestoreData> getRawData(
+    String documentReference,
+    String documentId,
+  ) async {
     return firestoreMockData.getAsync();
   }
 

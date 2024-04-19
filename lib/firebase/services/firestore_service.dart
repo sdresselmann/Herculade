@@ -21,7 +21,7 @@ class FirestoreService {
         .listen((event) => _firestore = FirebaseFirestore.instance);
   }
 
-  Future<void> documentExists(String collectionName, String documentId) {
+  Future<bool> documentExists(String collectionName, String documentId) {
     return _firestore
         .collection(collectionName)
         .doc(documentId)
@@ -29,13 +29,27 @@ class FirestoreService {
         .then((docSnapshot) => docSnapshot.exists);
   }
 
-  Future<RawFirestoreData> getRawData(String collectionName) async {
-    final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await _firestore.collection(collectionName).get();
+  Future<void> createDocument(
+    String collectionName,
+    String documentId,
+    Map<String, dynamic> documentData,
+  ) {
+    return _firestore
+        .collection(collectionName)
+        .doc(documentId)
+        .set(documentData);
+  }
 
-    final RawFirestoreData data = querySnapshot.docs.first.data();
+  Future<RawFirestoreData?> getRawData(
+    String collectionName,
+    String documentId,
+  ) async {
+    final DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
+        await _firestore.collection(collectionName).doc(documentId).get();
 
-    return data;
+    if (!documentSnapshot.exists) throw Exception("Document does not exist");
+
+    return documentSnapshot.data();
   }
 
   Future<void> uploadRawData(
