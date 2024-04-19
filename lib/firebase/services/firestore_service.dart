@@ -9,7 +9,7 @@ class FirestoreService {
 
   late final FirebaseFirestore _firestore;
 
-  final Logger _log = Logger('FirestoreService');
+  final Logger _logger = Logger('FirestoreService');
 
   FirestoreService() {
     initialize();
@@ -34,6 +34,9 @@ class FirestoreService {
     String documentId,
     Map<String, dynamic> documentData,
   ) {
+    _logger.info(
+      "Created a new document with  id $documentId for collection $collectionName",
+    );
     return _firestore
         .collection(collectionName)
         .doc(documentId)
@@ -47,7 +50,11 @@ class FirestoreService {
     final DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
         await _firestore.collection(collectionName).doc(documentId).get();
 
-    if (!documentSnapshot.exists) throw Exception("Document does not exist");
+    if (!documentSnapshot.exists) {
+      _logger.severe(
+        "Document with id $documentId does not exist.",
+      );
+    }
 
     return documentSnapshot.data();
   }
@@ -59,7 +66,14 @@ class FirestoreService {
     _firestore
         .collection(collectionName)
         .add(data)
-        .then((value) => _log.info("raw data uploaded"))
-        .catchError((error) => _log.severe("Failed to add raw data: $error"));
+        .then(
+          (value) =>
+              _logger.info("Data for collection $collectionName was added."),
+        )
+        .catchError(
+          (error) => _logger.severe(
+            "Failed to add data to collection $collectionName: $error",
+          ),
+        );
   }
 }

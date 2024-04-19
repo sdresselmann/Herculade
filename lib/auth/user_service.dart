@@ -21,8 +21,7 @@ class UserService {
       if (!isInitialized) return;
 
       user = await _firebaseService.signInTestUser();
-      _logger.log(
-        Level.INFO,
+      _logger.info(
         "Current user is set to user ${user.email} with ${user.uid}.",
       );
 
@@ -42,19 +41,13 @@ class UserService {
 
     if (hasUserPlanEntries) return;
 
-    _logger.log(
-      Level.INFO,
-      "The current user has no plan entries. Creating plan entries for user.",
-    );
-
     await _firestoreService.createDocument(
       CollectionNames.planEntries,
       user.uid,
       defaultTrainingPlan,
     );
 
-    _logger.log(
-      Level.INFO,
+    _logger.info(
       "Plan entries with id ${user.uid} for user ${user.email} created.",
     );
   }

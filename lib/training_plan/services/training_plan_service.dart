@@ -4,12 +4,15 @@ import 'package:lifting_progress_tracker/firebase/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
 import 'package:lifting_progress_tracker/firebase/types.dart';
 import 'package:lifting_progress_tracker/training_plan/models/plan_entry.dart';
+import 'package:logging/logging.dart';
 
 class TrainingPlanService {
   final FirestoreService _firestoreService = GetIt.I.get<FirestoreService>();
   final UserService _userService = GetIt.I.get<UserService>();
 
   final String trainingPlanCollectionName = CollectionNames.planEntries;
+
+  final _logger = Logger("TrainingPlanService");
 
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) async {
     final trainingPlans = await _firestoreService.getRawData(
@@ -18,6 +21,7 @@ class TrainingPlanService {
     );
 
     if (trainingPlans == null || trainingPlans.isEmpty) {
+      _logger.warning("Training plan data is null or empty.");
       return Future.value([]);
     }
 
