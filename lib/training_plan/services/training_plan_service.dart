@@ -15,9 +15,11 @@ class TrainingPlanService {
   final _logger = Logger("TrainingPlanService");
 
   Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) async {
+    final user = _userService.user;
+
     final trainingPlans = await _firestoreService.getRawData(
       trainingPlanCollectionName,
-      _userService.user.uid,
+      user.uid,
     );
 
     if (trainingPlans == null || trainingPlans.isEmpty) {
@@ -40,9 +42,10 @@ class TrainingPlanService {
     final Map<String, dynamic> planEntries,
     String trainingPlanId,
   ) async {
+    final user = _userService.user;
     final RawFirestoreData? trainingPlans = await _firestoreService.getRawData(
       trainingPlanCollectionName,
-      _userService.user.uid,
+      user.uid,
     );
 
     if (trainingPlans == null) return;

@@ -4,14 +4,14 @@ import 'package:lifting_progress_tracker/core/utils/logging.dart';
 import 'package:lifting_progress_tracker/core/utils/service_locators.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 
-void setupAppUtils() {
+Future<void> setupAppUtils() async {
   registerLazySingletons();
 
   setupLogging();
-  setup();
+  await setup();
 }
 
-void setup() {
-  GetIt.I.get<FirebaseService>().initializeFirebaseApp();
-  GetIt.I.get<UserService>().initializeUser();
+Future<void> setup() async {
+  await GetIt.I.get<FirebaseService>().initializeFirebaseApp();
+  await GetIt.I.get<UserService>().initializeUser();
 }

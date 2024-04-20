@@ -3,13 +3,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
-
-import 'package:lifting_progress_tracker/pages/home.dart';
+import 'package:lifting_progress_tracker/pages/home/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 import 'package:lifting_progress_tracker/pages/training_day.dart';
 import 'package:lifting_progress_tracker/pages/training_period.dart';
-
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
+
 import 'modules/navigate.dart';
 
 void main() {

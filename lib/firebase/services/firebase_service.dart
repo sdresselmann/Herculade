@@ -58,4 +58,8 @@ class FirebaseService {
       password: password,
     );
   }
+
+  User? getCurrentUser() {
+    return _auth.currentUser;
+  }
 }
