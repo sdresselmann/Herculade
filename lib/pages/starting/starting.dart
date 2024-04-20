@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lifting_progress_tracker/core/constants/localization.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
 import 'package:lifting_progress_tracker/pages/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
@@ -26,6 +27,10 @@ class _StartingPageState extends State<StartingPage> {
   void initState() {
     super.initState();
 
+    initNavigationItems();
+  }
+
+  void initNavigationItems() {
     _navigationItems = <Widget>[
       HomePage(),
       CalendarPage(),
@@ -45,19 +50,19 @@ class _StartingPageState extends State<StartingPage> {
   static const List<BottomNavigationBarItem> _navigationBarItems = [
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
-      label: 'Home',
+      label: homeRouteLabel,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.calendar_month),
-      label: 'Calendar',
+      label: calendarRouteLabel,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.fitness_center),
-      label: 'Training Schedules',
+      label: trainingPlanListRouteLabel,
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.analytics),
-      label: 'Statistic',
+      label: statisticsRouteLabel,
     ),
   ];
 

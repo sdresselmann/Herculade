@@ -13,6 +13,11 @@ Future<void> startApp(WidgetTester tester) async {
   await tester.pumpAndSettle();
 }
 
+Future<void> navigateToHome(WidgetTester tester) async {
+  await tester.tap(find.text(homeRouteLabel));
+  await tester.pumpAndSettle();
+}
+
 Future<void> navigateToStatistics(WidgetTester tester) async {
   await tester.tap(find.text(statisticsRouteLabel));
   await tester.pumpAndSettle();
@@ -24,7 +29,7 @@ Future<void> navigateToCalendar(WidgetTester tester) async {
 }
 
 Future<void> navigateToTrainingPlanList(WidgetTester tester) async {
-  await tester.tap(find.text(trainingplanListRouteLabel));
+  await tester.tap(find.text(trainingPlanListRouteLabel));
   await tester.pumpAndSettle();
 }
 

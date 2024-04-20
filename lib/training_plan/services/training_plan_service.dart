@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/auth/user_service.dart';
-import 'package:lifting_progress_tracker/firebase/collection_names.dart';
+import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
 import 'package:lifting_progress_tracker/firebase/types.dart';
 import 'package:lifting_progress_tracker/training_plan/models/plan_entry.dart';

@@ -5,7 +5,7 @@ import 'package:lifting_progress_tracker/training_plan/provider/table_provider.d
 import 'package:lifting_progress_tracker/training_plan/widgets/table/workout_table.dart';
 import 'package:provider/provider.dart';
 
-const String _title = trainingplanListRouteLabel;
+const String _title = trainingPlanListRouteLabel;
 
 class TrainingPlanPage extends StatefulWidget {
   @override
