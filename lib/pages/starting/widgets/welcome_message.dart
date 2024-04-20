@@ -7,6 +7,8 @@ class WelcomeMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Hello $username, how are you doing today?");
+    return Center(
+      child: Text("Hello $username, how are you doing today?"),
+    );
   }
 }

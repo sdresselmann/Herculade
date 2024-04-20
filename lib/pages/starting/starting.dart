@@ -1,27 +1,21 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:lifting_progress_tracker/auth/user_service.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
-import 'package:lifting_progress_tracker/pages/home/widgets/welcome_message.dart';
+import 'package:lifting_progress_tracker/pages/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
-import 'package:logging/logging.dart';
 
 /// Title of the page as shown in the appbar.
 const String _title = "Home";
 
 /// The page used as main entry point for this app.
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class StartingPage extends StatefulWidget {
+  const StartingPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<StartingPage> createState() => _StartingPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final Logger _logger = Logger("HomePageState");
-
+class _StartingPageState extends State<StartingPage> {
   /// Index of selected items, used for picking the page from [_navigationItems].
   int _selectedIndex = 0;
 
@@ -32,31 +26,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    final UserService userService = GetIt.I.get<UserService>();
-
     _navigationItems = <Widget>[
-      FutureBuilder(
-        future: userService.userFuture,
-        builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
-          }
-
-          if (snapshot.connectionState == ConnectionState.done) {
-            return WelcomeMessage(
-              username: snapshot.data!.email!,
-            );
-          }
-
-          if (snapshot.hasError) {
-            _logger.warning(
-              "The welcome message could not be properly loaded: ${snapshot.error}",
-            );
-          }
-
-          return const Text("unexpected Error!");
-        },
-      ),
+      HomePage(),
       CalendarPage(),
       TrainingPlanListPage(),
       StatisticsPage(),

@@ -1,4 +1,4 @@
-const String homeRouteLabel = '/';
+const String startingRouteLabel = '/';
 const String statisticsRouteLabel = 'Statistic';
 const String calendarRouteLabel = "Calendar";
 const String trainingplanListRouteLabel = "Training Schedules";
