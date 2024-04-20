@@ -15,12 +15,16 @@ class UserService {
   final FirestoreService _firestoreService = GetIt.I.get<FirestoreService>();
 
   late final User _user;
-  late final Future<User> userFuture;
+  late final Future<User> user$;
   final Completer<User> _userCompleter = Completer();
 
   set user(User newUser) {
     _user = newUser;
-    _userCompleter.complete(user);
+    _userCompleter.complete(_user);
+
+    _logger.info(
+      "Current user is set to user ${_user.email} with ${_user.uid}.",
+    );
   }
 
   User get user {
@@ -28,7 +32,7 @@ class UserService {
   }
 
   UserService() {
-    userFuture = _userCompleter.future;
+    user$ = _userCompleter.future;
   }
 
   Future<void> initializeUser() async {
@@ -44,18 +48,14 @@ class UserService {
     }
 
     user = currentUser;
-    _logger.info(
-      "Current user is set to user ${user.email} with ${user.uid}.",
-    );
-
     _initUserCollections();
   }
 
   void _initUserCollections() {
-    _createTrainingPlanForUser();
+    _createTrainingPlansForUser();
   }
 
-  Future<void> _createTrainingPlanForUser() async {
+  Future<void> _createTrainingPlansForUser() async {
     final bool hasUserPlanEntries = await _firestoreService.documentExists(
       CollectionNames.planEntries,
       user.uid,
@@ -70,7 +70,7 @@ class UserService {
     );
 
     _logger.info(
-      "Plan entries with id ${user.uid} for user ${user.email} created.",
+      "Created plan entries with id ${user.uid} for the user ${user.email}.",
     );
   }
 }
