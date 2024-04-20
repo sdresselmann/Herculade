@@ -31,7 +31,7 @@ class TableProvider extends ChangeNotifier {
 
   /// Get table entries for the current training plan.
   void fetchTableData() {
-    trainingPlanService.fetchTrainingPlanData(trainingPlanId).then(
+    trainingPlanService.fetchTrainingPlanData().then(
           (fetchedEntries) => {
             for (final fetchedEntry in fetchedEntries)
               {

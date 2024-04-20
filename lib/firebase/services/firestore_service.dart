@@ -54,6 +54,7 @@ class FirestoreService {
       _logger.severe(
         "Document with id $documentId does not exist.",
       );
+      return null;
     }
 
     return documentSnapshot.data();

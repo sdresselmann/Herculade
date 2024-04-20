@@ -14,10 +14,10 @@ class TrainingPlanService {
 
   final _logger = Logger("TrainingPlanService");
 
-  Future<List<PlanEntry>> fetchTrainingPlanData(String trainingPlanId) async {
+  Future<List<PlanEntry>> fetchTrainingPlanData() async {
     final user = _userService.user;
 
-    final trainingPlans = await _firestoreService.getRawData(
+    final RawFirestoreData? trainingPlans = await _firestoreService.getRawData(
       trainingPlanCollectionName,
       user.uid,
     );
@@ -27,8 +27,9 @@ class TrainingPlanService {
       return Future.value([]);
     }
 
+    // extract training plan 1 for dev purposes atm, make it dynamic later ( quick and dirty fix)
     final Map<String, dynamic> currentPlanEntries =
-        trainingPlans[trainingPlanId] as Map<String, dynamic>;
+        trainingPlans["trainingplan1"] as Map<String, dynamic>;
 
     final List<PlanEntry> entries = [];
     currentPlanEntries.forEach((key, value) {
