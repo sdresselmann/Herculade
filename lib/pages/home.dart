@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:lifting_progress_tracker/auth/user_service.dart';
+import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:lifting_progress_tracker/core/widgets/error_message.dart';
 import 'package:lifting_progress_tracker/pages/starting/widgets/welcome_message.dart';
 import 'package:logging/logging.dart';
