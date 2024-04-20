@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
+import 'package:lifting_progress_tracker/core/models/app_User.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
@@ -14,11 +14,11 @@ class UserService {
   final FirebaseService _firebaseService = GetIt.I.get<FirebaseService>();
   final FirestoreService _firestoreService = GetIt.I.get<FirestoreService>();
 
-  late final User _user;
-  late final Future<User> user$;
-  final Completer<User> _userCompleter = Completer();
+  late final AppUser _user;
+  late final Future<AppUser> user$;
+  final Completer<AppUser> _userCompleter = Completer();
 
-  set user(User newUser) {
+  set user(AppUser newUser) {
     _user = newUser;
     _userCompleter.complete(_user);
 
@@ -27,7 +27,7 @@ class UserService {
     );
   }
 
-  User get user {
+  AppUser get user {
     return _user;
   }
 
@@ -38,17 +38,21 @@ class UserService {
   Future<void> initializeUser() async {
     await _firebaseService.signInTestUser();
 
-    final currentUser = _firebaseService.getCurrentUser();
-
-    if (currentUser == null) {
-      _logger.info(
-        "Current user can not be set.",
-      );
-      return;
-    }
+    final currentUser = _getAppUser();
 
     user = currentUser;
     _initUserCollections();
+  }
+
+  AppUser _getAppUser() {
+    final currentUser = _firebaseService.getCurrentUser();
+    final String? email = currentUser?.email;
+
+    if (currentUser == null || email == null) {
+      throw Exception("Current user can not be set.");
+    }
+
+    return AppUser(currentUser.uid, email);
   }
 
   void _initUserCollections() {
