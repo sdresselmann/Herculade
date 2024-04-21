@@ -8,12 +8,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lifting_progress_tracker/app.dart';
 
-import '../integration_test/utils/mock_service_locators.dart';
-
 void main() {
   testWidgets('App smoke test', (WidgetTester tester) async {
-    registerMockServiceLocators();
-
     await tester.pumpWidget(
       const MyApp(),
     );
