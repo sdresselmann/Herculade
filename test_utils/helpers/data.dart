@@ -8,8 +8,8 @@ import '../mocks/firestore_mock_service.dart';
 import '../mocks/user_mock_service.dart';
 
 void connectToMockDatabase() {
-  GetIt.I.registerSingleton<FirebaseService>(FirebaseMockService());
-  GetIt.I.registerSingleton<FirestoreService>(FirestoreMockService());
+  GetIt.I.registerSingleton<FirebaseService>(MockFirebaseService());
+  GetIt.I.registerSingleton<FirestoreService>(MockFirestoreService());
 }
 
 void setCurrentUser() {

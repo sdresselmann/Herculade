@@ -41,21 +41,16 @@ class UserService {
     final currentUser = _getAppUser();
 
     user = currentUser;
-    _initUserCollections();
   }
 
   AppUser _getAppUser() {
     final currentUser = _firebaseService.getCurrentUser();
-    final String? email = currentUser?.email;
-
-    if (currentUser == null || email == null) {
-      throw Exception("Current user can not be set.");
-    }
+    final String email = currentUser.email;
 
     return AppUser(currentUser.uid, email);
   }
 
-  void _initUserCollections() {
+  void initUserCollections() {
     _createTrainingPlansForUser();
   }
 

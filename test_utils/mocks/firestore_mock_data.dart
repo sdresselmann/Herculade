@@ -1,6 +1,6 @@
 import 'package:lifting_progress_tracker/firebase/types.dart';
 
-class FirestoreMockData {
+class MockFirestoreData {
   RawFirestoreData data = {};
 
   void setDefaultMockData() {

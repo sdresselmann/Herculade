@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:lifting_progress_tracker/config/auth_config.dart';
+import 'package:lifting_progress_tracker/core/models/app_User.dart';
 import 'package:lifting_progress_tracker/firebase/firebase_options.dart';
 import 'package:logging/logging.dart';
 import 'package:rxdart/rxdart.dart';
@@ -32,12 +33,22 @@ class FirebaseService {
     _isInitializationComplete$.close();
   }
 
+  AppUser getCurrentUser() {
+    final currentUser = _auth.currentUser;
+
+    if (currentUser == null) {
+      throw Exception("Current user not found on firebase.");
+    }
+
+    return AppUser.fromUser(currentUser);
+  }
+
   Stream<bool> isInitializationComplete() {
     return _isInitializationComplete$.stream;
   }
 
   // Authenticate with test user for dev purposes!
-  Future<User> signInTestUser() async {
+  Future<void> signInTestUser() async {
     try {
       final UserCredential userCredential = await _signIn(
         AuthConfig.testUserEmail,
@@ -45,7 +56,7 @@ class FirebaseService {
       );
       _logger.info("Signed in: ${userCredential.user!.email}");
 
-      return Future.value(userCredential.user);
+      return Future.value();
     } catch (e) {
       _logger.severe("Error signing in: $e");
       throw Exception("User needs to be signed in!");
@@ -57,9 +68,5 @@ class FirebaseService {
       email: email,
       password: password,
     );
-  }
-
-  User? getCurrentUser() {
-    return _auth.currentUser;
   }
 }

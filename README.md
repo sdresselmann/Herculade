@@ -27,11 +27,19 @@ the [Build for Release Section](#build-for-release).
 
 ## Tests
 
+## Generate Mockito Mocks:
+
+```
+dart run build_runner build
+```
+
+## Unit and Widget Tests
+
 ```
 flutter test
 ```
 
-## Integration Tests
+## Integration and e2e Tests
 
 ```
 flutter test -d linux integration_test/regression.dart

@@ -13,5 +13,8 @@ Future<void> setupAppUtils() async {
 
 Future<void> setup() async {
   await GetIt.I.get<FirebaseService>().initializeFirebaseApp();
-  await GetIt.I.get<UserService>().initializeUser();
+  final UserService userService = GetIt.I.get<UserService>();
+
+  await userService.initializeUser();
+  userService.initUserCollections();
 }
