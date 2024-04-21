@@ -19,7 +19,7 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
     return Scaffold(
       appBar: AppBar(title: const Text(_title)),
       body: const Column(
-        children: [Text("inser table here!")],
+        children: [Text("insert table here!")],
       ),
     );
   }
