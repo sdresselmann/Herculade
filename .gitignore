@@ -48,3 +48,4 @@ app.*.map.json
 
 # Configs and Secrets
 /lib/config/*
+.env*

@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-// ignore_for_file: uri_does_not_exist
-import 'package:lifting_progress_tracker/config/auth_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/firebase/firebase_options.dart';
 import 'package:logging/logging.dart';
@@ -51,12 +49,15 @@ class FirebaseService {
 
   // Authenticate with test user for dev purposes!
   Future<void> signInTestUser() async {
+    final String? username = dotenv.env["TEST_USER_EMAIL"];
+    final String? password = dotenv.env["TEST_USER_PASSWORD"];
+
+    if (username == null || password == null) return;
+
     try {
       final UserCredential userCredential = await _signIn(
-        // ignore: undefined_identifier
-        AuthConfig.testUserEmail,
-        // ignore: undefined_identifier
-        AuthConfig.testUserPassword,
+        username,
+        password,
       );
       _logger.info("Signed in: ${userCredential.user!.email}");
 
