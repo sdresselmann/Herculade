@@ -39,7 +39,6 @@ class UserService {
     await _firebaseService.signInTestUser();
 
     final currentUser = _getAppUser();
-
     user = currentUser;
   }
 
@@ -50,8 +49,8 @@ class UserService {
     return AppUser(currentUser.uid, email);
   }
 
-  void initUserCollections() {
-    _createTrainingPlansForUser();
+  Future<void> initUserCollections() {
+    return _createTrainingPlansForUser();
   }
 
   Future<void> _createTrainingPlansForUser() async {
