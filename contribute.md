@@ -1,6 +1,12 @@
-# Project Commit & Branching Ruleset
+## Project Commit & Branching Ruleset
 
-## Branches
+#### Definition of Done:
+
+* Acceptance criteria are fulfilled
+* Created widgets, units and integration tests
+* Format and test pipelines run successfully
+
+### Branches
 
 *The `< >` notation indicates that there is a placeholder for an actual value or expression.*
 
@@ -14,7 +20,7 @@
 
 `task/#333_expand_statistics_service_tests`
 
-## Commits
+### Commits
 
 ```
 #<Issue Number> - <type>(optional scope): <description>
