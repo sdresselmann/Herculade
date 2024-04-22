@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
-import 'package:lifting_progress_tracker/training_plan/provider/table_provider.dart';
-import 'package:lifting_progress_tracker/training_plan/widgets/table/workout_table.dart';
-import 'package:provider/provider.dart';
 
-const String _title = trainingplanListRouteLabel;
+const String _title = trainingPlanListRouteLabel;
 
 class TrainingPlanPage extends StatefulWidget {
   @override
@@ -21,19 +18,8 @@ class _TrainingPlanPageState extends State<TrainingPlanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(_title)),
-      body: Column(
-        children: [
-          MultiProvider(
-            providers: [
-              ChangeNotifierProvider(
-                create: (context) => TableProvider(
-                  trainingPlanId: "trainingplan1",
-                ),
-              ),
-            ],
-            child: WorkoutTable(),
-          ),
-        ],
+      body: const Column(
+        children: [Text("insert table here!")],
       ),
     );
   }

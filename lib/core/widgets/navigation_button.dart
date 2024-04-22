@@ -33,7 +33,6 @@ void _navigateToRoute(BuildContext context, String routeName) {
 ///
 /// ```
 class NavigationButton extends StatelessWidget {
-  /// The route name that the button (when clicked) is navigating to.
   final String routeName;
 
   const NavigationButton(this.routeName);

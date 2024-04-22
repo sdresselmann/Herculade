@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/app.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
-import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
-import 'package:lifting_progress_tracker/firebase/services/mocks/firestore_mock_service.dart';
 import 'package:lifting_progress_tracker/pages/exercise.dart';
 import 'package:lifting_progress_tracker/pages/training_plan.dart';
 
 Future<void> startApp(WidgetTester tester) async {
   runApp(const MyApp());
+  await tester.pumpAndSettle();
+}
+
+Future<void> navigateToHome(WidgetTester tester) async {
+  await tester.tap(find.text(homeRouteLabel));
   await tester.pumpAndSettle();
 }
 
@@ -24,7 +26,7 @@ Future<void> navigateToCalendar(WidgetTester tester) async {
 }
 
 Future<void> navigateToTrainingPlanList(WidgetTester tester) async {
-  await tester.tap(find.text(trainingplanListRouteLabel));
+  await tester.tap(find.text(trainingPlanListRouteLabel));
   await tester.pumpAndSettle();
 }
 
@@ -41,9 +43,4 @@ Future<void> navigateToExercise(WidgetTester tester) async {
   await tester.tap(find.widgetWithText(ElevatedButton, exerciseRouteLabel));
   await tester.pumpAndSettle();
   expect(find.byType(ExercisePage), findsOneWidget);
-}
-
-void connectToMockDatabase() {
-  final FirestoreMockService firestoreMockService = FirestoreMockService();
-  GetIt.I.registerSingleton<FirestoreService>(firestoreMockService);
 }

@@ -1,30 +1,80 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get_it/get_it.dart';
+import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 import 'package:lifting_progress_tracker/firebase/types.dart';
 import 'package:logging/logging.dart';
 
 class FirestoreService {
-  final Logger log;
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseService _firebaseService = GetIt.I.get<FirebaseService>();
 
-  FirestoreService() : log = Logger('FirestoreService');
+  late final FirebaseFirestore _firestore;
 
-  Future<RawFirestoreData> getRawData(String collectionName) async {
-    final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await firestore.collection(collectionName).get();
+  final Logger _logger = Logger('FirestoreService');
 
-    final RawFirestoreData data = querySnapshot.docs.first.data();
+  FirestoreService() {
+    initialize();
+  }
 
-    return data;
+  void initialize() {
+    _firebaseService
+        .isInitializationComplete()
+        .listen((event) => _firestore = FirebaseFirestore.instance);
+  }
+
+  Future<bool> documentExists(String collectionName, String documentId) {
+    return _firestore
+        .collection(collectionName)
+        .doc(documentId)
+        .get()
+        .then((docSnapshot) => docSnapshot.exists);
+  }
+
+  Future<void> createDocument(
+    String collectionName,
+    String documentId,
+    Map<String, dynamic> documentData,
+  ) {
+    _logger.info(
+      "Created a new document with  id $documentId for collection $collectionName",
+    );
+    return _firestore
+        .collection(collectionName)
+        .doc(documentId)
+        .set(documentData);
+  }
+
+  Future<RawFirestoreData?> getRawData(
+    String collectionName,
+    String documentId,
+  ) async {
+    final DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
+        await _firestore.collection(collectionName).doc(documentId).get();
+
+    if (!documentSnapshot.exists) {
+      _logger.severe(
+        "Document with id $documentId does not exist.",
+      );
+      return null;
+    }
+
+    return documentSnapshot.data();
   }
 
   Future<void> uploadRawData(
     String collectionName,
     RawFirestoreData data,
   ) async {
-    firestore
+    _firestore
         .collection(collectionName)
         .add(data)
-        .then((value) => log.info("raw data uploaded"))
-        .catchError((error) => log.severe("Failed to add raw data: $error"));
+        .then(
+          (value) =>
+              _logger.info("Data for collection $collectionName was added."),
+        )
+        .catchError(
+          (error) => _logger.severe(
+            "Failed to add data to collection $collectionName: $error",
+          ),
+        );
   }
 }

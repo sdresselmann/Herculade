@@ -3,24 +3,27 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
-
-import 'package:lifting_progress_tracker/pages/home.dart';
+import 'package:lifting_progress_tracker/pages/starting/starting.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 import 'package:lifting_progress_tracker/pages/training_day.dart';
 import 'package:lifting_progress_tracker/pages/training_period.dart';
-
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
+
+import '../test_utils/helpers/data.dart';
 import 'modules/navigate.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  setUpAll(() => connectToMockDatabase());
+  setUpAll(() {
+    connectToMockDatabase();
+    setCurrentUser();
+  });
 
   group('navigation smoke tests:', () {
     testWidgets('start application without any errors', (tester) async {
       await startApp(tester);
-      expect(find.byType(HomePage), findsOneWidget);
+      expect(find.byType(StartingPage), findsOneWidget);
     });
 
     testWidgets(
