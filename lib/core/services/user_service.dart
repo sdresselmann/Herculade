@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:get_it/get_it.dart';
-import 'package:lifting_progress_tracker/core/models/app_User.dart';
+import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';

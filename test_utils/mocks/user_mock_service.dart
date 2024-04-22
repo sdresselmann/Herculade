@@ -1,4 +1,4 @@
-import 'package:lifting_progress_tracker/core/models/app_User.dart';
+import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:mocktail/mocktail.dart';
 
