@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+// ignore_for_file: uri_does_not_exist
 import 'package:lifting_progress_tracker/config/auth_config.dart';
 import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/firebase/firebase_options.dart';
