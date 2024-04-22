@@ -53,7 +53,9 @@ class FirebaseService {
   Future<void> signInTestUser() async {
     try {
       final UserCredential userCredential = await _signIn(
+        // ignore: undefined_identifier
         AuthConfig.testUserEmail,
+        // ignore: undefined_identifier
         AuthConfig.testUserPassword,
       );
       _logger.info("Signed in: ${userCredential.user!.email}");
