@@ -7,7 +7,7 @@ name: flutter-tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "feature/*", "task/*", "bugfix/*", "hotfix/*" ]
   pull_request:
     branches: [ "main" ]
 
