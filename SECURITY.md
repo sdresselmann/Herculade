@@ -10,5 +10,3 @@
 
 
 ## Reporting a Vulnerability
-
-sdresselmann@ahmd.de
