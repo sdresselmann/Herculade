@@ -10,7 +10,7 @@ const String _title = "Home";
 
 /// The page used as main entry point for this app.
 class StartingPage extends StatefulWidget {
-  const StartingPage({Key? key}) : super(key: key);
+  const StartingPage({super.key});
 
   @override
   State<StartingPage> createState() => _StartingPageState();
