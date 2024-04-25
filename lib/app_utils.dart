@@ -1,4 +1,3 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:lifting_progress_tracker/core/utils/logging.dart';
@@ -13,13 +12,8 @@ void setupAppUtils() {
 }
 
 Future<void> setup() async {
-  await loadEnvFile();
   await GetIt.I.get<FirebaseService>().initializeFirebaseApp();
   setupCurrentUser();
-}
-
-Future<void> loadEnvFile() async {
-  dotenv.load();
 }
 
 Future<void> setupCurrentUser() async {
