@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:lifting_progress_tracker/core/widgets/error_message.dart';
+import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
 import 'package:lifting_progress_tracker/pages/starting/widgets/welcome_message.dart';
 import 'package:logging/logging.dart';
 
@@ -12,6 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserService userService = GetIt.I.get<UserService>();
+    final FirestoreService firestoreService = GetIt.I.get<FirestoreService>();
 
     return Scaffold(
       body: Center(
@@ -23,8 +25,27 @@ class HomePage extends StatelessWidget {
             }
 
             if (snapshot.connectionState == ConnectionState.done) {
-              return WelcomeMessage(
-                username: snapshot.data!.email,
+              return Column(
+                children: [
+                  WelcomeMessage(
+                    username: snapshot.data?.email ?? "",
+                  ),
+                  ElevatedButton(
+                    onPressed: () => {
+                      firestoreService.get(
+                        "plan-entries",
+                        snapshot.data?.uid ?? "",
+                      ),
+                      //     .then(
+                      //   (value) {
+                      //     final plans = value;
+                      //     print(plans);
+                      //   },
+                      // ),
+                    },
+                    child: const Text("press to fetch!"),
+                  ),
+                ],
               );
             }
 
