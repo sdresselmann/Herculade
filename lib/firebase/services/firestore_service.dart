@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
+import 'package:lifting_progress_tracker/firebase/firestore_json.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
-import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
 import 'package:logging/logging.dart';
 
 class FirestoreService {
@@ -43,19 +43,12 @@ class FirestoreService {
         .set(documentData);
   }
 
-  Future<TrainingPlanList> get(
+  Future<FirestoreJson> get(
     String collectionName,
     String documentId,
   ) async {
-    final DocumentSnapshot<TrainingPlanList> documentSnapshot = await _firestore
-        .collection(collectionName)
-        .doc(documentId)
-        .withConverter(
-          fromFirestore: (snapshot, _) =>
-              TrainingPlanList.fromJson(snapshot.data()!),
-          toFirestore: (trainingPlanList, _) => trainingPlanList.toJson(),
-        )
-        .get();
+    final DocumentSnapshot<FirestoreJson> documentSnapshot =
+        await _firestore.collection(collectionName).doc(documentId).get();
 
     if (!documentSnapshot.exists) {
       _logger.severe(

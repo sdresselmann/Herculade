@@ -1,10 +1,9 @@
+import 'package:lifting_progress_tracker/core/interfaces/json_serializable.dart';
 import 'package:lifting_progress_tracker/firebase/firestore_json.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_entry.dart';
 
-class TrainingPlan {
+class TrainingPlan implements JsonSerializable<TrainingPlan> {
   Map<String, TrainingPlanEntry> planEntries;
-
-  TrainingPlan({required this.planEntries});
 
   TrainingPlan.fromJson(FirestoreJson json)
       : planEntries = json.map(
@@ -13,4 +12,11 @@ class TrainingPlan {
             TrainingPlanEntry.fromJson(value as FirestoreJson),
           ),
         );
+
+  @override
+  FirestoreJson toJson() {
+    return {
+      "planEntries": planEntries,
+    };
+  }
 }
