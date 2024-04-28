@@ -72,11 +72,5 @@ void main() {
       await navigateToTrainingPlanList(tester);
       expect(find.byType(TrainingPlanListPage), findsOneWidget);
     });
-
-    testWidgets(
-        '6. navigate from home to the training plan page without occurring any errors',
-        (tester) async {
-      await navigateToTrainingPlan(tester);
-    });
   });
 }

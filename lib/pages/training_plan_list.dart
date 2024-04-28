@@ -6,7 +6,7 @@ class TrainingPlanListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: NavigationButton(trainingPlanRouteLabel),
+      body: NavigationButton(trainingPlanListRouteLabel),
     );
   }
 }
