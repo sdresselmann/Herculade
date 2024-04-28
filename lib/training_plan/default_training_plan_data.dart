@@ -1,8 +1,6 @@
-import 'package:lifting_progress_tracker/firebase/types.dart';
-
 const trainingPlanId = "trainingPlan1";
 
-const RawFirestoreData defaultTrainingPlan = {
+const Map<String, dynamic> defaultTrainingPlan = {
   'trainingplan1': {
     '0': {
       'exerciseName': 'Deadlift',

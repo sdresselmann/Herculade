@@ -9,14 +9,14 @@ import 'package:logging/logging.dart';
 class HomePage extends StatelessWidget {
   final Logger _logger = Logger("StartingPage");
 
+  final UserService _userService = GetIt.I.get<UserService>();
+
   @override
   Widget build(BuildContext context) {
-    final UserService userService = GetIt.I.get<UserService>();
-
     return Scaffold(
       body: Center(
         child: FutureBuilder(
-          future: userService.user$,
+          future: _userService.user$,
           builder: (BuildContext context, AsyncSnapshot<AppUser> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
 
             if (snapshot.connectionState == ConnectionState.done) {
               return WelcomeMessage(
-                username: snapshot.data!.email,
+                username: snapshot.data?.email ?? "",
               );
             }
 

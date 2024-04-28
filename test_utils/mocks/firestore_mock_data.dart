@@ -1,10 +1,8 @@
-import 'package:lifting_progress_tracker/firebase/types.dart';
-
 class MockFirestoreData {
-  RawFirestoreData data = {};
+  Map<String, dynamic> data = {};
 
   void setDefaultMockData() {
-    final RawFirestoreData defaultMockData = {
+    final Map<String, dynamic> defaultMockData = {
       'trainingplan1': {
         '0': {
           'exerciseName': 'Deadlift',
@@ -29,11 +27,11 @@ class MockFirestoreData {
   }
 
   void setEmptyMockData() {
-    final RawFirestoreData mockData = {};
+    final Map<String, dynamic> mockData = {};
     data = mockData;
   }
 
-  Future<RawFirestoreData> getAsync() {
+  Future<Map<String, dynamic>> getAsync() {
     return Future.value(data);
   }
 }

@@ -62,14 +62,14 @@ void main() {
       userService.user = testUser;
 
       when(
-        () => mockFirestoreService.documentExists(
+        () => mockFirestoreService.exists(
           CollectionNames.planEntries,
           testUser.uid,
         ),
       ).thenAnswer((_) async => false);
 
       when(
-        () => mockFirestoreService.createDocument(
+        () => mockFirestoreService.set(
           CollectionNames.planEntries,
           testUser.uid,
           defaultTrainingPlan,
@@ -81,14 +81,14 @@ void main() {
       await userService.initUserCollections();
 
       verify(
-        () => mockFirestoreService.documentExists(
+        () => mockFirestoreService.exists(
           CollectionNames.planEntries,
           testUser.uid,
         ),
       );
 
       verify(
-        () => mockFirestoreService.createDocument(
+        () => mockFirestoreService.set(
           CollectionNames.planEntries,
           testUser.uid,
           defaultTrainingPlan,
@@ -103,7 +103,7 @@ void main() {
         userService.user = testUser;
 
         when(
-          () => mockFirestoreService.documentExists(
+          () => mockFirestoreService.exists(
             CollectionNames.planEntries,
             testUser.uid,
           ),
@@ -112,14 +112,14 @@ void main() {
         await userService.initUserCollections();
 
         verify(
-          () => mockFirestoreService.documentExists(
+          () => mockFirestoreService.exists(
             CollectionNames.planEntries,
             testUser.uid,
           ),
         );
 
         verifyNever(
-          () => mockFirestoreService.createDocument(
+          () => mockFirestoreService.set(
             any(),
             any(),
             any(),
