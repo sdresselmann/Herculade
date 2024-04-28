@@ -54,14 +54,14 @@ class UserService {
   }
 
   Future<void> _createTrainingPlansForUser() async {
-    final bool hasUserPlanEntries = await _firestoreService.documentExists(
+    final bool hasUserPlanEntries = await _firestoreService.exists(
       CollectionNames.planEntries,
       user.uid,
     );
 
     if (hasUserPlanEntries) return;
 
-    await _firestoreService.createDocument(
+    await _firestoreService.set(
       CollectionNames.planEntries,
       user.uid,
       defaultTrainingPlan,

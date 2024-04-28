@@ -21,7 +21,7 @@ class FirestoreService {
         .listen((event) => _firestore = FirebaseFirestore.instance);
   }
 
-  Future<bool> documentExists(String collectionName, String documentId) {
+  Future<bool> exists(String collectionName, String documentId) {
     return _firestore
         .collection(collectionName)
         .doc(documentId)
@@ -29,7 +29,7 @@ class FirestoreService {
         .then((docSnapshot) => docSnapshot.exists);
   }
 
-  Future<void> createDocument(
+  Future<void> set(
     String collectionName,
     String documentId,
     Map<String, dynamic> documentData,
@@ -59,22 +59,4 @@ class FirestoreService {
 
     return documentSnapshot.data()!;
   }
-
-// Future<void> uploadRawData(
-//   String collectionName,
-//   Map<String, dynamic> data,
-// ) async {
-//   _firestore
-//       .collection(collectionName)
-//       .add(data)
-//       .then(
-//         (value) =>
-//             _logger.info("Data for collection $collectionName was added."),
-//       )
-//       .catchError(
-//         (error) => _logger.severe(
-//           "Failed to add data to collection $collectionName: $error",
-//         ),
-//       );
-// }
 }

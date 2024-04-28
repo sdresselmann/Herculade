@@ -5,7 +5,7 @@ import 'package:lifting_progress_tracker/training_plan/models/training_plan_list
 class TrainingPlanService {
   final FirestoreService _firestoreService = GetIt.I.get<FirestoreService>();
 
-  Future<TrainingPlanList> getPlanList(
+  Future<TrainingPlanList> get(
     String collectionName,
     String documentId,
   ) async {
