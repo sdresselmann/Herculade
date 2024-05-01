@@ -6,4 +6,11 @@ const String trainingPlanListRouteLabel = "Training Plans";
 const String exerciseRouteLabel = "Exercise";
 const String trainingDayRouteLabel = "Training Day";
 const String trainingPeriodRouteLabel = "Training Period";
-final List<String> tableHeaderLabels = ["Exercise", "Weight", "Repeats"];
+final List<String> tableHeaderLabels = [
+  "Exercise",
+  "Weight",
+  "Repeats",
+  "Comments",
+  // Buttons
+  "",
+];
