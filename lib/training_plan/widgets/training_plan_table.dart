@@ -6,7 +6,7 @@ import 'package:lifting_progress_tracker/firebase/constants/collection_names.dar
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
 import 'package:lifting_progress_tracker/training_plan/training_plan_service.ts.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/selected_training_plan.dart';
-import 'package:lifting_progress_tracker/training_plan/widgets/traning_plan_selector.dart';
+import 'package:lifting_progress_tracker/training_plan/widgets/training_plan_selector.dart';
 import 'package:logging/logging.dart';
 
 class TrainingPlanTable extends StatefulWidget {
@@ -47,7 +47,9 @@ class _TrainingPlanTableState extends State<TrainingPlanTable> {
                 TrainingPlanSelector(
                   trainingPlanNames: _extractTrainingPlanNames(snapshot.data!),
                 ),
-                SelectedTrainingPlan(),
+                SelectedTrainingPlan(
+                  currentPlan: snapshot.data!.trainingPlans["trainingplan1"]!,
+                ),
               ],
             );
           } else if (snapshot.hasError) {
