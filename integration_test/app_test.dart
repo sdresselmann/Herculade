@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/get_navigation/src/nav2/router_outlet.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
-import 'package:lifting_progress_tracker/pages/starting/starting.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 import 'package:lifting_progress_tracker/pages/training_day.dart';
 import 'package:lifting_progress_tracker/pages/training_period.dart';
@@ -23,7 +23,8 @@ void main() {
   group('navigation smoke tests:', () {
     testWidgets('start application without any errors', (tester) async {
       await startApp(tester);
-      expect(find.byType(StartingPage), findsOneWidget);
+      expect(find.byType(RouterOutlet), findsOneWidget);
+      expect(find.byType(RouterOutlet), findsOneWidget);
     });
 
     testWidgets(

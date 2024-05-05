@@ -5,18 +5,15 @@ import 'package:lifting_progress_tracker/pages/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 
-/// Title of the page as shown in the appbar.
-const String _title = "Home";
-
 /// The page used as main entry point for this app.
-class StartingPage extends StatefulWidget {
-  const StartingPage({super.key});
+class RouterOutlet extends StatefulWidget {
+  const RouterOutlet({super.key});
 
   @override
-  State<StartingPage> createState() => _StartingPageState();
+  State<RouterOutlet> createState() => _RouterOutletState();
 }
 
-class _StartingPageState extends State<StartingPage> {
+class _RouterOutletState extends State<RouterOutlet> {
   /// Index of selected items, used for picking the page from [_navigationItems].
   int _selectedIndex = 0;
 
@@ -69,7 +66,6 @@ class _StartingPageState extends State<StartingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(_title)),
       body: Center(
         child: _navigationItems.elementAt(_selectedIndex),
       ),
