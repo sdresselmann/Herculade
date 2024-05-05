@@ -4,12 +4,7 @@ import 'package:lifting_progress_tracker/core/constants/localization.dart';
 import 'package:lifting_progress_tracker/training_plan/controllers/selected_training_plan_controller.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/table_header.dart';
 
-class SelectedTrainingPlan extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _SelectedTrainingPlanState();
-}
-
-class _SelectedTrainingPlanState extends State<SelectedTrainingPlan> {
+class SelectedTrainingPlan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SelectedTrainingPlanController());
