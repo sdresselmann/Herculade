@@ -10,11 +10,10 @@ class SelectedTrainingPlan extends StatefulWidget {
 }
 
 class _SelectedTrainingPlanState extends State<SelectedTrainingPlan> {
-  final SelectedTrainingPlanController controller =
-      Get.put(SelectedTrainingPlanController());
-
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SelectedTrainingPlanController());
+
     return Obx(() {
       final selectedTrainingPlan = controller.selectedPlan;
       if (selectedTrainingPlan == null) {

@@ -19,11 +19,10 @@ class TrainingPlanTable extends StatelessWidget {
 
   final Logger _logger = Logger("_TrainingPlanTableState");
 
-  final SelectedTrainingPlanController _controller =
-      Get.put(SelectedTrainingPlanController());
-
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SelectedTrainingPlanController());
+
     return Center(
       child: FutureBuilder(
         future: _trainingPlanService.get(
@@ -35,7 +34,7 @@ class TrainingPlanTable extends StatelessWidget {
             return const CircularProgressIndicator();
           } else if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) {
-            _controller.initTrainingPlanList(snapshot.data!);
+            controller.initTrainingPlanList(snapshot.data!);
 
             return Column(
               children: [

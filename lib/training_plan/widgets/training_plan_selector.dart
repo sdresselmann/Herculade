@@ -12,9 +12,6 @@ class TrainingPlanSelector extends StatefulWidget {
 }
 
 class _TrainingPlanSelectorState extends State<TrainingPlanSelector> {
-  final SelectedTrainingPlanController controller =
-      Get.put(SelectedTrainingPlanController());
-
   @override
   void initState() {
     super.initState();
@@ -22,6 +19,8 @@ class _TrainingPlanSelectorState extends State<TrainingPlanSelector> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SelectedTrainingPlanController());
+
     return Obx(
       () {
         return DropdownButton<String>(
