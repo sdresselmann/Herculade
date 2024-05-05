@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lifting_progress_tracker/training_plan/controllers/selected_training_plan_controller.dart';
 
 class TrainingPlanSelector extends StatefulWidget {
   final List<String> trainingPlanNames;
@@ -10,27 +12,28 @@ class TrainingPlanSelector extends StatefulWidget {
 }
 
 class _TrainingPlanSelectorState extends State<TrainingPlanSelector> {
-  late String dropdownValue;
+  final SelectedTrainingPlanController controller =
+      Get.put(SelectedTrainingPlanController());
 
   @override
   void initState() {
     super.initState();
-    dropdownValue = widget.trainingPlanNames.first;
   }
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      items: _mapNamesToDropdownMenuItems(widget.trainingPlanNames),
-      onChanged: (String? value) => _updateDropdownValue(value!),
+    return Obx(
+      () {
+        return DropdownButton<String>(
+          value: controller.selectedName,
+          items: _mapNamesToDropdownMenuItems(widget.trainingPlanNames),
+          onChanged: (String? value) {
+            controller.selectedName = value!;
+            controller.setPlanToCorrespondingName(value);
+          },
+        );
+      },
     );
-  }
-
-  void _updateDropdownValue(String value) {
-    setState(() {
-      dropdownValue = value;
-    });
   }
 }
 

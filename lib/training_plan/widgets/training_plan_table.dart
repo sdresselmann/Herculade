@@ -1,55 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:lifting_progress_tracker/core/widgets/error_message.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
+import 'package:lifting_progress_tracker/training_plan/controllers/selected_training_plan_controller.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
-import 'package:lifting_progress_tracker/training_plan/training_plan_service.ts.dart';
+import 'package:lifting_progress_tracker/training_plan/training_plan_service.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/selected_training_plan.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/training_plan_selector.dart';
 import 'package:logging/logging.dart';
 
-class TrainingPlanTable extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _TrainingPlanTableState();
-}
-
-class _TrainingPlanTableState extends State<TrainingPlanTable> {
+class TrainingPlanTable extends StatelessWidget {
   final TrainingPlanService _trainingPlanService =
       GetIt.I.get<TrainingPlanService>();
 
   final UserService _userService = GetIt.I.get<UserService>();
 
-  late final Future<TrainingPlanList> _trainingPlanList$;
-
   final Logger _logger = Logger("_TrainingPlanTableState");
 
-  @override
-  void initState() {
-    super.initState();
-    _trainingPlanList$ = _trainingPlanService.get(
-      CollectionNames.planEntries,
-      _userService.user.uid,
-    );
-  }
+  final SelectedTrainingPlanController _controller =
+      Get.put(SelectedTrainingPlanController());
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: FutureBuilder(
-        future: _trainingPlanList$,
+        future: _trainingPlanService.get(
+          CollectionNames.planEntries,
+          _userService.user.uid,
+        ),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
-          } else if (snapshot.connectionState == ConnectionState.done) {
+          } else if (snapshot.connectionState == ConnectionState.done &&
+              snapshot.hasData) {
+            _controller.initTrainingPlanList(snapshot.data!);
+
             return Column(
               children: [
                 TrainingPlanSelector(
                   trainingPlanNames: _extractTrainingPlanNames(snapshot.data!),
                 ),
-                SelectedTrainingPlan(
-                  currentPlan: snapshot.data!.trainingPlans["trainingplan1"]!,
-                ),
+                SelectedTrainingPlan(),
               ],
             );
           } else if (snapshot.hasError) {
