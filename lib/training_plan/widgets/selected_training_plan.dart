@@ -7,7 +7,7 @@ import 'package:lifting_progress_tracker/training_plan/widgets/table_header.dart
 class SelectedTrainingPlan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SelectedTrainingPlanController());
+    final SelectedTrainingPlanController controller = Get.find();
 
     return Obx(() {
       final selectedTrainingPlan = controller.selectedPlan;

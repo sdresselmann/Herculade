@@ -9,7 +9,7 @@ class TrainingPlanSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SelectedTrainingPlanController());
+    final SelectedTrainingPlanController controller = Get.find();
 
     return Obx(
       () {
