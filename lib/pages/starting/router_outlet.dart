@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
+import 'package:lifting_progress_tracker/core/utils/controller_registry.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
 import 'package:lifting_progress_tracker/pages/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
@@ -40,6 +41,8 @@ class _RouterOutletState extends State<RouterOutlet> {
     setState(() {
       _selectedIndex = index;
     });
+
+    ControllerRegistry.disposeAll();
   }
 
   /// Clickable icons inside of the navigation bar. Require a [onTap] method to

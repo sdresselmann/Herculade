@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/core/services/user_service.dart';
+import 'package:lifting_progress_tracker/core/utils/controller_registry.dart';
 import 'package:lifting_progress_tracker/core/widgets/error_message.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/training_plan/controllers/selected_training_plan_controller.dart';
@@ -21,7 +21,9 @@ class TrainingPlanTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SelectedTrainingPlanController());
+    // final controller = Get.put(SelectedTrainingPlanController());
+    final controller =
+        ControllerRegistry.registerController(SelectedTrainingPlanController());
 
     return Center(
       child: FutureBuilder(
