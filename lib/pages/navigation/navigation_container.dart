@@ -6,24 +6,25 @@ import 'package:lifting_progress_tracker/pages/home/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 
-/// The widget wrapping the application, adding a bottom navigation bar to it.
 class NavigationContainer extends StatefulWidget {
-  const NavigationContainer({super.key});
+  final Widget initialPage;
+
+  const NavigationContainer({required this.initialPage});
 
   @override
   State<NavigationContainer> createState() => _NavigationContainerState();
 }
 
 class _NavigationContainerState extends State<NavigationContainer> {
-  /// Index of selected items, used for picking the page from [_navigationItems].
   int _selectedIndex = 0;
-
-  /// List of pages that are navigated by clicking on the bottom app bar.
+  late Widget _selectedPage;
   late final List<Widget> _navigationItems;
 
   @override
   void initState() {
     super.initState();
+
+    _selectedPage = widget.initialPage;
     initNavigationItems();
   }
 
@@ -39,7 +40,9 @@ class _NavigationContainerState extends State<NavigationContainer> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _selectedPage = _navigationItems[index];
     });
+
     ControllerRegistry.disposeAll();
   }
 
@@ -66,7 +69,8 @@ class _NavigationContainerState extends State<NavigationContainer> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _navigationItems.elementAt(_selectedIndex),
+        // child: _navigationItems.elementAt(_selectedIndex),
+        child: _selectedPage,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: _navigationBarItems,

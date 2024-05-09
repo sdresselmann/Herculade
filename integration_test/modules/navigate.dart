@@ -5,7 +5,7 @@ import 'package:lifting_progress_tracker/core/constants/localization.dart';
 import 'package:lifting_progress_tracker/pages/exercise.dart';
 
 Future<void> startApp(WidgetTester tester) async {
-  runApp(const MyApp());
+  runApp(MyApp());
   await tester.pumpAndSettle();
 }
 

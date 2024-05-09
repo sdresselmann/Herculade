@@ -7,6 +7,6 @@ void main() {
   setupAppUtils();
 
   runApp(
-    const MyApp(),
+    MyApp(),
   );
 }
