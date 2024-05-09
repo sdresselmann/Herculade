@@ -21,7 +21,6 @@ class TrainingPlanTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(SelectedTrainingPlanController());
     final controller =
         ControllerRegistry.registerController(SelectedTrainingPlanController());
 

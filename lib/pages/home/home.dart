@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:lifting_progress_tracker/core/widgets/error_message.dart';
-import 'package:lifting_progress_tracker/pages/starting/widgets/welcome_message.dart';
+import 'package:lifting_progress_tracker/pages/home/widgets/welcome_message.dart';
 import 'package:logging/logging.dart';
 
 class HomePage extends StatelessWidget {

@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
 import 'package:lifting_progress_tracker/core/utils/controller_registry.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
-import 'package:lifting_progress_tracker/pages/home.dart';
+import 'package:lifting_progress_tracker/pages/home/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 
-/// The page used as main entry point for this app.
-class RouterOutlet extends StatefulWidget {
-  const RouterOutlet({super.key});
+/// The widget wrapping the application, adding a bottom navigation bar to it.
+class NavigationContainer extends StatefulWidget {
+  const NavigationContainer({super.key});
 
   @override
-  State<RouterOutlet> createState() => _RouterOutletState();
+  State<NavigationContainer> createState() => _NavigationContainerState();
 }
 
-class _RouterOutletState extends State<RouterOutlet> {
+class _NavigationContainerState extends State<NavigationContainer> {
   /// Index of selected items, used for picking the page from [_navigationItems].
   int _selectedIndex = 0;
 
@@ -24,7 +24,6 @@ class _RouterOutletState extends State<RouterOutlet> {
   @override
   void initState() {
     super.initState();
-
     initNavigationItems();
   }
 
@@ -41,12 +40,9 @@ class _RouterOutletState extends State<RouterOutlet> {
     setState(() {
       _selectedIndex = index;
     });
-
     ControllerRegistry.disposeAll();
   }
 
-  /// Clickable icons inside of the navigation bar. Require a [onTap] method to
-  /// be declared for the bottom app bar.
   static const List<BottomNavigationBarItem> _navigationBarItems = [
     BottomNavigationBarItem(
       icon: Icon(Icons.home),

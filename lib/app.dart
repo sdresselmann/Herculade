@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lifting_progress_tracker/core/constants/localization.dart';
-import 'package:lifting_progress_tracker/core/constants/routes.dart';
+import 'package:lifting_progress_tracker/pages/navigation/navigation_container.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,8 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: routerOutletLabel,
-      routes: routesObject,
+      home: const NavigationContainer(),
     );
   }
 }
