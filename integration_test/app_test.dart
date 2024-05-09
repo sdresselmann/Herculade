@@ -1,12 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get/get_navigation/src/nav2/router_outlet.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:lifting_progress_tracker/core/constants/localization.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
+import 'package:lifting_progress_tracker/pages/navigation/navigation_container.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';
-import 'package:lifting_progress_tracker/pages/training_day.dart';
-import 'package:lifting_progress_tracker/pages/training_period.dart';
 import 'package:lifting_progress_tracker/pages/training_plan_list.dart';
 
 import '../test_utils/helpers/data.dart';
@@ -23,8 +19,7 @@ void main() {
   group('navigation smoke tests:', () {
     testWidgets('start application without any errors', (tester) async {
       await startApp(tester);
-      expect(find.byType(RouterOutlet), findsOneWidget);
-      expect(find.byType(RouterOutlet), findsOneWidget);
+      expect(find.byType(NavigationContainer), findsOneWidget);
     });
 
     testWidgets(
@@ -41,29 +36,6 @@ void main() {
       await startApp(tester);
       await navigateToCalendar(tester);
       expect(find.byType(CalendarPage), findsOneWidget);
-    });
-
-    testWidgets(
-        '3. navigate from home to the training day page without occurring any errors',
-        (tester) async {
-      await startApp(tester);
-      await navigateToCalendar(tester);
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingDayRouteLabel));
-
-      await tester.pumpAndSettle();
-      expect(find.byType(TrainingDayPage), findsOneWidget);
-    });
-
-    testWidgets(
-        '4. navigate from home to the training period page without occurring any errors',
-        (tester) async {
-      await startApp(tester);
-      await navigateToCalendar(tester);
-      await tester
-          .tap(find.widgetWithText(ElevatedButton, trainingPeriodRouteLabel));
-      await tester.pumpAndSettle();
-      expect(find.byType(TrainingPeriodPage), findsOneWidget);
     });
 
     testWidgets(
