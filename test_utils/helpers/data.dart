@@ -12,6 +12,6 @@ void connectToMockDatabase() {
   Get.put<FirestoreService>(MockFirestoreService());
 }
 
-void setCurrentUser() {
+void setUserService() {
   Get.put<UserService>(UserMockService());
 }

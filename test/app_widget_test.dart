@@ -7,7 +7,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   connectToMockDatabase();
-  setCurrentUser();
+  setUserService();
 
   testWidgets('App smoke test, start the app and see what happens.',
       (WidgetTester tester) async {

@@ -8,4 +8,9 @@ import '../given.dart';
 class UserMockService extends GetxService with Mock implements UserService {
   @override
   late final Future<AppUser> user$ = Future.value(Given().getAppUser());
+
+  @override
+  AppUser get user {
+    return Given().getAppUser();
+  }
 }

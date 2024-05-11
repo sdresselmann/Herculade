@@ -13,7 +13,7 @@ void main() {
 
   setUpAll(() {
     connectToMockDatabase();
-    setCurrentUser();
+    setUserService();
   });
 
   group('navigation smoke tests:', () {
@@ -39,7 +39,7 @@ void main() {
     });
 
     testWidgets(
-        '5. navigate from home to the training plan list page without occurring any errors',
+        '3. navigate from home to the training plan list page without occurring any errors',
         (tester) async {
       await startApp(tester);
       await navigateToTrainingPlanList(tester);
