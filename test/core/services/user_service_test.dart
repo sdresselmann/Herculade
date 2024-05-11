@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get_it/get_it.dart';
+import 'package:get/get.dart';
 import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
@@ -9,6 +9,7 @@ import 'package:lifting_progress_tracker/training_plan/default_training_plan_dat
 import 'package:mocktail/mocktail.dart';
 
 import '../../../test_utils/given.dart';
+import '../../../test_utils/helpers/data.dart';
 import '../../../test_utils/mocks/firebase_mock_service.dart';
 import '../../../test_utils/mocks/firestore_mock_service.dart';
 
@@ -22,18 +23,18 @@ void main() {
     late UserService userService;
 
     setUp(() {
-      mockFirebaseService = MockFirebaseService();
-      GetIt.I.registerSingleton<FirebaseService>(mockFirebaseService);
+      connectToMockDatabase();
 
-      mockFirestoreService = MockFirestoreService();
-      GetIt.I.registerSingleton<FirestoreService>(mockFirestoreService);
+      mockFirebaseService = Get.find<FirebaseService>() as MockFirebaseService;
+      mockFirestoreService =
+          Get.find<FirestoreService>() as MockFirestoreService;
 
       userService = UserService();
     });
 
     tearDown(() {
-      GetIt.I.unregister<FirebaseService>();
-      GetIt.I.unregister<FirestoreService>();
+      Get.delete<FirebaseService>();
+      Get.delete<FirestoreService>();
     });
 
     test("initializeUser() sets the current user.", () async {

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:get_it/get_it.dart';
+import 'package:get/get.dart';
 import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
@@ -8,11 +8,11 @@ import 'package:lifting_progress_tracker/firebase/services/firestore_service.dar
 import 'package:lifting_progress_tracker/training_plan/default_training_plan_data.dart';
 import 'package:logging/logging.dart';
 
-class UserService {
+class UserService extends GetxService {
   final Logger _logger = Logger("UserService");
 
-  final FirebaseService _firebaseService = GetIt.I.get<FirebaseService>();
-  final FirestoreService _firestoreService = GetIt.I.get<FirestoreService>();
+  final FirebaseService _firebaseService = Get.find();
+  final FirestoreService _firestoreService = Get.find();
 
   late final AppUser _user;
   late final Future<AppUser> user$;

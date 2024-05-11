@@ -2,12 +2,13 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:lifting_progress_tracker/core/models/app_user.dart';
 import 'package:lifting_progress_tracker/firebase/firebase_options.dart';
 import 'package:logging/logging.dart';
 import 'package:rxdart/rxdart.dart';
 
-class FirebaseService {
+class FirebaseService extends GetxService {
   final BehaviorSubject<bool> _isInitializationComplete$ = BehaviorSubject();
 
   final Logger _logger;

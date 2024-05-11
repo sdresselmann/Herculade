@@ -1,4 +1,4 @@
-import 'package:get_it/get_it.dart';
+import 'package:get/get.dart';
 import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:lifting_progress_tracker/core/utils/logging.dart';
 import 'package:lifting_progress_tracker/core/utils/service_locators.dart';
@@ -12,12 +12,14 @@ void setupAppUtils() {
 }
 
 Future<void> setup() async {
-  await GetIt.I.get<FirebaseService>().initializeFirebaseApp();
+  final FirebaseService firebaseService = Get.find();
+  await firebaseService.initializeFirebaseApp();
+
   setupCurrentUser();
 }
 
 Future<void> setupCurrentUser() async {
-  final UserService userService = GetIt.I.get<UserService>();
+  final UserService userService = Get.find();
   await userService.initializeUser();
   userService.initUserCollections();
 }

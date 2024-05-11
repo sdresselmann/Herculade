@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get_it/get_it.dart';
+import 'package:get/get.dart';
 import 'package:lifting_progress_tracker/firebase/firestore_json.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 import 'package:logging/logging.dart';
 
-class FirestoreService {
-  final FirebaseService _firebaseService = GetIt.I.get<FirebaseService>();
+class FirestoreService extends GetxService {
+  final FirebaseService _firebaseService = Get.find();
 
   late final FirebaseFirestore _firestore;
 
