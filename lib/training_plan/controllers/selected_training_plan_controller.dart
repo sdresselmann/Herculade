@@ -6,14 +6,13 @@ import 'package:lifting_progress_tracker/training_plan/models/training_plan_list
 class TrainingPlanController extends GetxController {
   final RxString _selectedName = "".obs;
   final Rx<TrainingPlan?> _selectedPlan = Rx<TrainingPlan?>(null);
-
-  late final TrainingPlanList _list;
+  final Rx<TrainingPlanList> planList = TrainingPlanList({}).obs;
 
   void initTrainingPlanList(TrainingPlanList trainingPlanList) {
-    _list = trainingPlanList;
+    planList.value = trainingPlanList;
 
-    selectedName = _list.trainingPlans.keys.first;
-    selectedPlan = _list.trainingPlans.entries.first.value;
+    selectedName = planList.value.trainingPlans.keys.first;
+    selectedPlan = planList.value.trainingPlans.entries.first.value;
   }
 
   String get selectedName {
@@ -33,6 +32,6 @@ class TrainingPlanController extends GetxController {
   }
 
   void setPlanToCorrespondingName(String name) {
-    selectedPlan = _list.trainingPlans[name];
+    selectedPlan = planList.value.trainingPlans[name];
   }
 }
