@@ -22,7 +22,7 @@ class TrainingPlanTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller =
-        ControllerRegistry.registerController(SelectedTrainingPlanController());
+        ControllerRegistry.registerController(TrainingPlanController());
 
     return Center(
       child: FutureBuilder(
@@ -42,7 +42,11 @@ class TrainingPlanTable extends StatelessWidget {
                 TrainingPlanSelector(
                   trainingPlanNames: _extractTrainingPlanNames(snapshot.data!),
                 ),
-                SelectedTrainingPlan(),
+                Obx(
+                  () => SelectedTrainingPlan(
+                    selectedPlan: controller.selectedPlan!,
+                  ),
+                ),
               ],
             );
           } else if (snapshot.hasError) {

@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
 
-class SelectedTrainingPlanController extends GetxController {
+class TrainingPlanController extends GetxController {
   final RxString _selectedName = "".obs;
   final Rx<TrainingPlan?> _selectedPlan = Rx<TrainingPlan?>(null);
 
