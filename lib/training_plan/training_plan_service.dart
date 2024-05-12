@@ -20,7 +20,7 @@ class TrainingPlanService {
   void update(
     TrainingPlanList planList,
   ) {
-    _firestoreService.update(
+    _firestoreService.set(
       CollectionNames.planEntries,
       _userService.user.uid,
       planList.toJson(),

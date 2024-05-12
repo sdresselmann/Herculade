@@ -17,8 +17,6 @@ class TrainingPlanList implements JsonSerializable {
 
   @override
   FirestoreJson toJson() {
-    return {
-      "trainingPlanList": trainingPlans,
-    };
+    return trainingPlans.map((key, value) => MapEntry(key, value.toJson()));
   }
 }

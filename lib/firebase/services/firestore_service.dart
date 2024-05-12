@@ -34,21 +34,10 @@ class FirestoreService extends GetxService {
     String documentId,
     Map<String, dynamic> documentData,
   ) {
-    _logger.info(
-      "Created a new document with  id $documentId for collection $collectionName",
-    );
     return _firestore
         .collection(collectionName)
         .doc(documentId)
         .set(documentData);
-  }
-
-  Future<void> update(
-    String collectionName,
-    String documentId,
-    Map<Object, Object?> documentData,
-  ) async {
-    return _firestore.collection(collectionName).doc().update(documentData);
   }
 
   Future<FirestoreJson> get(

@@ -5,6 +5,8 @@ import 'package:lifting_progress_tracker/training_plan/models/training_plan_entr
 class TrainingPlan implements JsonSerializable {
   Map<String, TrainingPlanEntry> planEntries;
 
+  TrainingPlan(this.planEntries);
+
   TrainingPlan.fromJson(FirestoreJson json)
       : planEntries = json.map(
           (key, value) => MapEntry(
@@ -15,8 +17,6 @@ class TrainingPlan implements JsonSerializable {
 
   @override
   FirestoreJson toJson() {
-    return {
-      "planEntries": planEntries,
-    };
+    return planEntries.map((key, value) => MapEntry(key, value.toJson()));
   }
 }

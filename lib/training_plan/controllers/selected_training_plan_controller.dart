@@ -5,14 +5,14 @@ import 'package:lifting_progress_tracker/training_plan/models/training_plan_list
 
 class TrainingPlanController extends GetxController {
   final RxString _selectedName = "".obs;
-  final Rx<TrainingPlan?> _selectedPlan = Rx<TrainingPlan?>(null);
-  final Rx<TrainingPlanList> planList = TrainingPlanList({}).obs;
+  final Rx<TrainingPlan> _selectedPlan = TrainingPlan({}).obs;
+  final Rx<TrainingPlanList> _planList = TrainingPlanList({}).obs;
 
   void initTrainingPlanList(TrainingPlanList trainingPlanList) {
-    planList.value = trainingPlanList;
+    planList = trainingPlanList;
 
-    selectedName = planList.value.trainingPlans.keys.first;
-    selectedPlan = planList.value.trainingPlans.entries.first.value;
+    selectedName = planList.trainingPlans.keys.first;
+    selectedPlan = planList.trainingPlans.entries.first.value;
   }
 
   String get selectedName {
@@ -23,15 +23,23 @@ class TrainingPlanController extends GetxController {
     _selectedName.value = name;
   }
 
-  TrainingPlan? get selectedPlan {
+  TrainingPlan get selectedPlan {
     return _selectedPlan.value;
   }
 
-  set selectedPlan(TrainingPlan? plan) {
+  set selectedPlan(TrainingPlan plan) {
     _selectedPlan.value = plan;
   }
 
+  TrainingPlanList get planList {
+    return _planList.value;
+  }
+
+  set planList(TrainingPlanList planList) {
+    _planList.value = planList;
+  }
+
   void setPlanToCorrespondingName(String name) {
-    selectedPlan = planList.value.trainingPlans[name];
+    selectedPlan = planList.trainingPlans[name]!;
   }
 }

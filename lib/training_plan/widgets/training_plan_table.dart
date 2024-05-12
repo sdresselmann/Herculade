@@ -37,14 +37,8 @@ class TrainingPlanTable extends StatelessWidget {
                 ),
                 Obx(
                   () => SelectedTrainingPlan(
-                    selectedPlan: controller.selectedPlan!,
+                    selectedPlan: controller.selectedPlan,
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // _trainingPlanService.update()
-                  },
-                  child: const Text("Update"),
                 ),
               ],
             );
