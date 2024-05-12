@@ -10,6 +10,10 @@ class SelectedTrainingPlan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (selectedPlan.planEntries.isEmpty) {
+      return const Text(emptyTrainingPlanPlaceholder);
+    }
+
     return Column(
       children: [
         Table(
@@ -38,7 +42,7 @@ class SelectedTrainingPlan extends StatelessWidget {
         ),
         const IconButton(
           onPressed: null,
-          icon: Icon(Icons.create),
+          icon: Icon(Icons.add),
         ),
       ],
     );

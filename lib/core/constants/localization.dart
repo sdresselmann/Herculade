@@ -13,3 +13,6 @@ final List<String> tableHeaderLabels = [
   // Buttons
   "",
 ];
+
+const String emptyTrainingPlanPlaceholder =
+    "No plan entries yet, why don't you add some?";
