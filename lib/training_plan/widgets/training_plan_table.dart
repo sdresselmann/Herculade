@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifting_progress_tracker/core/services/user_service.dart';
 import 'package:lifting_progress_tracker/core/utils/controller_registry.dart';
 import 'package:lifting_progress_tracker/core/widgets/error_message.dart';
-import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/training_plan/controllers/selected_training_plan_controller.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
 import 'package:lifting_progress_tracker/training_plan/training_plan_service.dart';
@@ -15,8 +13,6 @@ class TrainingPlanTable extends StatelessWidget {
   final TrainingPlanService _trainingPlanService =
       Get.put(TrainingPlanService());
 
-  final UserService _userService = Get.find();
-
   final Logger _logger = Logger("_TrainingPlanTableState");
 
   @override
@@ -26,10 +22,7 @@ class TrainingPlanTable extends StatelessWidget {
 
     return Center(
       child: FutureBuilder(
-        future: _trainingPlanService.get(
-          CollectionNames.planEntries,
-          _userService.user.uid,
-        ),
+        future: _trainingPlanService.get(),
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
@@ -46,6 +39,12 @@ class TrainingPlanTable extends StatelessWidget {
                   () => SelectedTrainingPlan(
                     selectedPlan: controller.selectedPlan!,
                   ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // _trainingPlanService.update()
+                  },
+                  child: const Text("Update"),
                 ),
               ],
             );

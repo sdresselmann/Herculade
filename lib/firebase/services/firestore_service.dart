@@ -43,6 +43,14 @@ class FirestoreService extends GetxService {
         .set(documentData);
   }
 
+  Future<void> update(
+    String collectionName,
+    String documentId,
+    Map<Object, Object?> documentData,
+  ) async {
+    return _firestore.collection(collectionName).doc().update(documentData);
+  }
+
   Future<FirestoreJson> get(
     String collectionName,
     String documentId,
