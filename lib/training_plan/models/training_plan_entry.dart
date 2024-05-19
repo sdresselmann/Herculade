@@ -7,6 +7,8 @@ class TrainingPlanEntry implements JsonSerializable {
   String weight;
   String comment;
 
+  TrainingPlanEntry(this.repeats, this.exerciseName, this.weight, this.comment);
+
   TrainingPlanEntry.fromJson(FirestoreJson json)
       : repeats = json["repeats"] as String,
         exerciseName = json["exerciseName"] as String,

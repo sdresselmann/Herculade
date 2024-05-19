@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
+import 'package:lifting_progress_tracker/training_plan/controllers/selected_training_plan_controller.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan.dart';
+import 'package:lifting_progress_tracker/training_plan/training_plan_service.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/table_header.dart';
 
 class SelectedTrainingPlan extends StatelessWidget {
+  final TrainingPlanService _trainingPlanService = Get.find();
+
   final TrainingPlan selectedPlan;
 
-  const SelectedTrainingPlan({required this.selectedPlan});
+  SelectedTrainingPlan({required this.selectedPlan});
 
   @override
   Widget build(BuildContext context) {
+    final TrainingPlanController controller = Get.find();
+
     if (selectedPlan.planEntries.isEmpty) {
       return const Text(emptyTrainingPlanPlaceholder);
     }
@@ -40,9 +47,12 @@ class SelectedTrainingPlan extends StatelessWidget {
               ),
           ],
         ),
-        const IconButton(
-          onPressed: null,
-          icon: Icon(Icons.add),
+        IconButton(
+          onPressed: () {
+            controller.addEmptyPlanEntry();
+            _trainingPlanService.update(controller.planList);
+          },
+          icon: const Icon(Icons.add),
         ),
       ],
     );

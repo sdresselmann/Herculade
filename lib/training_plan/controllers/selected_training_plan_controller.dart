@@ -1,6 +1,7 @@
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan.dart';
+import 'package:lifting_progress_tracker/training_plan/models/training_plan_entry.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
 
 class TrainingPlanController extends GetxController {
@@ -41,5 +42,15 @@ class TrainingPlanController extends GetxController {
 
   void setPlanToCorrespondingName(String name) {
     selectedPlan = planList.trainingPlans[name]!;
+  }
+
+  void addEmptyPlanEntry() {
+    selectedPlan.planEntries.putIfAbsent(
+      "${selectedPlan.planEntries.length}",
+      () => TrainingPlanEntry("repeats", "exerciseName", "weight", "comment"),
+    );
+
+    planList.trainingPlans[selectedName] = selectedPlan;
+    _selectedPlan.refresh();
   }
 }
