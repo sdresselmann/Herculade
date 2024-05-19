@@ -3,11 +3,14 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_entry.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
+import 'package:uuid/uuid.dart';
 
 class TrainingPlanController extends GetxController {
   final RxString _selectedName = "".obs;
   final Rx<TrainingPlan> _selectedPlan = TrainingPlan({}).obs;
   final Rx<TrainingPlanList> _planList = TrainingPlanList({}).obs;
+
+  final Uuid _uuid = const Uuid();
 
   void initTrainingPlanList(TrainingPlanList trainingPlanList) {
     planList = trainingPlanList;
@@ -50,8 +53,10 @@ class TrainingPlanController extends GetxController {
   }
 
   void addEmptyPlanEntry() {
+    final String uuid = _uuid.v1();
+
     selectedPlan.planEntries.putIfAbsent(
-      "${selectedPlan.planEntries.length}",
+      uuid,
       () => TrainingPlanEntry("repeats", "exerciseName", "weight", "comment"),
     );
 
