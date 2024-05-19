@@ -50,13 +50,6 @@ class SelectedTrainingPlan extends StatelessWidget {
               ),
           ],
         ),
-        IconButton(
-          onPressed: () {
-            controller.addEmptyPlanEntry();
-            _trainingPlanService.update(controller.planList);
-          },
-          icon: const Icon(Icons.add),
-        ),
       ],
     );
   }

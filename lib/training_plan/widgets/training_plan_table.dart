@@ -40,6 +40,13 @@ class TrainingPlanTable extends StatelessWidget {
                     selectedPlan: controller.selectedPlan,
                   ),
                 ),
+                IconButton(
+                  onPressed: () {
+                    controller.addEmptyPlanEntry();
+                    _trainingPlanService.update(controller.planList);
+                  },
+                  icon: const Icon(Icons.add),
+                ),
               ],
             );
           } else if (snapshot.hasError) {
