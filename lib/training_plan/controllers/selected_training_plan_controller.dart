@@ -44,13 +44,22 @@ class TrainingPlanController extends GetxController {
     selectedPlan = planList.trainingPlans[name]!;
   }
 
+  void updatePlans(TrainingPlan plan) {
+    planList.trainingPlans[selectedName] = plan;
+    _selectedPlan.refresh();
+  }
+
   void addEmptyPlanEntry() {
     selectedPlan.planEntries.putIfAbsent(
       "${selectedPlan.planEntries.length}",
       () => TrainingPlanEntry("repeats", "exerciseName", "weight", "comment"),
     );
 
-    planList.trainingPlans[selectedName] = selectedPlan;
-    _selectedPlan.refresh();
+    updatePlans(selectedPlan);
+  }
+
+  void removeEntry(String id) {
+    selectedPlan.planEntries.remove(id);
+    updatePlans(selectedPlan);
   }
 }

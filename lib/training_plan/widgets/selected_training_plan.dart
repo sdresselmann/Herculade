@@ -39,9 +39,12 @@ class SelectedTrainingPlan extends StatelessWidget {
                   Text(entry.value.weight),
                   Text(entry.value.repeats),
                   Text(entry.value.comment),
-                  const IconButton(
-                    onPressed: null,
-                    icon: Icon(Icons.delete),
+                  IconButton(
+                    onPressed: () {
+                      controller.removeEntry(entry.key);
+                      _trainingPlanService.update(controller.planList);
+                    },
+                    icon: const Icon(Icons.delete),
                   ),
                 ],
               ),
