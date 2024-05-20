@@ -36,10 +36,22 @@ class SelectedTrainingPlan extends StatelessWidget {
             for (final entry in selectedPlan.planEntries.entries)
               TableRow(
                 children: [
-                  EditableTableField(initialValue: entry.value.exerciseName),
-                  EditableTableField(initialValue: entry.value.weight),
-                  EditableTableField(initialValue: entry.value.repeats),
-                  EditableTableField(initialValue: entry.value.comment),
+                  EditableTableField(
+                    key: UniqueKey(),
+                    initialValue: entry.value.exerciseName,
+                  ),
+                  EditableTableField(
+                    key: UniqueKey(),
+                    initialValue: entry.value.weight,
+                  ),
+                  EditableTableField(
+                    key: UniqueKey(),
+                    initialValue: entry.value.repeats,
+                  ),
+                  EditableTableField(
+                    key: UniqueKey(),
+                    initialValue: entry.value.comment,
+                  ),
                   IconButton(
                     onPressed: () {
                       controller.removeEntry(entry.key);
