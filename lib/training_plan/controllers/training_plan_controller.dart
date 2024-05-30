@@ -67,4 +67,9 @@ class TrainingPlanController extends GetxController {
     selectedPlan.planEntries.remove(id);
     updatePlans(selectedPlan);
   }
+
+  void updateEntry(String key, TrainingPlanEntry entry) {
+    selectedPlan.planEntries.update(key, (value) => value = entry);
+    updatePlans(selectedPlan);
+  }
 }

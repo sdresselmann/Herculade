@@ -20,18 +20,22 @@ class EditableTableRow extends StatelessWidget {
       EditableTableField(
         key: UniqueKey(),
         initialValue: entry.value.exerciseName,
+        onChanged: updateExerciseName,
       ),
       EditableTableField(
         key: UniqueKey(),
         initialValue: entry.value.weight,
+        onChanged: updateWeight,
       ),
       EditableTableField(
         key: UniqueKey(),
         initialValue: entry.value.repeats,
+        onChanged: updateRepeats,
       ),
       EditableTableField(
         key: UniqueKey(),
         initialValue: entry.value.comment,
+        onChanged: updateComment,
       ),
       IconButton(
         onPressed: () {
@@ -50,5 +54,32 @@ class EditableTableRow extends StatelessWidget {
     return Row(
       children: getTableRowChildren(context, controller),
     );
+  }
+
+  void updateExerciseName(String value) {
+    entry.value.exerciseName = value;
+    updateRowEntry();
+  }
+
+  void updateWeight(String value) {
+    entry.value.weight = value;
+    updateRowEntry();
+  }
+
+  void updateRepeats(String value) {
+    entry.value.repeats = value;
+    updateRowEntry();
+  }
+
+  void updateComment(String value) {
+    entry.value.comment = value;
+    updateRowEntry();
+  }
+
+  void updateRowEntry() {
+    final TrainingPlanController controller = Get.find();
+    controller.updateEntry(entry.key, entry.value);
+
+    _trainingPlanService.update(controller.planList);
   }
 }
