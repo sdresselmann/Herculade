@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
-import 'package:lifting_progress_tracker/training_plan/controllers/selected_training_plan_controller.dart';
+import 'package:lifting_progress_tracker/training_plan/controllers/training_plan_controller.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan.dart';
 import 'package:lifting_progress_tracker/training_plan/training_plan_service.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/editable_table_field.dart';
