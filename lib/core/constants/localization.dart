@@ -16,3 +16,9 @@ final List<String> tableHeaderLabels = [
 
 const String emptyTrainingPlanPlaceholder =
     "No plan entries yet, why don't you add some?";
+
+const String dialogCancel = "Cancel";
+const String dialogConfirm = "Ok";
+
+const String deleteDialogTitle = "Delete?";
+const String deleteDialogContent = "Confirm deletion of";

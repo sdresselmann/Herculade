@@ -42,6 +42,7 @@ class EditableTableRow extends StatelessWidget {
         onPressed: () => showDialog(
           context: context,
           builder: (BuildContext context) => DeleteDialog(
+            subject: "row",
             controller: controller,
             okCallback: (controller, context) =>
                 _removeRow(controller, context),
