@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
 
-class DeleteDialog<T extends GetxController> extends StatelessWidget {
+class DeleteDialog extends StatelessWidget {
   final String subject;
-  final T controller;
-  final void Function(T controller, BuildContext context) okCallback;
+  final VoidCallback onConfirm;
 
   const DeleteDialog({
     required this.subject,
-    required this.controller,
-    required this.okCallback,
+    required this.onConfirm,
   });
 
   @override
@@ -24,7 +21,10 @@ class DeleteDialog<T extends GetxController> extends StatelessWidget {
           child: const Text(dialogCancel),
         ),
         TextButton(
-          onPressed: () => okCallback(controller, context),
+          onPressed: () {
+            onConfirm();
+            Navigator.pop(context, 'ok');
+          },
           child: const Text(dialogConfirm),
         ),
       ],

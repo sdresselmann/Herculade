@@ -43,9 +43,7 @@ class EditableTableRow extends StatelessWidget {
           context: context,
           builder: (BuildContext context) => DeleteDialog(
             subject: "row",
-            controller: controller,
-            okCallback: (controller, context) =>
-                _removeRow(controller, context),
+            onConfirm: () => _removeRow(controller, context),
           ),
         ),
         icon: const Icon(Icons.delete),
@@ -92,7 +90,5 @@ class EditableTableRow extends StatelessWidget {
   void _removeRow(TrainingPlanController controller, BuildContext context) {
     controller.removeEntry(entry.key);
     _trainingPlanService.update(controller.planList);
-
-    Navigator.pop(context, 'ok');
   }
 }
