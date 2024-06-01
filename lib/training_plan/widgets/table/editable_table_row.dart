@@ -38,10 +38,23 @@ class EditableTableRow extends StatelessWidget {
         onChanged: updateComment,
       ),
       IconButton(
-        onPressed: () {
-          controller.removeEntry(entry.key);
-          _trainingPlanService.update(controller.planList);
-        },
+        onPressed: () => showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text("Delete?"),
+            content: const Text("Confirm deletion of the row."),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context, "cancel"),
+                child: const Text("Cancel"),
+              ),
+              TextButton(
+                onPressed: () => _removeRow(controller, context),
+                child: const Text("Ok"),
+              ),
+            ],
+          ),
+        ),
         icon: const Icon(Icons.delete),
       ),
     ];
@@ -58,28 +71,35 @@ class EditableTableRow extends StatelessWidget {
 
   void updateExerciseName(String value) {
     entry.value.exerciseName = value;
-    updateRowEntry();
+    _updateRowEntries();
   }
 
   void updateWeight(String value) {
     entry.value.weight = value;
-    updateRowEntry();
+    _updateRowEntries();
   }
 
   void updateRepeats(String value) {
     entry.value.repeats = value;
-    updateRowEntry();
+    _updateRowEntries();
   }
 
   void updateComment(String value) {
     entry.value.comment = value;
-    updateRowEntry();
+    _updateRowEntries();
   }
 
-  void updateRowEntry() {
+  void _updateRowEntries() {
     final TrainingPlanController controller = Get.find();
     controller.updateEntry(entry.key, entry.value);
 
     _trainingPlanService.update(controller.planList);
+  }
+
+  void _removeRow(TrainingPlanController controller, BuildContext context) {
+    controller.removeEntry(entry.key);
+    _trainingPlanService.update(controller.planList);
+
+    Navigator.pop(context, 'ok');
   }
 }

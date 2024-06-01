@@ -35,9 +35,12 @@ class TrainingPlanTable extends StatelessWidget {
                 TrainingPlanSelector(
                   trainingPlanNames: _extractTrainingPlanNames(snapshot.data!),
                 ),
-                Obx(
-                  () => SelectedTrainingPlan(
-                    selectedPlan: controller.selectedPlan,
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Obx(
+                    () => SelectedTrainingPlan(
+                      selectedPlan: controller.selectedPlan,
+                    ),
                   ),
                 ),
                 IconButton(
