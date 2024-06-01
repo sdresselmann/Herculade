@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lifting_progress_tracker/core/widgets/delete_dialog.dart';
 import 'package:lifting_progress_tracker/training_plan/controllers/training_plan_controller.dart';
 import 'package:lifting_progress_tracker/training_plan/models/training_plan_entry.dart';
 import 'package:lifting_progress_tracker/training_plan/training_plan_service.dart';
@@ -38,21 +39,12 @@ class EditableTableRow extends StatelessWidget {
         onChanged: updateComment,
       ),
       IconButton(
-        onPressed: () => showDialog<String>(
+        onPressed: () => showDialog(
           context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text("Delete?"),
-            content: const Text("Confirm deletion of the row."),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context, "cancel"),
-                child: const Text("Cancel"),
-              ),
-              TextButton(
-                onPressed: () => _removeRow(controller, context),
-                child: const Text("Ok"),
-              ),
-            ],
+          builder: (BuildContext context) => DeleteDialog(
+            controller: controller,
+            okCallback: (controller, context) =>
+                _removeRow(controller, context),
           ),
         ),
         icon: const Icon(Icons.delete),
