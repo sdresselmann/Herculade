@@ -1,17 +1,17 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
-import 'package:lifting_progress_tracker/core/models/app_user.dart';
-import 'package:lifting_progress_tracker/core/services/user_service.dart';
+import 'package:lifting_progress_tracker/core/models/app_user.model.dart';
+import 'package:lifting_progress_tracker/core/services/user.service.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
-import 'package:lifting_progress_tracker/training_plan/default_training_plan_data.dart';
+import 'package:lifting_progress_tracker/training_plan/default_training_plan.data.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../test_utils/given.dart';
 import '../../../test_utils/helpers/data.dart';
-import '../../../test_utils/mocks/firebase_mock_service.dart';
-import '../../../test_utils/mocks/firestore_mock_service.dart';
+import '../../../test_utils/mocks/firebase_mock.service.dart';
+import '../../../test_utils/mocks/firestore_mock.service.dart';
 
 void main() {
   group("UserService Unit Tests", () {

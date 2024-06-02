@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:lifting_progress_tracker/core/models/app_user.dart';
-import 'package:lifting_progress_tracker/core/services/user_service.dart';
+import 'package:lifting_progress_tracker/core/models/app_user.model.dart';
+import 'package:lifting_progress_tracker/core/services/user.service.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../given.dart';

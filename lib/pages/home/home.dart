@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifting_progress_tracker/core/models/app_user.dart';
-import 'package:lifting_progress_tracker/core/services/user_service.dart';
+import 'package:lifting_progress_tracker/core/models/app_user.model.dart';
+import 'package:lifting_progress_tracker/core/services/user.service.dart';
 import 'package:lifting_progress_tracker/core/widgets/error_message.dart';
 import 'package:lifting_progress_tracker/pages/home/widgets/welcome_message.dart';
 import 'package:logging/logging.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifting_progress_tracker/core/utils/controller_registry.dart';
+import 'package:lifting_progress_tracker/core/controller/controller_registry.dart';
 import 'package:lifting_progress_tracker/core/widgets/error_message.dart';
-import 'package:lifting_progress_tracker/training_plan/controllers/training_plan_controller.dart';
-import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
-import 'package:lifting_progress_tracker/training_plan/training_plan_service.dart';
+import 'package:lifting_progress_tracker/training_plan/controllers/training_plan.controller.dart';
+import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.model.dart';
+import 'package:lifting_progress_tracker/training_plan/training_plan.service.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/table/selected_training_plan.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/training_plan_selector.dart';
 import 'package:logging/logging.dart';

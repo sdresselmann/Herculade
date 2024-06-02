@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:lifting_progress_tracker/core/models/app_user.dart';
+import 'package:lifting_progress_tracker/core/models/app_user.model.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firebase_service.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
-import 'package:lifting_progress_tracker/training_plan/default_training_plan_data.dart';
+import 'package:lifting_progress_tracker/training_plan/default_training_plan.data.dart';
 import 'package:logging/logging.dart';
 
 class UserService extends GetxService {

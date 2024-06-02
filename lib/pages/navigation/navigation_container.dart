@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lifting_progress_tracker/core/constants/localization.dart';
-import 'package:lifting_progress_tracker/core/utils/controller_registry.dart';
+import 'package:lifting_progress_tracker/core/controller/controller_registry.dart';
 import 'package:lifting_progress_tracker/pages/calendar.dart';
 import 'package:lifting_progress_tracker/pages/home/home.dart';
 import 'package:lifting_progress_tracker/pages/statistics.dart';

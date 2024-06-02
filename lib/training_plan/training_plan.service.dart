@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:lifting_progress_tracker/core/services/user_service.dart';
+import 'package:lifting_progress_tracker/core/services/user.service.dart';
 import 'package:lifting_progress_tracker/firebase/constants/collection_names.dart';
 import 'package:lifting_progress_tracker/firebase/services/firestore_service.dart';
-import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.dart';
+import 'package:lifting_progress_tracker/training_plan/models/training_plan_list.model.dart';
 
 class TrainingPlanService {
   final FirestoreService _firestoreService = Get.find();

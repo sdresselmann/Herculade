@@ -1,6 +1,6 @@
 import 'package:lifting_progress_tracker/core/interfaces/json_serializable.dart';
 import 'package:lifting_progress_tracker/firebase/firestore_json.dart';
-import 'package:lifting_progress_tracker/training_plan/models/training_plan.dart';
+import 'package:lifting_progress_tracker/training_plan/models/training_plan.model.dart';
 
 class TrainingPlanList implements JsonSerializable {
   Map<String, TrainingPlan> trainingPlans;

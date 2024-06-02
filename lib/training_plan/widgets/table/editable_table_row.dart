@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lifting_progress_tracker/core/widgets/delete_dialog.dart';
-import 'package:lifting_progress_tracker/training_plan/controllers/training_plan_controller.dart';
-import 'package:lifting_progress_tracker/training_plan/models/training_plan_entry.dart';
-import 'package:lifting_progress_tracker/training_plan/training_plan_service.dart';
+import 'package:lifting_progress_tracker/training_plan/controllers/training_plan.controller.dart';
+import 'package:lifting_progress_tracker/training_plan/models/training_plan_entry.model.dart';
+import 'package:lifting_progress_tracker/training_plan/training_plan.service.dart';
 import 'package:lifting_progress_tracker/training_plan/widgets/table/editable_table_field.dart';
 
 class EditableTableRow extends StatelessWidget {

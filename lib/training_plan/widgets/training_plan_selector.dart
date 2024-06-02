@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lifting_progress_tracker/training_plan/controllers/training_plan_controller.dart';
+import 'package:lifting_progress_tracker/training_plan/controllers/training_plan.controller.dart';
 
 class TrainingPlanSelector extends StatelessWidget {
   final List<String> trainingPlanNames;
