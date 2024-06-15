@@ -15,6 +15,8 @@ class TrainingPlanController extends GetxController {
   void initTrainingPlanList(TrainingPlanList trainingPlanList) {
     planList = trainingPlanList;
 
+    if (planList.trainingPlans.isEmpty) return;
+
     selectedName = planList.trainingPlans.keys.first;
     selectedPlan = planList.trainingPlans.entries.first.value;
   }
@@ -44,10 +46,12 @@ class TrainingPlanController extends GetxController {
   }
 
   void setPlanToCorrespondingName(String name) {
+    if (!planList.trainingPlans.containsKey(name)) return;
+
     selectedPlan = planList.trainingPlans[name]!;
   }
 
-  void updatePlans(TrainingPlan plan) {
+  void updatePlan(TrainingPlan plan) {
     planList.trainingPlans[selectedName] = plan;
     _selectedPlan.refresh();
   }
@@ -60,16 +64,18 @@ class TrainingPlanController extends GetxController {
       () => TrainingPlanEntry("repeats", "exerciseName", "weight", "comment"),
     );
 
-    updatePlans(selectedPlan);
+    updatePlan(selectedPlan);
   }
 
-  void removeEntry(String id) {
+  void removeEntryForSelectedPlan(String id) {
     selectedPlan.planEntries.remove(id);
-    updatePlans(selectedPlan);
+    updatePlan(selectedPlan);
   }
 
-  void updateEntry(String key, TrainingPlanEntry entry) {
+  void updateEntryForSelectedPlan(String key, TrainingPlanEntry entry) {
+    if (!selectedPlan.planEntries.keys.contains(key)) return;
+
     selectedPlan.planEntries.update(key, (value) => value = entry);
-    updatePlans(selectedPlan);
+    updatePlan(selectedPlan);
   }
 }

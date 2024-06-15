@@ -82,13 +82,13 @@ class EditableTableRow extends StatelessWidget {
 
   void _updateRowEntries() {
     final TrainingPlanController controller = Get.find();
-    controller.updateEntry(entry.key, entry.value);
+    controller.updateEntryForSelectedPlan(entry.key, entry.value);
 
     _trainingPlanService.update(controller.planList);
   }
 
   void _removeRow(TrainingPlanController controller, BuildContext context) {
-    controller.removeEntry(entry.key);
+    controller.removeEntryForSelectedPlan(entry.key);
     _trainingPlanService.update(controller.planList);
   }
 }
